@@ -62,4 +62,4 @@ typings/
 
 *.iml
 
-node_modules
+dist/
