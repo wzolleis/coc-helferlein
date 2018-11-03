@@ -1,10 +1,12 @@
 import express from 'express';
+import {initializePassport} from './auth/passport'
+import {authRoutes} from './auth/authRoutes';
+
+initializePassport();
 
 const app = express();
 
-app.get('/', (_: any, res: any) => {
-    res.send({hi: 'there'});
-
-});
+authRoutes(app);
 
 export default app;
+
