@@ -1,9 +1,11 @@
 import passport from 'passport'
 import keys from '../config/keys'
-const GoogleStrategy: any = require('passport-google-oauth20').Strategy;
-import mongoose = require("mongoose");
 import { SchemaNames } from '../db/SchemaNames'
-import {  UserDocument } from '../user/UserTypes'
+import { UserDocument } from '../user/UserTypes'
+
+const GoogleStrategy: any = require('passport-google-oauth20').Strategy;
+import mongoose = require("mongoose")
+
 const uuidv4 = require('uuid/v4')
 
 export type GoogleProfile = {
