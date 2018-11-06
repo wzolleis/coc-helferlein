@@ -1,8 +1,10 @@
-import express from 'express';
-import {initializePassport} from './auth/passport'
+import  express from 'express';
 import {authRoutes} from './auth/authRoutes';
+import {Db}  from './db/Database';
+import {Passport} from './auth/passport'
 
-initializePassport();
+Db.init();
+Passport.initializePassport();
 
 const app = express();
 

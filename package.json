@@ -13,7 +13,7 @@
     "start": "npm run serve",
     "setup": "npm install",
     "build": "tsc",
-    "watch-node": "nodemon dist/server.js",
+    "dev": "nodemon dist/server.js",
     "watch-ts": "tsc -w",
     "test-only": "jest src/",
     "pretest": "npm run build",
@@ -24,10 +24,13 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
+    "mongoose": "^5.3.9",
     "passport": "^0.4.0",
-    "passport-google-oauth20": "^1.0.0"
+    "passport-google-oauth20": "^1.0.0",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
+    "@types/mongoose": "^5.3.1",
     "@types/express": "^4.16.0",
     "@types/jest": "^23.3.9",
     "@types/node": "^10.11.7",
