@@ -1,13 +1,27 @@
 import Config from '../config/keys'
-import mongoose = require("mongoose");
-import { SchemaNames } from './SchemaNames'
-import { Schema } from 'mongoose'
+import { Document, model, Schema } from 'mongoose'
+import { User } from '../user/UserTypes'
+import mongoose = require("mongoose")
+
+export const USERS: string = 'users';
+
+export interface UserModel extends User, Document {
+
+}
+
+
+export let UserSchema: Schema = new Schema({
+    googleId: String,
+    authType: String,
+    userId: String
+});
+
 
 export class Db {
 
     public static init = () => {
         Db.connect();
-        Db.initModels();
+        Db.registerSchemes();
     }
 
     static connect = () => {
@@ -15,26 +29,12 @@ export class Db {
 
     };
 
-    static initModels = () => {
-        const userSchema: Schema = Db.initUserSchema();
-
-        mongoose.model(SchemaNames.users, userSchema);
+    static registerSchemes = () => {
+        model<UserModel>(USERS, UserSchema);
     };
-
-
-
-    private static initUserSchema = (): Schema => {
-       return new Schema({
-            googleId: String,
-            authType: String,
-            userId: String
-        });
-    }
-
-
-
 
     public static debug(debug:any) {
         mongoose.set('debug', debug);
     }
 }
+

@@ -1,14 +1,17 @@
-import  express from 'express';
-import {authRoutes} from './auth/authRoutes';
-import {Db}  from './db/Database';
-import {Passport} from './auth/passport'
+import express from 'express';
+import { authRoutes } from './auth/authRoutes';
+import { Db } from './db/Database';
+import passport from 'passport'
+import { initializePassport } from './auth/authUtil'
 
 Db.init();
-Passport.initializePassport();
 
 const app = express();
 
+app.use(passport.initialize());
 authRoutes(app);
+
+initializePassport();
 
 export default app;
 

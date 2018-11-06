@@ -1,5 +1,7 @@
-export type UserDocument = {
+export interface User {
     googleId: string,
     authType: string,
     userId: string
-}
+};
+
+
