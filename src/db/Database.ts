@@ -23,8 +23,6 @@ export class Db {
 
     static connect = () => {
         mongoose.connect(keys.mongoURI, {useNewUrlParser: true});
-        console.log('ddjsdfö');
-
     }
 
     static registerSchemes = () => {
