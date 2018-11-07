@@ -1,7 +1,7 @@
-import Config from '../config/keys'
-import { Document, model, Schema } from 'mongoose'
-import { User } from '../user/UserTypes'
-import mongoose = require("mongoose")
+import { Document, model, Schema } from 'mongoose';
+import { User } from '../user/UserTypes';
+import keys from '../config/keys'
+import mongoose = require('mongoose')
 
 export const USERS: string = 'users';
 
@@ -9,12 +9,10 @@ export interface UserModel extends User, Document {
 
 }
 
-
-export let UserSchema: Schema = new Schema({
+export const USER_SCHEMA: Schema = new Schema({
     googleId: String,
-    authType: String,
+    authType: String
 });
-
 
 export class Db {
 
@@ -24,16 +22,16 @@ export class Db {
     }
 
     static connect = () => {
-        mongoose.connect(Config.mongoURI, { useNewUrlParser: true });
+        mongoose.connect(keys.mongoURI, {useNewUrlParser: true});
+        console.log('ddjsdfö');
 
-    };
+    }
 
     static registerSchemes = () => {
-        model<UserModel>(USERS, UserSchema);
-    };
+        model<UserModel>(USERS, USER_SCHEMA);
+    }
 
-    public static debug(debug:any) {
+    public static debug(debug: any) {
         mongoose.set('debug', debug);
     }
 }
-

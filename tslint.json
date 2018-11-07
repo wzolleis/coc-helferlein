@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "tslint-react"
+  ],
+  "plugins": [
+    "prettier"
+  ],
+  "rules": {
+    "no-constant-condition": true
+  },
+  "rulesDirectory": [
+    "node_modules/tslint-eslint-rules/dist/rules"
+  ]
+}

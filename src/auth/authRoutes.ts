@@ -1,4 +1,4 @@
-import passport from 'passport'
+import passport from 'passport';
 
 export const authRoutes: (app: any) => void = (app: any) => {
     app.get('/auth/google', passport.authenticate('google',
@@ -9,4 +9,3 @@ export const authRoutes: (app: any) => void = (app: any) => {
 
     app.get('/auth/google/callback', passport.authenticate('google'));
 };
-

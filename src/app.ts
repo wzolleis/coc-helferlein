@@ -2,7 +2,7 @@ import express from 'express';
 import { authRoutes } from './auth/authRoutes';
 import { Db } from './db/Database';
 import passport from 'passport'
-import { initializePassport } from './auth/authUtil'
+import { initializePassport } from './auth/authUtil';
 
 Db.init();
 
@@ -13,5 +13,4 @@ authRoutes(app);
 
 initializePassport();
 
-export default app;
-
+export default app
