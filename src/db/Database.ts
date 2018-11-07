@@ -13,7 +13,6 @@ export interface UserModel extends User, Document {
 export let UserSchema: Schema = new Schema({
     googleId: String,
     authType: String,
-    userId: String
 });
 
 

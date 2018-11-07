@@ -5,7 +5,6 @@ import keys from '../config/keys'
 import { User } from '../user/UserTypes'
 
 const GoogleStrategy: any = require('passport-google-oauth20').Strategy;
-const uuidv4 = require('uuid/v4')
 
 
 export type GoogleProfile = {
@@ -14,6 +13,22 @@ export type GoogleProfile = {
 
 export const initializePassport: () => void = () => {
     const UserModel: Model<UserModel> = model<UserModel>(USERS);
+
+    passport.serializeUser((user: UserModel, done) => {
+        done(user.id);
+    });
+
+    passport.deserializeUser((id: string, done) => {
+        UserModel.findOne({id})
+            .then((existingUser: UserModel | null) => {
+                if (existingUser) {
+                    done(null, existingUser);
+                }
+                else {
+                    // user not found in database...
+                }
+            });
+    })
 
     passport.use(
         // 'http://localhost:5000/auth/google/callback'
@@ -33,7 +48,6 @@ export const initializePassport: () => void = () => {
                             const user: User = {
                                 googleId: profile.id,
                                 authType: 'google',
-                                userId: uuidv4()
                             };
                             new UserModel(user).save()
                                 .then((newUser: UserModel) => {
