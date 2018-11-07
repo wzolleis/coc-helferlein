@@ -11,14 +11,14 @@ export type GoogleProfile = {
 };
 
 export const initializePassport: () => void = () => {
-    const userModel: Model<UserModel> = model<UserModel>(USERS);
+    const UserModel: Model<UserModel> = model<UserModel>(USERS);
 
     passport.serializeUser((user: UserModel, done) => {
         done(user.id);
     });
 
     passport.deserializeUser((id: string, done) => {
-        userModel.findOne({id})
+        UserModel.findById(id)
             .then((existingUser: UserModel | null) => {
                 if (existingUser) {
                     done(null, existingUser);
@@ -38,7 +38,7 @@ export const initializePassport: () => void = () => {
                 callbackURL: '/auth/google/callback'
             },
             (accessToken: string, refreshToken: string, profile: GoogleProfile, done: any) => {
-                userModel.findOne({googleId: profile.id})
+                UserModel.findOne({googleId: profile.id})
                     .then((existingUser: UserModel | null) => {
                         if (existingUser) {
                             done(null, existingUser);
@@ -48,7 +48,7 @@ export const initializePassport: () => void = () => {
                                 googleId: profile.id,
                                 authType: 'google'
                             };
-                            new userModel(user).save()
+                            new UserModel(user).save()
                                 .then((newUser: UserModel) => {
                                     done(null, newUser);
                                 })
