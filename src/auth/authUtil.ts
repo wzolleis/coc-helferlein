@@ -14,7 +14,7 @@ export const initializePassport: () => void = () => {
     const UserModel: Model<UserModel> = model<UserModel>(USERS);
 
     passport.serializeUser((user: UserModel, done) => {
-        done(user.id);
+        done(null, user.id);
     });
 
     passport.deserializeUser((id: string, done) => {

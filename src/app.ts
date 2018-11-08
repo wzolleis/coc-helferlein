@@ -11,7 +11,9 @@ Db.init();
 const COOKIE_EXPIRE_TIME_MS = 30 * 24 * 60 * 60 * 1000; // 30 Tage
 const app = express();
 
+
 app.use(cookieSession({
+    name: 'session',
     maxAge: COOKIE_EXPIRE_TIME_MS,
     keys: [config.cookieKey]
 }));
