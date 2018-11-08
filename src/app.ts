@@ -1,10 +1,10 @@
-import express from 'express';
-import { authRoutes } from './auth/authRoutes';
-import { Db } from './db/Database';
-import passport from 'passport'
-import { initializePassport } from './auth/authUtil';
-import cookieSession from 'cookie-session';
-import config from './config/keys';
+import express from "express";
+import { authRoutes } from "./auth/authRoutes";
+import { Db } from "./db/Database";
+import passport from "passport";
+import { initializePassport } from "./auth/authUtil";
+import cookieSession from "cookie-session";
+import config from "./config/keys";
 
 Db.init();
 
@@ -13,9 +13,9 @@ const app = express();
 
 
 app.use(cookieSession({
-    name: 'session',
-    maxAge: COOKIE_EXPIRE_TIME_MS,
-    keys: [config.cookieKey]
+  name: "session",
+  maxAge: COOKIE_EXPIRE_TIME_MS,
+  keys: [config.cookieKey]
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -24,4 +24,4 @@ authRoutes(app);
 
 initializePassport();
 
-export default app
+export default app;
