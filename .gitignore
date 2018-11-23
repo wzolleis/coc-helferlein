@@ -64,4 +64,4 @@ typings/
 
 dist/
 
-keys.ts
+dev.ts

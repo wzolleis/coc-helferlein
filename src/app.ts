@@ -4,7 +4,7 @@ import { Db } from "./db/Database";
 import passport from "passport";
 import { initializePassport } from "./auth/authUtil";
 import cookieSession from "cookie-session";
-import config from "./config/keys";
+import { getConfig } from "./config/keys";
 
 Db.init();
 
@@ -15,7 +15,7 @@ const app = express();
 app.use(cookieSession({
   name: "session",
   maxAge: COOKIE_EXPIRE_TIME_MS,
-  keys: [config.cookieKey]
+  keys: [getConfig().cookieKey]
 }));
 app.use(passport.initialize());
 app.use(passport.session());

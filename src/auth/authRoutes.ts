@@ -15,10 +15,11 @@ export const authRoutes: (app: any) => void = (app: any) => {
 
   app.get("/api/current_user", (req: any, res: any) => {
     console.log("current user", req.user);
-    res.send(req.user);
+    res.send({ user: req.user });
   });
 
   app.get("/api/logout", (req: any, res: any) => {
     req.logout();
+    res.send({ user: req.user });
   });
 };
