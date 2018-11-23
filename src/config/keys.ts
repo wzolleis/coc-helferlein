@@ -1,6 +1,5 @@
 // keys.ts - figure out what credetials to use
 
-import DEV_CONFIG from "./dev";
 import { PROD_CONFG } from "./prod";
 
 export type  AppConfig = {
@@ -16,6 +15,6 @@ export const getConfig = (): AppConfig => {
   }
   else {
     // return the development keys
-    return DEV_CONFIG;
+    return require("dev");
   }
 };
