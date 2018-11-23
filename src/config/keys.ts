@@ -15,6 +15,6 @@ export const getConfig = (): AppConfig => {
   }
   else {
     // return the development keys
-    return require("dev");
+    return require("./dev");
   }
 };

@@ -38,7 +38,8 @@ export const initializePassport: () => void = () => {
       {
         clientID: appConfig.googleClientID,
         clientSecret: appConfig.googleClientSecret,
-        callbackURL: "/auth/google/callback"
+        callbackURL: "/auth/google/callback",
+        proxy: true
       },
       (accessToken: string, refreshToken: string, profile: GoogleProfile, done: any) => {
         UserModel.findOne({ googleId: profile.id })
