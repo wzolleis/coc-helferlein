@@ -1,6 +1,6 @@
 import { Document, model, Schema } from "mongoose";
 import { User } from "../user/UserTypes";
-import keys from "../config/keys";
+import { AppConfig, getConfig } from "../config/keys";
 import mongoose = require("mongoose");
 
 export const USERS: string = "users";
@@ -22,7 +22,8 @@ export class Db {
   };
 
   static connect = () => {
-    mongoose.connect(keys.mongoURI, { useNewUrlParser: true });
+    const appConfig: AppConfig = getConfig();
+    mongoose.connect(appConfig.mongoURI, { useNewUrlParser: true });
   };
 
   static registerSchemes = () => {

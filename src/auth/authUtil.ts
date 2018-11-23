@@ -1,10 +1,13 @@
 import { model, Model } from "mongoose";
 import { UserModel, USERS } from "../db/Database";
 import passport from "passport";
-import keys from "../config/keys";
 import { User } from "../user/UserTypes";
+import { AppConfig, getConfig } from "../config/keys";
 
 const googleStrategy: any = require("passport-google-oauth20").Strategy;
+
+const appConfig: AppConfig = getConfig();
+
 
 export type GoogleProfile = {
   id: string,
@@ -33,8 +36,8 @@ export const initializePassport: () => void = () => {
     // 'http://localhost:5000/auth/google/callback'
     new googleStrategy(
       {
-        clientID: keys.googleClientID,
-        clientSecret: keys.googleClientSecret,
+        clientID: appConfig.googleClientID,
+        clientSecret: appConfig.googleClientSecret,
         callbackURL: "/auth/google/callback"
       },
       (accessToken: string, refreshToken: string, profile: GoogleProfile, done: any) => {
