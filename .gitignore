@@ -65,3 +65,5 @@ typings/
 dist/
 
 dev.ts
+
+.DS_Store
