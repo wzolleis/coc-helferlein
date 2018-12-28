@@ -52,7 +52,6 @@ export const initializePassport: () => void = () => {
         // Noch kein User mit dieser ID, es wird ein neuer User angelegt.
         const newUser = await new UserModel(user).save();
         done(null, newUser);
-
       }
     )
   );
