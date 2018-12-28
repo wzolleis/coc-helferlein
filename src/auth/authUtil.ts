@@ -25,15 +25,13 @@ export const initializePassport: () => void = () => {
       .then((existingUser: UserModel | null) => {
         if (existingUser) {
           done(null, existingUser);
-        }
-        else {
+        } else {
           // user not found in database...
         }
       });
   });
 
   passport.use(
-    // 'http://localhost:5000/auth/google/callback'
     new googleStrategy(
       {
         clientID: appConfig.googleClientID,
@@ -41,29 +39,19 @@ export const initializePassport: () => void = () => {
         callbackURL: "/auth/google/callback",
         proxy: true
       },
-      (accessToken: string, refreshToken: string, profile: GoogleProfile, done: any) => {
-        UserModel.findOne({ googleId: profile.id })
-          .then((existingUser: UserModel | null) => {
-            if (existingUser) {
-              done(null, existingUser);
-            }
-            else {
-              const user: User = {
-                googleId: profile.id,
-                authType: "google"
-              };
-              new UserModel(user).save()
-                .then((newUser: UserModel) => {
-                  done(null, newUser);
-                })
-                .catch((reason) => {
-                  console.log("reason", reason);
-                });
-            }
-          })
-          .catch((reason) => {
-            console.log("reason 2", reason);
-          });
+      async (accessToken: string, refreshToken: string, profile: GoogleProfile, done: any) => {
+        const existingUser = await UserModel.findOne({ googleId: profile.id });
+        if (existingUser) {
+          return done(null, existingUser);
+        }
+        const user: User = {
+          googleId: profile.id,
+          authType: "google"
+        };
+
+        // Noch kein User mit dieser ID, es wird ein neuer User angelegt.
+        const newUser = await new UserModel(user).save();
+        done(null, newUser);
       }
     )
   );
