@@ -67,3 +67,5 @@ dist/
 dev.ts
 
 .DS_Store
+
+client/build
