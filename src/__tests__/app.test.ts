@@ -1,5 +1,5 @@
 import supertest from "supertest"; // noinspection TsLint
-import app from "../app";
+import app from "../../client/src/app/App";
 
 it("should return some greeting!", (done: any) => {
   supertest(app)
