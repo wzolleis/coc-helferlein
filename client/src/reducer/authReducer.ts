@@ -1,4 +1,4 @@
-import { AppState } from "../app/AppTypes";
+import { AppState } from "../app/applicationTypes";
 import { setName } from "../actions/authActions";
 import { Reducer } from "redux";
 import { isType } from "typescript-fsa";

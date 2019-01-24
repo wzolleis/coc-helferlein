@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { AppState, AuthState } from "../app/AppTypes";
+import { AppState, AuthState } from "../app/applicationTypes";
 import { authReducer } from "./authReducer";
 
 const INITIAL_AUTH_STATE: AuthState = {
