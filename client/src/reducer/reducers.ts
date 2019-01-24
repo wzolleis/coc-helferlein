@@ -1,14 +1,15 @@
 import { combineReducers } from "redux";
-import { AppState, AuthState } from "../app/applicationTypes";
-import { authReducer } from "./authReducer";
+import { AppState } from "../app/applicationTypes";
+import { authReducer, INITIAL_AUTH_STATE } from "./authReducer";
 
-const INITIAL_AUTH_STATE: AuthState = {
-  name: ""
-};
 
 export const INITIAL_STATE: AppState = {
   auth: INITIAL_AUTH_STATE
 };
 
 
-export const reducers = combineReducers(authReducer);
+const reducers = combineReducers({
+  auth: authReducer
+});
+
+export default reducers;

@@ -1,19 +1,21 @@
-import { AppState } from "../app/applicationTypes";
+import { AuthState } from "../app/applicationTypes";
 import { setName } from "../actions/authActions";
 import { Reducer } from "redux";
 import { isType } from "typescript-fsa";
 import { AuthAction, AuthActionPayload } from "../actions/actionTypes";
 
-const handleName = (state: AppState, payload: AuthActionPayload): AppState => {
+const handleName = (state: AuthState, payload: AuthActionPayload): AuthState => {
   return {
     ...state,
-    auth: {
-      name: payload.name
-    }
+    name: payload.name
   };
 };
 
-export const authReducer: Reducer<AppState, AuthAction> = (state: AppState, action: AuthAction): AppState => {
+export const INITIAL_AUTH_STATE: AuthState = {
+  name: ""
+};
+
+export const authReducer: Reducer<AuthState, AuthAction> = (state: AuthState = INITIAL_AUTH_STATE, action: AuthAction): AuthState => {
   if (isType(action, setName)) {
     return handleName(state, action.payload);
   }
