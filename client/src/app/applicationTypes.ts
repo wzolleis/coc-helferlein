@@ -4,4 +4,4 @@ export type AuthState = {
 
 export type AppState = {
   auth: AuthState
-} | undefined;
+};
