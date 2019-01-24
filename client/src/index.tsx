@@ -5,22 +5,21 @@ import { Provider } from "react-redux";
 import { applyMiddleware, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
-import { INITAL_STATE, reducer } from "./reducer/RootReducer";
 import logger from "redux-logger";
+import { INITIAL_STATE, reducers } from "./reducer/reducers";
 
 const composeEnhancers = composeWithDevTools({
   // Specify name here, actionsBlacklist, actionsCreators and other options if needed
 });
 
-const store = createStore(reducer, INITAL_STATE,
-  composeEnhancers(applyMiddleware(thunk, logger)));
+const store = createStore(reducers, INITIAL_STATE
+  , composeEnhancers(applyMiddleware(thunk, logger)));
 
 ReactDOM.render(
   <Provider store={store}>
     <App/>
   </Provider>
-  ,
-  document.getElementById("root") as HTMLElement
+  , document.getElementById("root") as HTMLElement
 );
 // If you want your serverApp to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
