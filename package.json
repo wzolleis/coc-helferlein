@@ -8,7 +8,6 @@
     "npm": "6.4.1"
   },
   "scripts": {
-    "postinstall": "npm run build",
     "serve": "node dist/src/server.js",
     "start": "npm run serve",
     "setup": "npm install",
@@ -56,5 +55,6 @@
     "tslint-plugin-prettier": "^2.0.1",
     "tslint-react": "^3.6.0",
     "typescript": "^3.2.4"
-  }
+  },
+  "heroku-run-build-script": true
 }
