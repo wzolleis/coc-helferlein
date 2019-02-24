@@ -7,6 +7,9 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
 import reducers, { INITIAL_STATE } from "./reducer/reducers";
+import "materialize-css";
+import "materialize-css/dist/css/materialize.min.css";
+
 
 const composeEnhancers = composeWithDevTools({
   // Specify name here, actionsBlacklist, actionsCreators and other options if needed
