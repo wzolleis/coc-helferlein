@@ -1,7 +1,14 @@
-export type AuthState = {
-  foo: string
-};
+export interface UserModel {
+  googleId: string,
+  userid: string,
+  authType: string
+}
 
-export type AppState = {
+export interface AuthState {
+  user?: UserModel
+}
+
+
+export interface AppState {
   auth: AuthState
-};
+}
