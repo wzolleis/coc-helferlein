@@ -14,7 +14,6 @@ export const authRoutes: (app: any) => void = (app: any) => {
   );
 
   app.get("/api/current_user", (req: any, res: any) => {
-    console.log("current user", req.user);
     res.send({ user: req.user });
   });
 

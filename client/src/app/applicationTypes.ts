@@ -1,5 +1,5 @@
 export type AuthState = {
-  name: string
+  foo: string
 };
 
 export type AppState = {

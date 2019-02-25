@@ -1,15 +1,26 @@
 import * as React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { Header } from "../components/Header";
+import { connect } from "react-redux";
+import { fetchUser } from "../actions";
 
 const Dashboard = () => <h2>Dashboard</h2>;
 const ClanWarLeagueNew = () => <h2>ClanWarLeagueNew</h2>;
 const Landing = () => <h2>Landing</h2>;
 
-class App extends React.Component {
+interface AppComponentDispatch {
+  fetchUser: () => void
+}
+
+class App extends React.Component<AppComponentDispatch> {
+
+  componentDidMount(): void {
+    this.props.fetchUser();
+  }
+
   render() {
     return (
-      <div>
+      <div className={"container"}>
         <BrowserRouter>
           <div>
             <Header/>
@@ -23,4 +34,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default connect(null, { fetchUser })(App);

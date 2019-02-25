@@ -1,8 +1,3 @@
-import { Action } from "typescript-fsa";
-
-export interface AuthActionPayload {
-  name: string
-}
-
-export interface AuthAction extends Action<AuthActionPayload> {
+export enum UserActions {
+  FETCH_USER = "FETCH_USER"
 }
