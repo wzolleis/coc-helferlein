@@ -1,7 +1,7 @@
 import passport from "passport";
-import express from "express";
+import { Application, Request, Response } from "express";
 
-export const authRoutes: (app: express.Application) => void = (app: express.Application) => {
+export const authRoutes: (app: Application) => void = (app: Application) => {
   app.get(
     "/auth/google",
     passport.authenticate("google", {
@@ -12,16 +12,16 @@ export const authRoutes: (app: express.Application) => void = (app: express.Appl
   app.get(
     "/auth/google/callback",
     passport.authenticate("google"),
-    (_: express.Request, res: express.Response) => {
+    (_: Request, res: Response) => {
       res.redirect("/dashboard");
     }
   );
 
-  app.get("/api/current_user", (req: express.Request, res: express.Response) => {
+  app.get("/api/current_user", (req: Request, res: Response) => {
     res.send({ user: req.user });
   });
 
-  app.get("/api/logout", (req: express.Request, res: express.Response) => {
+  app.get("/api/logout", (req: Request, res: Response) => {
     req.logout();
     res.send({ user: req.user });
   });

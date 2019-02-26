@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Application } from "express";
 import { authRoutes } from "./auth/authRoutes";
 import { Db } from "./db/Database";
 import passport from "passport";
@@ -6,7 +6,7 @@ import { initializePassport } from "./auth/authUtil";
 import cookieSession from "cookie-session";
 import { getConfig } from "./config/keys";
 
-export const serverApp = express();
+export const serverApp: Application = express();
 
 export const init = () => {
   Db.init();
