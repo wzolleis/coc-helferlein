@@ -1,6 +1,6 @@
 import * as React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-import { Header } from "../components/Header";
+import Header from "../components/Header";
 import { connect } from "react-redux";
 import { dofetchUser } from "../actions";
 

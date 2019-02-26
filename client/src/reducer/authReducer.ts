@@ -1,11 +1,11 @@
-import { AuthState } from "../app/applicationTypes";
+import { AuthState, LoginState } from "../app/applicationTypes";
 import { fetchUser, FetchUserResult } from "../actions";
 import { Reducer } from "redux";
 import { AnyAction, isType } from "typescript-fsa";
 
 
 export const INITIAL_AUTH_STATE: AuthState = {
-  loggedIn: false,
+  loginState: LoginState.LOGGED_OUT,
   user: undefined
 };
 
@@ -15,7 +15,7 @@ export const authReducer: Reducer<AuthState, AnyAction> =
     if (isType(action, fetchUser.started)) {
       return {
         ...state,
-        loggedIn: false,
+        loginState: LoginState.UNDEFINED,
         user: undefined
       };
     }
