@@ -23,6 +23,6 @@ export const authRoutes: (app: Application) => void = (app: Application) => {
 
   app.get("/api/logout", (req: Request, res: Response) => {
     req.logout();
-    res.send({ user: req.user });
+    res.redirect("/");
   });
 };
