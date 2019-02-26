@@ -25,7 +25,7 @@ class App extends React.Component<AppComponentDispatch> {
           <div>
             <Header/>
             <Route path={"/"} exact={true} component={Landing}/>
-            <Route path={"/cwls"} exact={true} component={Dashboard}/>
+            <Route path={"/dashboard"} exact={true} component={Dashboard}/>
             <Route path={"/cwls/new"} exact={true} component={ClanWarLeagueNew}/>
           </div>
         </BrowserRouter>

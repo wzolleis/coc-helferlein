@@ -9,19 +9,17 @@ export interface HeaderProps {
 
 const LoggedOut = () => {
   return (
-    <a>Login with Google</a>
+    <a href={"/auth/google"}>Login with Google</a>
   );
 };
 
 const InProgress = () => {
-  return (
-    <div>in progress...</div>
-  );
+  return null;
 };
 
 const LoggedIn = () => {
   return (
-    <div>Logged in</div>
+    <a href={"/api/logout"}>Logout</a>
   );
 };
 
@@ -29,7 +27,7 @@ const LoggedIn = () => {
 export class Header extends React.Component<HeaderProps> {
   renderContend(): React.ReactFragment {
     if (this.props.loginState == LoginState.UNDEFINED) {
-      return (<InProgress/>);
+      return <InProgress/>;
     }
     if (this.props.loginState == LoginState.LOGGED_OUT) {
       return (<LoggedOut/>);
