@@ -3,10 +3,10 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Header from "../components/Header";
 import { connect } from "react-redux";
 import { dofetchUser } from "../actions";
+import Landing from "../components/Landing";
 
 const Dashboard = () => <h2>Dashboard</h2>;
 const ClanWarLeagueNew = () => <h2>ClanWarLeagueNew</h2>;
-const Landing = () => <h2>Landing</h2>;
 
 interface AppComponentDispatch {
   fetchUser: () => void

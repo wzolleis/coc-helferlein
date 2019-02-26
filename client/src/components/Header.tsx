@@ -40,7 +40,7 @@ export class Header extends React.Component<HeaderProps> {
     return (
       <nav>
         <div className="nav-wrapper">
-          <a href="#" className="left brand-logo">Coc Helferlein</a>
+          <a href="#" className="left brand-logo">CoC Helferlein</a>
           <ul className="right">
             <li>{this.renderContend()}</li>
           </ul>
