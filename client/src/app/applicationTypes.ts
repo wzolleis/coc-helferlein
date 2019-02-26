@@ -1,10 +1,11 @@
 export interface UserModel {
   googleId: string,
-  userid: string,
+  userId: string,
   authType: string
 }
 
 export interface AuthState {
+  loggedIn: boolean,
   user?: UserModel
 }
 

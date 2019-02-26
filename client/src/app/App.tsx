@@ -2,7 +2,7 @@ import * as React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { Header } from "../components/Header";
 import { connect } from "react-redux";
-import { fetchUser } from "../actions";
+import { dofetchUser } from "../actions";
 
 const Dashboard = () => <h2>Dashboard</h2>;
 const ClanWarLeagueNew = () => <h2>ClanWarLeagueNew</h2>;
@@ -34,4 +34,4 @@ class App extends React.Component<AppComponentDispatch> {
   }
 }
 
-export default connect(null, { fetchUser })(App);
+export default connect(null, { fetchUser: dofetchUser })(App);
