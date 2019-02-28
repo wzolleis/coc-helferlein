@@ -6,7 +6,8 @@
     "prettier"
   ],
   "rules": {
-    "no-constant-condition": true
+    "no-constant-condition": true,
+    "quotemark": false
   },
   "rulesDirectory": [
     "node_modules/tslint-eslint-rules/dist/rules"

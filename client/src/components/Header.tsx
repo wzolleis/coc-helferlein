@@ -1,6 +1,7 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { AppState, LoginState, UserModel } from "../app/applicationTypes";
+import Logo from "./Logo";
 
 export interface HeaderProps {
   loginState: LoginState,
@@ -23,8 +24,8 @@ const LoggedIn = () => {
   );
 };
 
-
 export class Header extends React.Component<HeaderProps> {
+
   renderContend(): React.ReactFragment {
     if (this.props.loginState == LoginState.UNDEFINED) {
       return <InProgress/>;
@@ -40,7 +41,7 @@ export class Header extends React.Component<HeaderProps> {
     return (
       <nav>
         <div className="nav-wrapper">
-          <a href="#" className="left brand-logo">CoC Helferlein</a>
+          <Logo loginState={this.props.loginState}/>
           <ul className="right">
             <li>{this.renderContend()}</li>
           </ul>
