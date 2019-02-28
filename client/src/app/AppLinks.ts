@@ -1,5 +1,5 @@
 enum AppLinks {
-  LANDING = "/",
-  DASHBOARD = "/dashboard",
-  DUMMY = "/cwls/new"
+  LANDING = '/',
+  DASHBOARD = '/dashboard',
+  DUMMY = '/cwls/new'
 }

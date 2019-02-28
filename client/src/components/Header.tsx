@@ -1,28 +1,31 @@
-import * as React from "react";
-import { connect } from "react-redux";
-import { AppState, LoginState, UserModel } from "../app/applicationTypes";
-import { Link } from "react-router-dom";
-import logoImg from "../assets/toolbox.png";
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { AppState, LoginState, UserModel } from '../app/applicationTypes';
+import { Link } from 'react-router-dom';
+import logoImg from '../assets/toolbox.png';
 
 export interface HeaderProps {
-  loginState: LoginState,
-  user?: UserModel
+  loginState: LoginState;
+  user?: UserModel;
 }
 
 export class Header extends React.Component<HeaderProps> {
-
   renderLoginState(): React.ReactFragment | null {
     if (this.props.loginState == LoginState.UNDEFINED) {
       return null;
     }
     if (this.props.loginState == LoginState.LOGGED_OUT) {
       return (
-        <a className="nav-link" href={"/auth/google"}>Login with Google</a>
+        <a className='nav-link' href={'/auth/google'}>
+          Login with Google
+        </a>
       );
     }
 
     return (
-      <a className="nav-link" href={"/api/logout"}>Logout</a>
+      <a className='nav-link' href={'/api/logout'}>
+        Logout
+      </a>
     );
   }
 
@@ -33,11 +36,8 @@ export class Header extends React.Component<HeaderProps> {
       target = AppLinks.DASHBOARD;
     }
     return (
-      <Link
-        to={target}
-        className="left brand-logo"
-      >
-        <img src={logoImg} alt="Smiley face" height="42" width="42"/>
+      <Link to={target} className='left brand-logo'>
+        <img src={logoImg} alt='Smiley face' height='42' width='42'/>
       </Link>
     );
   }
@@ -60,16 +60,19 @@ export class Header extends React.Component<HeaderProps> {
         </ul>
         */
     return (
-      <nav className="navbar navbar-expand-md navbar-dark bg-primary">
+      <nav className='navbar navbar-expand-md navbar-dark bg-primary'>
         {this.renderLogo()}
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
-          <span className="navbar-toggler-icon"></span>
+        <button
+          className='navbar-toggler'
+          type='button'
+          data-toggle='collapse'
+          data-target='#collapsingNavbar'
+        >
+          <span className='navbar-toggler-icon'/>
         </button>
-        <div className="navbar-collapse collapse" id="collapsingNavbar">
-          <ul className="navbar-nav ml-auto">
-            <li className="nav-item">
-              {this.renderLoginState()}
-            </li>
+        <div className='navbar-collapse collapse' id='collapsingNavbar'>
+          <ul className='navbar-nav ml-auto'>
+            <li className='nav-item'>{this.renderLoginState()}</li>
           </ul>
         </div>
       </nav>
