@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { AppState, LoginState, UserModel } from '../app/applicationTypes';
 import { Link } from 'react-router-dom';
 import logoImg from '../assets/toolbox.png';
+import { AppLinks } from '../app/AppLinks';
 
 export interface HeaderProps {
   loginState: LoginState;
@@ -58,7 +59,7 @@ export class Header extends React.Component<HeaderProps> {
             <a className="nav-link" href="#myAlert" data-toggle="collapse">Link</a>
           </li>
         </ul>
-        */
+     */
     return (
       <nav className='navbar navbar-expand-md navbar-dark bg-primary'>
         {this.renderLogo()}

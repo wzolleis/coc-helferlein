@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import { connect } from 'react-redux';
 import { dofetchUser } from '../actions';
 import Landing from '../components/Landing';
+import { AppLinks } from './AppLinks';
 
 const Dashboard = () => {
   return (
