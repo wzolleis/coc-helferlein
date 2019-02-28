@@ -5,7 +5,14 @@ import { connect } from "react-redux";
 import { dofetchUser } from "../actions";
 import Landing from "../components/Landing";
 
-const Dashboard = () => <h2>Dashboard</h2>;
+const Dashboard = () => {
+  return (
+    <div className='container'>
+      <h2>Dashboard</h2>
+    </div>
+  );
+};
+
 const ClanWarLeagueNew = () => <h2>ClanWarLeagueNew</h2>;
 
 interface AppComponentDispatch {
@@ -24,9 +31,9 @@ class App extends React.Component<AppComponentDispatch> {
         <BrowserRouter>
           <div>
             <Header/>
-            <Route path={"/"} exact={true} component={Landing}/>
-            <Route path={"/dashboard"} exact={true} component={Dashboard}/>
-            <Route path={"/cwls/new"} exact={true} component={ClanWarLeagueNew}/>
+            <Route path={AppLinks.LANDING} exact={true} component={Landing}/>
+            <Route path={AppLinks.DASHBOARD} exact={true} component={Dashboard}/>
+            <Route path={AppLinks.DUMMY} exact={true} component={ClanWarLeagueNew}/>
           </div>
         </BrowserRouter>
       </div>
