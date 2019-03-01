@@ -1,10 +1,10 @@
-import { model, Model } from "mongoose";
-import { UserModel, USERS } from "../db/Database";
-import passport from "passport";
-import { User } from "../user/UserTypes";
-import { AppConfig, getConfig } from "../config/keys";
+import { model, Model } from 'mongoose';
+import { UserModel, USERS } from '../db/Database';
+import passport from 'passport';
+import { User } from '../user/UserTypes';
+import { AppConfig, getConfig } from '../config/keys';
 
-const googleStrategy: any = require("passport-google-oauth20").Strategy;
+const googleStrategy: any = require('passport-google-oauth20').Strategy;
 
 const appConfig: AppConfig = getConfig();
 
@@ -36,7 +36,7 @@ export const initializePassport: () => void = () => {
       {
         clientID: appConfig.googleClientID,
         clientSecret: appConfig.googleClientSecret,
-        callbackURL: "/auth/google/callback",
+        callbackURL: '/auth/google/callback',
         proxy: true
       },
       async (accessToken: string, refreshToken: string, profile: GoogleProfile, done: any) => {
@@ -46,7 +46,7 @@ export const initializePassport: () => void = () => {
         }
         const user: User = {
           googleId: profile.id,
-          authType: "google"
+          authType: 'google'
         };
 
         // Noch kein User mit dieser ID, es wird ein neuer User angelegt.

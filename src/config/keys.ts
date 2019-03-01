@@ -1,6 +1,6 @@
 // keys.ts - figure out what credetials to use
 
-import { PROD_CONFG } from "./prod";
+import { PROD_CONFG } from './prod';
 
 export type  AppConfig = {
   googleClientID: string,
@@ -10,11 +10,11 @@ export type  AppConfig = {
 };
 
 export const getConfig = (): AppConfig => {
-  if (process.env.NODE_ENV === "production") {
+  if (process.env.NODE_ENV === 'production') {
     return PROD_CONFG;
   }
   else {
     // return the development keys
-    return require("./dev");
+    return require('./dev');
   }
 };

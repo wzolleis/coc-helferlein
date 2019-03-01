@@ -1,9 +1,9 @@
-import { init, serverApp } from "./serverApp";
+import { init, serverApp } from './serverApp';
 
-const PORT: string = process.env.PORT || "5000";
+const PORT: string = process.env.PORT || '5000';
 
 init();
 
 serverApp.listen(PORT, () => {
-  console.log("started server @ port ", PORT);
+  console.log('started server @ port ', PORT);
 });

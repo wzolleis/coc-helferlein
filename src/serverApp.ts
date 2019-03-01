@@ -1,10 +1,10 @@
-import express, { Application } from "express";
-import { authRoutes } from "./auth/authRoutes";
-import { Db } from "./db/Database";
-import passport from "passport";
-import { initializePassport } from "./auth/authUtil";
-import cookieSession from "cookie-session";
-import { getConfig } from "./config/keys";
+import express, { Application } from 'express';
+import { authRoutes } from './auth/authRoutes';
+import { Db } from './db/Database';
+import passport from 'passport';
+import { initializePassport } from './auth/authUtil';
+import cookieSession from 'cookie-session';
+import { getConfig } from './config/keys';
 
 export const serverApp: Application = express();
 
@@ -15,7 +15,7 @@ export const init = () => {
 
 
   serverApp.use(cookieSession({
-    name: "session",
+    name: 'session',
     maxAge: COOKIE_EXPIRE_TIME_MS,
     keys: [getConfig().cookieKey]
   }));
