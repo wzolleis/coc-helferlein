@@ -31,11 +31,8 @@ export class Header extends React.Component<HeaderProps> {
   }
 
   renderLogo(): React.ReactFragment {
-    let target = AppLinks.LANDING;
+    const target = this.props.loginState == LoginState.LOGGED_IN ? AppLinks.DASHBOARD : AppLinks.LANDING;
 
-    if (this.props.loginState == LoginState.LOGGED_IN) {
-      target = AppLinks.DASHBOARD;
-    }
     return (
       <Link to={target} className='left brand-logo'>
         <img src={logoImg} alt='Smiley face' height='42' width='42'/>
