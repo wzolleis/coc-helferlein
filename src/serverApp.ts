@@ -25,4 +25,14 @@ export const init = () => {
   authRoutes(serverApp);
 
   initializePassport();
+
+  if (process.env.NODE_ENV === 'production') {
+    // express will serve  production assets like main.js or main.css
+    serverApp.use(express.static('client/build'));
+
+    const path = require('path');
+    serverApp.get('*', (req: express.Request, res: express.Response) => {
+      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+  }
 };
