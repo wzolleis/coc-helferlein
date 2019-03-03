@@ -37,6 +37,3 @@ export const init = () => {
     });
   }
 };
-
-// https://coc-helferlein.herokuapp.com/dashboard
-// https://coc-helferlein.herokuapp.com/dashboard
