@@ -25,7 +25,7 @@
     "test": "jest src/",
     "clean": "shx rm -rf node_modules/ dist/ client/node_modules/ client/build/",
     "lint": "tslint --project .",
-    "heroku-postbuild": "NPM_PRODUCTION_CONFIG=false npm install --prefix client && npm run build --prefix client && npm run build-ts"
+    "heroku-postbuild": "NPM_PRODUCTION_CONFIG=false npm install --prefix client && npm run build-ts && npm run build --prefix client"
   },
   "author": "",
   "license": "ISC",
