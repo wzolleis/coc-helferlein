@@ -27,7 +27,7 @@
     "@types/redux-logger": "^3.0.7"
   },
   "devDependencies": {
-    "typescript": "^3.3.3333",
+    "typescript": "^3.3.3333"
   },
   "scripts": {
     "start": "react-scripts start",
