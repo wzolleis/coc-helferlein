@@ -36,7 +36,10 @@ export const init = () => {
     const path = require('path');
     serverApp.get('*', (req: express.Request, res: express.Response) => {
       console.error('jetzt mit index.html');
-      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+      res.sendFile(path.resolve(__dirname, '..', 'client', 'build', 'index.html'));
     });
   }
 };
+
+// https://coc-helferlein.herokuapp.com/dashboard
+// https://coc-helferlein.herokuapp.com/dashboard
