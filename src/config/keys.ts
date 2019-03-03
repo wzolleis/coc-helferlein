@@ -10,6 +10,7 @@ export const getConfig = (): AppConfig => {
     return PROD_CONFG;
   }
   else {
+    console.log('env = ' + process.env.NODE_ENV);
     // return the development keys
     return DEV_CONFG;
   }
