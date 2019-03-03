@@ -12,6 +12,6 @@ export const getConfig = (): AppConfig => {
   else {
     console.log('env = ' + process.env.NODE_ENV);
     // return the development keys
-    return DEV_CONFG;
+    return require('./dev');
   }
 };
