@@ -17,9 +17,7 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-logger": "latest",
     "redux-thunk": "^2.3.0",
-    "typescript-fsa": "^3.0.0-beta-2"
-  },
-  "devDependencies": {
+    "typescript-fsa": "^3.0.0-beta-2",
     "@types/jest": "^23.3.14",
     "@types/node": "^10.12.29",
     "@types/react": "^16.8.6",
@@ -27,7 +25,9 @@
     "@types/react-redux": "^7.0.1",
     "@types/react-router-dom": "^4.3.1",
     "@types/redux": "^3.6.0",
-    "@types/redux-logger": "^3.0.7",
+    "@types/redux-logger": "^3.0.7"
+  },
+  "devDependencies": {
     "typescript": "^3.3.3333"
   },
   "scripts": {
