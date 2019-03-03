@@ -73,5 +73,14 @@
     /* Advanced Options */
     "resolveJsonModule": true
     /* Include modules imported with '.json' extension */
-  }
+  },
+  "files": [
+    "server.ts",
+    "serverApp.ts",
+    "auth/authRoutes.ts",
+    "auth/authUtil.ts",
+    "db/Database.ts",
+    "user/UserTypes.ts",
+    "__tests__/app.test.ts"
+  ]
 }
