@@ -23,8 +23,7 @@
     // "rootDir": "src",
     /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
     "rootDirs": [
-      "src",
-      "src/client"
+      "src"
     ],
     // "composite": true,                     /* Enable project compilation */
     // "removeComments": true,                /* Do not emit comments to output. */
@@ -74,11 +73,5 @@
     /* Advanced Options */
     "resolveJsonModule": true
     /* Include modules imported with '.json' extension */
-  },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "client/**/*"
-  ]
+  }
 }
