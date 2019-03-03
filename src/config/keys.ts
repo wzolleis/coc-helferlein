@@ -1,7 +1,6 @@
 // keys.ts - figure out what credetials to use
 
 import { PROD_CONFG } from './prod';
-import { DEV_CONFG } from './dev';
 import { AppConfig } from './config';
 
 
