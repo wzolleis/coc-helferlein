@@ -7,6 +7,10 @@
     "node": "8.9.4",
     "npm": "6.4.1"
   },
+  "cacheDirectories": [
+    "client/node_modules",
+    "node_modules"
+  ],
   "scripts": {
     "serve": "node dist/src/server.js",
     "start": "npm run serve",
