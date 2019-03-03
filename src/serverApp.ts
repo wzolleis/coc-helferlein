@@ -30,7 +30,9 @@ export const init = () => {
     const path = require('path');
 
     // express will serve production assets like main.js or main.css
-    serverApp.use(express.static(__dirname + 'client/build/static'));
+    serverApp.use(express.static('client/build'));
+
+    console.log('__dirname = ' + __dirname);
 
     serverApp.get('*', (req: express.Request, res: express.Response) => {
       res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
