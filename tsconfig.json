@@ -75,17 +75,10 @@
     "resolveJsonModule": true
     /* Include modules imported with '.json' extension */
   },
-  "files": [
-    "src/server.ts",
-    "src/serverApp.ts",
-    "src/auth/authRoutes.ts",
-    "src/auth/authUtil.ts",
-    "src/db/Database.ts",
-    "src/user/UserTypes.ts",
-    "src/__tests__/app.test.ts"
+  "include": [
+    "./src/**/*"
   ],
   "exclude": [
-    "client",
     "client/**/*"
   ]
 }
