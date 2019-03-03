@@ -4,8 +4,7 @@
   "description": "coc server",
   "main": "src/server.ts",
   "engines": {
-    "node": "8.9.4",
-    "npm": "6.4.1"
+    "node": "11.10.0"
   },
   "cacheDirectories": [
     "node_modules"
