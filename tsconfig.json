@@ -76,7 +76,7 @@
     /* Include modules imported with '.json' extension */
   },
   "include": [
-    "./src/**/*"
+    "src"
   ],
   "exclude": [
     "client/**/*"

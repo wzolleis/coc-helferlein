@@ -1,6 +1,7 @@
 import { Document, model, Schema } from 'mongoose';
 import { User } from '../user/UserTypes';
-import { AppConfig, getConfig } from '../config/keys';
+import { getConfig } from '../config/keys';
+import { AppConfig } from '../config/config';
 import mongoose = require('mongoose');
 
 export const USERS: string = 'users';

@@ -1,4 +1,4 @@
-import { AppConfig } from './keys';
+import { AppConfig } from './config';
 
 export const PROD_CONFG: AppConfig = {
   googleClientID: process.env.GOOGLE_CLIENT_ID || '',

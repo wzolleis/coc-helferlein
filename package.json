@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "description": "coc server",
-  "main": "src/server.ts",
+  "main": "dist/server.js",
   "private": true,
   "engines": {
     "node": "11.x"

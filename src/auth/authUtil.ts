@@ -2,7 +2,8 @@ import { model, Model } from 'mongoose';
 import { UserModel, USERS } from '../db/Database';
 import passport from 'passport';
 import { User } from '../user/UserTypes';
-import { AppConfig, getConfig } from '../config/keys';
+import { getConfig } from '../config/keys';
+import { AppConfig } from '../config/config';
 
 const googleStrategy: any = require('passport-google-oauth20').Strategy;
 
