@@ -21,8 +21,8 @@
   },
   "devDependencies": {
     "@types/jest": "^23.3.14",
-    "@types/node": "^10.12.27",
-    "@types/react": "^16.8.4",
+    "@types/node": "^10.12.29",
+    "@types/react": "^16.8.6",
     "@types/react-dom": "^16.8.2",
     "@types/react-redux": "^7.0.1",
     "@types/react-router-dom": "^4.3.1",
