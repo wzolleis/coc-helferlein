@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { AppState, LoginState, UserModel } from '../app/applicationTypes';
 import { Link } from 'react-router-dom';
-import logoImg from '../assets/toolbox.png';
+import * as logoImg from '../assets/toolbox.png';
 import { AppLinks } from '../app/AppLinks';
 
 export interface HeaderProps {
@@ -35,7 +35,7 @@ export class Header extends React.Component<HeaderProps> {
 
     return (
       <Link to={target} className='left brand-logo'>
-        <img src={logoImg} alt='Smiley face' height='42' width='42'/>
+        <img src={logoImg as any} alt='Smiley face' height='42' width='42'/>
       </Link>
     );
   }
