@@ -3,11 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/bootstrap": "^4.2.2",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "http-proxy-middleware": "^0.19.1",
-    "materialize-css": "^1.0.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-redux": "^6.0.1",
@@ -17,18 +15,19 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-logger": "latest",
     "redux-thunk": "^2.3.0",
-    "typescript-fsa": "^3.0.0-beta-2"
-  },
-  "devDependencies": {
-    "typescript": "^3.3.3333",
-    "@types/jest": "^23.3.14",
-    "@types/node": "^10.12.29",
+    "typescript-fsa": "^3.0.0-beta-2",
+    "@types/bootstrap": "^4.2.2",
+    "@types/jest": "^24.0.9",
+    "@types/node": "^11.10.4",
     "@types/react": "^16.8.6",
     "@types/react-dom": "^16.8.2",
     "@types/react-redux": "^7.0.1",
     "@types/react-router-dom": "^4.3.1",
     "@types/redux": "^3.6.0",
     "@types/redux-logger": "^3.0.7"
+  },
+  "devDependencies": {
+    "typescript": "^3.3.3333",
   },
   "scripts": {
     "start": "react-scripts start",

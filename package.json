@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "coc server",
   "main": "src/server.ts",
+  "private": true,
   "engines": {
     "node": "11.x"
   },
