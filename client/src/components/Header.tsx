@@ -11,6 +11,7 @@ export interface HeaderProps {
 }
 
 export class Header extends React.Component<HeaderProps> {
+
   renderLoginState(): React.ReactFragment | null {
     if (this.props.loginState == LoginState.UNDEFINED) {
       return null;
@@ -40,23 +41,28 @@ export class Header extends React.Component<HeaderProps> {
     );
   }
 
-  public render() {
-    /*
-      Beispiel fuer weitere Menueintraege
-      wird oberhalb der ersten ul eingefuegt
+  renderLeftMenuItems(): React.ReactFragment | null {
+    if (this.props.loginState != LoginState.LOGGED_IN) {
+      return null;
+    }
+    return (
+      <ul className='navbar-nav mr-auto'>
+        <li className={'nam-item nav-link'}>
+          <Link className={'nav-link'} to={AppLinks.CLANS}>Clans</Link>
+        </li>
+      </ul>
+    );
+  }
 
-      <ul className="navbar-nav">
-          <li className="nav-item active">
-            <a className="nav-link" href="#">Link</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="//codeply.com">Codeply</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#myAlert" data-toggle="collapse">Link</a>
-          </li>
-        </ul>
-     */
+  renderRightMenuItems(): React.ReactFragment {
+    return (
+      <ul className='navbar-nav ml-auto'>
+        <li className='nav-item'>{this.renderLoginState()}</li>
+      </ul>
+    );
+  }
+
+  public render() {
     return (
       <nav className='navbar navbar-expand-md navbar-dark bg-primary'>
         {this.renderLogo()}
@@ -68,10 +74,9 @@ export class Header extends React.Component<HeaderProps> {
         >
           <span className='navbar-toggler-icon'/>
         </button>
-        <div className='navbar-collapse collapse' id='collapsingNavbar'>
-          <ul className='navbar-nav ml-auto'>
-            <li className='nav-item'>{this.renderLoginState()}</li>
-          </ul>
+        <div className='collapse navbar-collapse' id='collapsingNavbar'>
+          {this.renderLeftMenuItems()}
+          {this.renderRightMenuItems()}
         </div>
       </nav>
     );

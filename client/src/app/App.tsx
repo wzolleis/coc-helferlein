@@ -5,14 +5,9 @@ import { connect } from 'react-redux';
 import { dofetchUser } from '../actions';
 import Landing from '../components/Landing';
 import { AppLinks } from './AppLinks';
+import Dashboard from '../components/Dashboard';
+import Clans from '../components/Clans';
 
-const Dashboard = () => {
-  return (
-    <div className='container'>
-      <h2>Dashboard</h2>
-    </div>
-  );
-};
 
 const ClanWarLeagueNew = () => <h2>ClanWarLeagueNew</h2>;
 
@@ -36,6 +31,11 @@ class App extends React.Component<AppComponentDispatch> {
               path={AppLinks.DASHBOARD}
               exact={true}
               component={Dashboard}
+            />
+            <Route
+              path={AppLinks.CLANS}
+              exact={true}
+              component={Clans}
             />
             <Route
               path={AppLinks.DUMMY}
