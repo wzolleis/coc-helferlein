@@ -1,6 +1,6 @@
 import { Application, Request, Response } from 'express';
 import { ClanModel } from './clanTypes';
-import { cocApiClient } from '../coc_api/clans/cocClient';
+import * as cocApiClient from '../coc_api/clans/cocClient';
 
 export const clanRoutes: (app: Application) => void = (app: Application) => {
   app.get('/api/clans', async (req: Request, res: Response) => {
@@ -12,7 +12,7 @@ export const clanRoutes: (app: Application) => void = (app: Application) => {
     ];
 
     try {
-      const response = await cocApiClient().clanByTag('#P282PYC');
+      const response = await cocApiClient.clanByTag('#P282PYC');
       clans.push({
         name: response.name,
         id: response.tag
