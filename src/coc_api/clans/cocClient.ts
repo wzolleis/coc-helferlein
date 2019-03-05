@@ -20,6 +20,8 @@ const cocApiClient = () => {
 };
 
 export const clanByTag = (tag: string) => {
+  console.error('mode: ' + process.env.NODE_ENV);
+  console.error('call coc api#clanByTag: ' + tag);
   return cocApiClient().clanByTag(tag);
 
   /*
