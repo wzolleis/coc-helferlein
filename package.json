@@ -30,9 +30,10 @@
   "license": "ISC",
   "dependencies": {
     "@types/react-router-bootstrap": "^0.24.5",
+    "@types/request": "^2.48.1",
     "body-parser": "^1.18.3",
-    "clash-of-clans-api": "^0.5.0",
     "braces": "^2.3.2",
+    "clash-of-clans-api": "^0.5.0",
     "concurrently": "^4.1.0",
     "cookie-session": "^2.0.0-beta.3",
     "express": "^4.16.4",
@@ -42,7 +43,8 @@
     "passport": "^0.4.0",
     "passport-google-oauth20": "^1.0.0",
     "popper.js": "^1.14.7",
-    "react-router-bootstrap": "^0.24.4"
+    "react-router-bootstrap": "^0.24.4",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "@types/body-parser": "^1.17.0",
