@@ -6,10 +6,8 @@ import { dofetchUser } from '../actions';
 import Landing from '../components/Landing';
 import { AppLinks } from './AppLinks';
 import Dashboard from '../components/Dashboard';
-import Clans from '../components/Clans';
+import ClanContainer from '../components/ClanContainer';
 
-
-const ClanWarLeagueNew = () => <h2>ClanWarLeagueNew</h2>;
 
 interface AppComponentDispatch {
   fetchUser: () => void;
@@ -35,12 +33,7 @@ class App extends React.Component<AppComponentDispatch> {
             <Route
               path={AppLinks.CLANS}
               exact={true}
-              component={Clans}
-            />
-            <Route
-              path={AppLinks.DUMMY}
-              exact={true}
-              component={ClanWarLeagueNew}
+              component={ClanContainer}
             />
           </div>
         </BrowserRouter>

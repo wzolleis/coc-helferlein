@@ -48,7 +48,7 @@ export class Header extends React.Component<HeaderProps> {
     return (
       <ul className='navbar-nav mr-auto'>
         <li className={'nam-item nav-link'}>
-          <Link className={'nav-link'} to={AppLinks.CLANS}>Clans</Link>
+          <Link className={'nav-link'} to={AppLinks.CLANS}>Clan</Link>
         </li>
       </ul>
     );
