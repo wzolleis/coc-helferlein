@@ -11,7 +11,7 @@
     "node_modules"
   ],
   "scripts": {
-    "serve": "node dist/src/server.js",
+    "serve": "node $NODE_DEBUG_OPTION dist/server.js",
     "start": "npm run serve",
     "setup": "npm install",
     "build-ts": "tsc",
