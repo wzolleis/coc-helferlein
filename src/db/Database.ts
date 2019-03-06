@@ -2,7 +2,7 @@ import { Document, model, Schema } from 'mongoose';
 import { User } from '../user/UserTypes';
 import { getConfig } from '../config/keys';
 import { AppConfig } from '../config/config';
-import { Clan } from '../coc_api/clans/clanTypes';
+import { Clan } from '../clan/clanTypes';
 import mongoose = require('mongoose');
 
 export const USERS: string = 'users';

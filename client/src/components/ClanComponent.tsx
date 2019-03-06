@@ -9,16 +9,17 @@ interface ClanComponentProps {
 
 class ClanComponent extends Component<ClanComponentProps> {
   render() {
+    console.log(this.props.clan);
     return (
       <div>
         <Card>
-          <Card.Header>{this.props.clan.name}</Card.Header>
+          <Card.Header>{this.props.clan.name} {this.props.clan.tag}</Card.Header>
           <Card.Body>
-            <Card.Title>Special title treatment</Card.Title>
+            <Card.Title>{this.props.clan.name}</Card.Title>
             <Card.Text>
-              With supporting text below as a natural lead-in to additional content.
+              Level: {this.props.clan.clanLevel}
             </Card.Text>
-            <Button variant='primary'>Go somewhere</Button>
+            <Button variant='primary'>Aktualisieren</Button>
           </Card.Body>
         </Card>
       </div>

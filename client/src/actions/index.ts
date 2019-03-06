@@ -39,7 +39,6 @@ export const doFetchClanInfos = (): ((
   dispatch(fetchClanInfos.started());
   const res = await axios.get('api/clans');
 
-  // todo - dummy daten
   const result: FetchClanInfosResult = {
     clans: res.data.clans
   };

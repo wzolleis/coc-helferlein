@@ -21,7 +21,7 @@ class ClanContainer extends Component<ClanContainerCombinedProps> {
   }
 
   mapClanToComponent(clan: ClanModel) {
-    return (<ClanComponent key={clan.id} clan={clan}/>);
+    return (<ClanComponent key={clan.tag} clan={clan}/>);
   }
 
   render() {
