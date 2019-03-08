@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { ClanModel } from '../app/applicationTypes';
+import { ClanModel } from '../../app/applicationTypes';
 
 interface ClanComponentProps {
   clan: ClanModel

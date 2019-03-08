@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { AppState, ClanModel } from '../app/applicationTypes';
-import { doFetchClanInfos } from '../actions';
+import { AppState, ClanModel } from '../../app/applicationTypes';
+import { doFetchClanInfos } from '../../actions';
 import ClanComponent from './ClanComponent';
+import { Link } from 'react-router-dom';
+import { AppLinks } from '../../app/AppLinks';
 
 interface ClanContainerProps {
   clans: ClanModel[]
@@ -27,9 +29,15 @@ class ClanContainer extends Component<ClanContainerCombinedProps> {
   render() {
     return (
       <div>
-        {this.props.clans.map(this.mapClanToComponent)}
+        <div>
+          {this.props.clans.map(this.mapClanToComponent)}
+        </div>
+        <div className={'container d-flex'}>
+          <Link style={{ marginTop: '10px' }} className={'btn btn-info  ml-auto'} to={AppLinks.CLANS_NEW}>Add</Link>
+        </div>
       </div>
-    )
+
+    );
   }
 }
 

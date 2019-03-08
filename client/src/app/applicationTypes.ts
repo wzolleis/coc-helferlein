@@ -49,7 +49,12 @@ export interface ClanState {
   clans: ClanModel[]
 }
 
+interface FormState {
+
+}
+
 export interface AppState {
-  auth: AuthState;
+  auth: AuthState
   clan: ClanState
+  form: FormState
 }
