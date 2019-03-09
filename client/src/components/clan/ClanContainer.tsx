@@ -33,7 +33,7 @@ class ClanContainer extends Component<ClanContainerCombinedProps> {
           {this.props.clans.map(this.mapClanToComponent)}
         </div>
         <div className={'container d-flex'}>
-          <Link style={{ marginTop: '10px' }} className={'btn btn-info  ml-auto'} to={AppLinks.CLANS_NEW}>Add</Link>
+          <Link style={{ marginTop: '10px' }} className={'btn btn-info ml-auto'} to={AppLinks.CLANS_NEW}>Add</Link>
         </div>
       </div>
 

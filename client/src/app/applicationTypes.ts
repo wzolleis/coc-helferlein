@@ -50,7 +50,10 @@ export interface ClanState {
 }
 
 interface FormState {
+}
 
+export interface FormConfig {
+  form: string
 }
 
 export interface AppState {

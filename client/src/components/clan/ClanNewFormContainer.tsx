@@ -5,7 +5,7 @@ interface ClanNewComponentProps {
 
 }
 
-class ClanNewComponent extends Component<ClanNewComponentProps> {
+class ClanNewFormContainer extends Component<ClanNewComponentProps> {
   render() {
     return (
       <div>
@@ -15,4 +15,4 @@ class ClanNewComponent extends Component<ClanNewComponentProps> {
   }
 }
 
-export default ClanNewComponent;
+export default ClanNewFormContainer;

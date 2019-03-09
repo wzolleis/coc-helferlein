@@ -25,7 +25,8 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
-    "src/**/*.png"
+    "src/**/*.png",
+    "src/**/*.css"
   ],
   "exclude": [
     "node_modules",
