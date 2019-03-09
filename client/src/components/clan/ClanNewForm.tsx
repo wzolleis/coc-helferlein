@@ -28,6 +28,7 @@ class ClanNewForm extends Component<CombinedPropes> {
   }
 
   render() {
+    //@ts-ignore
     const { handleSubmit, pristine, reset, submitting } = this.props;
 
     return (
