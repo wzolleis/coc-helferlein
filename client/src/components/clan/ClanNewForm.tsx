@@ -23,8 +23,9 @@ const FORM_CONFIG: FormConfig = {
 
 class ClanNewForm extends Component<CombinedPropes> {
 
-  handleSubmit() {
+  handleSubmit(values: FormData) {
     //do stuff here
+    console.log('values = ', values);
   }
 
   render() {
