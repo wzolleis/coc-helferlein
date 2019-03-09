@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { AppForms } from '../../app/AppForms';
 import { FormConfig } from '../../app/applicationTypes';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import SubmitResetButtonComponent from '../SubmitResetButtonComponent';
 
 interface ClanNewFormProps {
 
@@ -23,26 +22,26 @@ const FORM_CONFIG: FormConfig = {
 };
 
 class ClanNewForm extends Component<CombinedPropes> {
-  clanTag = () => {
-    return <Form.Control type='text' placeholder='clan tag, e.g.#P282PYC'/>;
-  };
+
+  handleSubmit() {
+    //do stuff here
+  }
 
   render() {
     const { handleSubmit, pristine, reset, submitting } = this.props;
 
     return (
-      <Form onSubmit={handleSubmit}>
-        <Form.Group controlId='formGroupClanProps'>
-          <Form.Label>Clan Tag</Form.Label>
-          <Field key={'clanTag'} name={'clanTag'} component={this.clanTag}/>
-        </Form.Group>
-        <Button variant='primary' type='submit'>
-          Submit
-        </Button>
-        <Button variant={'secondary'} disabled={pristine || submitting} onClick={reset}>
-          Clear Values
-        </Button>
-      </Form>
+      <form className={'form-container'} onSubmit={handleSubmit(this.handleSubmit)}>
+        <label>Clan Tag</label>
+        <Field
+          className={'input'}
+          name='clanTag'
+          component='input'
+          type='text'
+          placeholder='clan tag, e.g. #P282PYC  '
+        />
+        <SubmitResetButtonComponent pristine={pristine} submitting={submitting} reset={reset}/>
+      </form>
     );
   }
 }

@@ -9,7 +9,7 @@ import Dashboard from '../components/Dashboard';
 import ClanContainer from '../components/clan/ClanContainer';
 import ClanNewFormContainer from '../components/clan/ClanNewFormContainer';
 
-// import '../css/form.css';
+import '../css/form.css';
 
 
 interface AppComponentDispatch {

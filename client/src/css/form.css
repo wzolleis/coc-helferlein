@@ -8,7 +8,7 @@ label {
     grid-column: 1 / 2;
 }
 
-input {
+.input {
     grid-column: 2 / 3;
 }
 
