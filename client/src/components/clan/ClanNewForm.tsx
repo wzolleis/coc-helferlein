@@ -37,7 +37,7 @@ class ClanNewForm extends Component<CombinedPropes> {
 
     return (
       <form className='clan-new-form form-container' onSubmit={handleSubmit(this.handleSubmit)}>
-        <label>Clan Tag</label>
+        <label className='clan-new-label'>Clan Tag</label>
         <Field
           className='clan-new-field'
           name='clanTag'

@@ -2,12 +2,13 @@
     display: grid;
     grid-template-columns: 200px 1fr;
     grid-gap: 16px;
+    grid-template-areas: "gridlabel gridinput";
 }
 
-label {
-    grid-column: 1 / 1;
+.clan-new-label {
+    grid-area: gridlabel
 }
 
 .clan-new-field {
-    grid-column: 2 / 3;
+    grid-area: gridinput;
 }
