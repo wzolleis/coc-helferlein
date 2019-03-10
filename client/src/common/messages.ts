@@ -1,4 +1,5 @@
 export enum Messages {
+  cancel = 'Cancel',
   delete = 'Löschen',
   details = 'Details',
   refresh = 'Aktualisieren',

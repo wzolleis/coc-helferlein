@@ -6,6 +6,8 @@ import '../../css/clanNewForm.css';
 import { Messages } from '../../common/messages';
 import ClanFormField from './ClanFormField';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { AppLinks } from '../../app/AppLinks';
 
 interface ClanNewFormProps {
 
@@ -34,17 +36,26 @@ class ClanNewForm extends Component<CombinedPropes> {
 
   renderButtons() {
     const { pristine, submitting, reset } = this.props;
+    const buttonStyle = {
+      marginRight: '10px'
+    };
 
     return (
       <div>
-        <button className='btn btn-primary clan-new-button float-left' type='submit' disabled={pristine || submitting}>
-          Submit
-        </button>
-        <button className='btn btn-secondary clan-new-button float-right' type='button'
-                disabled={pristine || submitting}
-                onClick={reset}>
-          Clear Values
-        </button>
+        <div className='float-left'>
+          <button style={buttonStyle} className='btn btn-primary clan-new-button' type='submit'
+                  disabled={pristine || submitting}>
+            Submit
+          </button>
+          <Link className={'btn btn-info clan-new-button'} to={AppLinks.CLANS}>{Messages.cancel}</Link>
+        </div>
+        <div className='float-right'>
+          <button className='btn btn-secondary clan-new-button' type='button'
+                  disabled={pristine || submitting}
+                  onClick={reset}>
+            Clear Values
+          </button>
+        </div>
       </div>
     );
   }
