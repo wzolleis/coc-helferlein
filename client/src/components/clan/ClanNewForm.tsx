@@ -4,6 +4,7 @@ import { AppForms } from '../../app/AppForms';
 import { FormConfig } from '../../app/applicationTypes';
 import SubmitResetButtonComponent from '../SubmitResetButtonComponent';
 import '../../css/clanNewForm.css';
+import { Messages } from '../../common/messages';
 
 interface ClanNewFormProps {
 
@@ -35,14 +36,14 @@ class ClanNewForm extends Component<CombinedPropes> {
     const { handleSubmit, pristine, reset, submitting } = this.props;
 
     return (
-      <form className={'form-container'} onSubmit={handleSubmit(this.handleSubmit)}>
+      <form className='clan-new-form form-container' onSubmit={handleSubmit(this.handleSubmit)}>
         <label>Clan Tag</label>
         <Field
-          className={'input'}
+          className='clan-new-field'
           name='clanTag'
           component='input'
           type='text'
-          placeholder='clan tag, e.g. #P282PYC  '
+          placeholder={Messages.clanTag_placeholder}
         />
         <SubmitResetButtonComponent pristine={pristine} submitting={submitting} reset={reset}/>
       </form>

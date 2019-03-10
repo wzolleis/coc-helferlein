@@ -24,10 +24,10 @@ class ClanComponent extends Component<ClanComponentProps> {
             <Card.Text>
               Level: {this.props.clan.clanLevel}
             </Card.Text>
-            <div className={'clan buttons'}>
+            <div className='clan buttons'>
               <button className='btn btn-primary clan-button'>{Messages.refresh}</button>
               <Link
-                className={'btn btn-info clan-button'}
+                className='btn btn-info clan-button'
                 to={AppLinks.CLANS_NEW}>
                 {Messages.details}
               </Link>

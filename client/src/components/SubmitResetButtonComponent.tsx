@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../css/submitResetButtons.css';
 
 export interface SubmitResetButtonComponentProps {
   pristine: boolean,
@@ -12,11 +13,11 @@ class SubmitResetButtonComponent extends Component<SubmitResetButtonComponentPro
     const { pristine, submitting, reset } = this.props;
 
     return (
-      <div className={'btn-2-container'}>
-        <button className={'btn btn-primary btn-1'} type='submit' disabled={pristine || submitting}>
+      <div className='btn-2-container'>
+        <button className='btn btn-primary btn-1' type='submit' disabled={pristine || submitting}>
           Submit
         </button>
-        <button className={'btn btn-secondary btn-2'} type='button' disabled={pristine || submitting} onClick={reset}>
+        <button className='btn btn-secondary btn-2' type='button' disabled={pristine || submitting} onClick={reset}>
           Clear Values
         </button>
       </div>
