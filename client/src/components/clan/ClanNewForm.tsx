@@ -3,6 +3,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { AppForms } from '../../app/AppForms';
 import { FormConfig } from '../../app/applicationTypes';
 import SubmitResetButtonComponent from '../SubmitResetButtonComponent';
+import '../../css/clanNewForm.css';
 
 interface ClanNewFormProps {
 
@@ -23,10 +24,12 @@ const FORM_CONFIG: FormConfig = {
 
 class ClanNewForm extends Component<CombinedPropes> {
 
+  // noinspection JSMethodCanBeStatic
   handleSubmit(values: FormData) {
     //do stuff here
     console.log('values = ', values);
   }
+
 
   render() {
     const { handleSubmit, pristine, reset, submitting } = this.props;
@@ -48,4 +51,3 @@ class ClanNewForm extends Component<CombinedPropes> {
 }
 
 export default reduxForm<FormData>(FORM_CONFIG)(ClanNewForm);
-;

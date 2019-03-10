@@ -7,6 +7,7 @@ export interface SubmitResetButtonComponentProps {
 }
 
 class SubmitResetButtonComponent extends Component<SubmitResetButtonComponentProps> {
+
   render() {
     const { pristine, submitting, reset } = this.props;
 
