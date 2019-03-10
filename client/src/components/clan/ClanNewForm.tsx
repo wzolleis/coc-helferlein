@@ -37,10 +37,11 @@ class ClanNewForm extends Component<CombinedPropes> {
 
     return (
       <div>
-        <button className='btn btn-primary clan-new-button' type='submit' disabled={pristine || submitting}>
+        <button className='btn btn-primary clan-new-button float-left' type='submit' disabled={pristine || submitting}>
           Submit
         </button>
-        <button className='btn btn-secondary clan-new-button' type='button' disabled={pristine || submitting}
+        <button className='btn btn-secondary clan-new-button float-right' type='button'
+                disabled={pristine || submitting}
                 onClick={reset}>
           Clear Values
         </button>
@@ -50,7 +51,7 @@ class ClanNewForm extends Component<CombinedPropes> {
 
 
   render() {
-    const { handleSubmit, pristine, reset, submitting } = this.props;
+    const { handleSubmit } = this.props;
 
     return (
       <form className='form-container' onSubmit={handleSubmit(this.handleSubmit)}>
