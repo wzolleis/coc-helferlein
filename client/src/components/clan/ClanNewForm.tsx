@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { AppForms } from '../../app/AppForms';
 import { FormConfig } from '../../app/applicationTypes';
-import SubmitResetButtonComponent from '../SubmitResetButtonComponent';
 import '../../css/clanNewForm.css';
 import { Messages } from '../../common/messages';
+import ClanFormField from './ClanFormField';
+import { connect } from 'react-redux';
 
 interface ClanNewFormProps {
 
@@ -31,24 +32,39 @@ class ClanNewForm extends Component<CombinedPropes> {
     console.log('values = ', values);
   }
 
+  renderButtons() {
+    const { pristine, submitting, reset } = this.props;
+
+    return (
+      <div>
+        <button className='btn btn-primary clan-new-button' type='submit' disabled={pristine || submitting}>
+          Submit
+        </button>
+        <button className='btn btn-secondary clan-new-button' type='button' disabled={pristine || submitting}
+                onClick={reset}>
+          Clear Values
+        </button>
+      </div>
+    );
+  }
+
 
   render() {
     const { handleSubmit, pristine, reset, submitting } = this.props;
 
     return (
-      <form className='clan-new-form form-container' onSubmit={handleSubmit(this.handleSubmit)}>
-        <label className='clan-new-label'>Clan Tag</label>
+      <form className='form-container' onSubmit={handleSubmit(this.handleSubmit)}>
         <Field
-          className='clan-new-field'
           name='clanTag'
-          component='input'
+          label='Clan Tag'
+          component={ClanFormField}
           type='text'
           placeholder={Messages.clanTag_placeholder}
         />
-        <SubmitResetButtonComponent pristine={pristine} submitting={submitting} reset={reset}/>
+        {this.renderButtons()}
       </form>
     );
   }
 }
 
-export default reduxForm<FormData>(FORM_CONFIG)(ClanNewForm);
+export default connect()(reduxForm<FormData>(FORM_CONFIG)(ClanNewForm));

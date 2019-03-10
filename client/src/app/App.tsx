@@ -7,7 +7,6 @@ import Landing from '../components/Landing';
 import { AppLinks } from './AppLinks';
 import Dashboard from '../components/Dashboard';
 import ClanContainer from '../components/clan/ClanContainer';
-
 import '../css/form.css';
 import ClanNewForm from '../components/clan/ClanNewForm';
 
@@ -23,7 +22,7 @@ class App extends React.Component<AppComponentDispatch> {
 
   render() {
     return (
-      <div className={'container'}>
+      <div className='container'>
         <BrowserRouter>
           <div>
             <Header/>
@@ -37,7 +36,8 @@ class App extends React.Component<AppComponentDispatch> {
               path={AppLinks.CLANS}
               exact={true}
               component={ClanContainer}
-            /> <Route
+            />
+            <Route
             path={AppLinks.CLANS_NEW}
             exact={true}
             component={ClanNewForm}

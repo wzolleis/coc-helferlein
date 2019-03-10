@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
+import { WrappedFieldProps } from 'redux-form';
 
-interface ClanFormFieldProps {
-  name: string
-  placeholder: string
+export interface ClanFormFieldProps {
   label: string
+  placeholder: string
 }
 
-class ClanFormField extends Component<ClanFormFieldProps> {
+interface ClanFormFieldCombinedProps extends ClanFormFieldProps, WrappedFieldProps {
+
+}
+
+class ClanFormField extends Component<ClanFormFieldCombinedProps> {
   render() {
+    const { input, placeholder, label } = this.props;
     return (
-      <div>
-        <label className={'label'}>{this.props.label}</label>
-        <input className={'input'}/>
+      <div className='clan-new-form '>
+        <label className='clan-new-label'>{label}</label>
+        <input placeholder={placeholder} className='clan-new-field' {...input}/>
       </div>
     );
   }

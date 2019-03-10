@@ -3,5 +3,5 @@ export enum AppLinks {
   DASHBOARD = '/dashboard',
   CLANS = '/clans',
   CLANS_NEW = '/clans/new',
-  DUMMY = '/cwls/new'
+  CLANS_DETAILS = '/clans/clan/details'
 }
