@@ -71,7 +71,7 @@ class ClanNewForm extends Component<CombinedPropes> {
           label='Clan Tag'
           component={ClanFormField}
           type='text'
-          placeholder={Messages.clanTag_placeholder}
+          placeholder={Messages.clanTagPlaceholder}
         />
         {this.renderButtons()}
       </form>

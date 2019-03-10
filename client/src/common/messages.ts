@@ -5,6 +5,6 @@ export enum Messages {
   refresh = 'Aktualisieren',
   clanWar = 'War',
   clanTag = 'Clan Tag',
-  clanTag_placeholder = 'clan tag, e.g. #P282PYC',
+  clanTagPlaceholder = 'clan tag, e.g. #P282PYC',
   clanLeague = 'Liga'
 }
