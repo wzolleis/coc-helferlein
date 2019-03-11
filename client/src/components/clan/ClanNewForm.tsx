@@ -17,13 +17,24 @@ interface FormData {
   clanTag: string
 }
 
-interface CombinedPropes extends ClanNewFormProps, InjectedFormProps<FormData> {
-
+interface FormValidation {
+  clanTag?: string
 }
 
+interface CombinedPropes extends ClanNewFormProps, InjectedFormProps<FormData> {
+}
 
-const FORM_CONFIG: FormConfig = {
-  form: AppForms.CLAN_NEW_FORM
+const validate = (values: FormData): FormValidation => {
+  const errors: FormValidation = {};
+  if (values.clanTag && !values.clanTag.startsWith('#')) {
+    errors.clanTag = 'Starte das ClanTag mit #';
+  }
+  return errors;
+};
+
+const FORM_CONFIG: FormConfig<FormData, FormValidation> = {
+  form: AppForms.CLAN_NEW_FORM,
+  validate
 };
 
 class ClanNewForm extends Component<CombinedPropes> {

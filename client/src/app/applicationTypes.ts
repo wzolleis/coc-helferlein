@@ -52,8 +52,9 @@ export interface ClanState {
 interface FormState {
 }
 
-export interface FormConfig {
-  form: string
+export interface FormConfig<T, E> {
+  form: string,
+  validate: (T) => E
 }
 
 export interface AppState {

@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: 200px 1fr;
     grid-gap: 16px;
-    grid-template-areas: "gridlabel gridinput" "buttons buttons";
+    grid-template-areas: "gridlabel gridinput  gridvalidation" "buttons   buttons buttons";
     margin-bottom: 10px;
 }
 
@@ -16,4 +16,8 @@
 
 .clan-new-button {
     grid-area: buttons;
+}
+
+.validation {
+    grid-area: gridvalidation;
 }

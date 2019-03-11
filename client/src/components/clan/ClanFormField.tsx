@@ -12,11 +12,14 @@ interface ClanFormFieldCombinedProps extends ClanFormFieldProps, WrappedFieldPro
 
 class ClanFormField extends Component<ClanFormFieldCombinedProps> {
   render() {
-    const { input, placeholder, label } = this.props;
+    const { input, placeholder, label, meta: { error, touched } } = this.props;
+    const classNameLabel = touched && error ? 'clan-new-label text-danger' : 'clan-new-label';
+    const classNameInput = touched && error ? 'clan-new-field is-invalid' : 'clan-new-field is-valid';
     return (
-      <div className='clan-new-form '>
-        <label className='clan-new-label'>{label}</label>
-        <input placeholder={placeholder} className='clan-new-field' {...input}/>
+      <div className='clan-new-form'>
+        <label className={classNameLabel}>{label}</label>
+        <input placeholder={placeholder} className={classNameInput} {...input}/>
+        <label className='validation text-danger'>{touched && error} </label>
       </div>
     );
   }
