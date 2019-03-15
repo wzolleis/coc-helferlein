@@ -9,7 +9,7 @@ interface TeamManagementContainerProps {
 }
 
 interface TeamManagementContainerDispatch {
-  fetchPlayerData
+  fetchPlayers: () => void
 }
 
 interface CombinedProps extends TeamManagementContainerDispatch, TeamManagementContainerProps{
@@ -18,7 +18,7 @@ interface CombinedProps extends TeamManagementContainerDispatch, TeamManagementC
 
 class TeamManagementContainer extends Component<CombinedProps> {
   componentDidMount(): void {
-
+    this.props.fetchPlayers();
   }
 
   render() {

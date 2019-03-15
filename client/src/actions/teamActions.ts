@@ -11,11 +11,9 @@ export interface FetchPlayersResult {
 
 export const fetchPlayers = actionCreator.async<undefined, FetchPlayersResult, undefined>(TeamActions.FETCH_PLAYERS);
 
-export const doFetchPlayers = (): ((
-  dispatch: Dispatch<AnyAction>
-) => void) => async dispatch => {
+export const  doFetchPlayers = (): ((dispatch: Dispatch<AnyAction>) => void) => async dispatch => {
   dispatch(fetchPlayers.started());
-  const res = await axios.get('api/players');
+  const res = await axios.get('/api/players');
 
   const result: FetchPlayersResult = {
     players: res.data.players
