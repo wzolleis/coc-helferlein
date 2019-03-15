@@ -3,8 +3,7 @@ import * as React from 'react';
 const Landing = () => {
   return (
     <div style={{ textAlign: 'center' }}>
-      <h1>Clash of Clans Helferlein</h1>
-      Show Clan information
+      <h1>Das ultimative Helferlein</h1>
     </div>
   );
 };

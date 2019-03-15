@@ -1,3 +1,6 @@
+import { TeamState } from './teamTypes';
+import { ClanState } from './clanTypes';
+
 export interface UserModel {
   googleId: string;
   userId: string;
@@ -10,29 +13,7 @@ export interface Location {
   isCountry: boolean
 }
 
-export interface ClanModel {
-  tag: string,
-  name: string,
-  location: Location,
-  badgeUrls: {
-    small: string,
-    large: string,
-    medium: string
-  },
-  clanLevel: number,
-  clanPoints: number,
-  clanVersusPoints: number,
-  members: number,
-  type: string,
-  requiredTrophies: number,
-  warFrequency: string,
-  warWinStreak: number,
-  warWins: number,
-  warTies: number,
-  warLosses: number,
-  isWarLogPublic: boolean,
-  description: string
-}
+
 
 export enum LoginState {
   UNDEFINED = 'UNDEFINED',
@@ -45,9 +26,6 @@ export interface AuthState {
   user?: UserModel;
 }
 
-export interface ClanState {
-  clans: ClanModel[]
-}
 
 interface FormState {
 }
@@ -61,4 +39,5 @@ export interface AppState {
   auth: AuthState
   clan: ClanState
   form: FormState
+  teams: TeamState
 }

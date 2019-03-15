@@ -2,7 +2,8 @@ import actionCreatorFactory, { AnyAction } from 'typescript-fsa';
 import axios from 'axios';
 import { Dispatch } from 'redux';
 import { ClanActions, UserActions } from './actionTypes';
-import { ClanModel, LoginState, UserModel } from '../app/applicationTypes';
+import { LoginState, UserModel } from '../app/applicationTypes';
+import { ClanModel } from '../app/clanTypes';
 
 export interface FetchUserResult {
   loginState: LoginState,
@@ -13,7 +14,7 @@ export interface FetchClanInfosResult {
   clans: ClanModel[]
 }
 
-const actionCreator = actionCreatorFactory();
+export const actionCreator = actionCreatorFactory();
 
 export const fetchUser = actionCreator.async<undefined,
   FetchUserResult,

@@ -1,7 +1,7 @@
-import { ClanState } from '../app/applicationTypes';
 import { Reducer } from 'redux';
 import { AnyAction, isType } from 'typescript-fsa';
 import { fetchClanInfos } from '../actions';
+import { ClanState } from '../app/clanTypes';
 
 export const INITIAL_CLAN_STATE: ClanState = {
   clans: []

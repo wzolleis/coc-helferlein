@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Card from 'react-bootstrap/Card';
-import { ClanModel } from '../../app/applicationTypes';
 import '../../css/clanComponent.css';
 import { Messages } from '../../common/messages';
 import { Link } from 'react-router-dom';
 import { AppLinks } from '../../app/AppLinks';
+import { ClanModel } from '../../app/clanTypes';
 
 interface ClanComponentProps {
   clan: ClanModel

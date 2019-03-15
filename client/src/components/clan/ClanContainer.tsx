@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { AppState, ClanModel } from '../../app/applicationTypes';
+import { AppState } from '../../app/applicationTypes';
 import { doFetchClanInfos } from '../../actions';
 import ClanComponent from './ClanComponent';
 import { Link } from 'react-router-dom';
 import { AppLinks } from '../../app/AppLinks';
+import { ClanModel } from '../../app/clanTypes';
 
 interface ClanContainerProps {
   clans: ClanModel[]
