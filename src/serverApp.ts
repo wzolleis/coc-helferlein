@@ -6,7 +6,6 @@ import { initializePassport } from './auth/authUtil';
 import cookieSession from 'cookie-session';
 import { getConfig } from './config/keys';
 import { clanRoutes } from './clan/clanRoutes';
-import { teamRoutes } from './teams/teamRoutes';
 
 export const serverApp: Application = express();
 
