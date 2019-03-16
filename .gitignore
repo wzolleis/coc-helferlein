@@ -69,3 +69,4 @@ dev.ts
 .DS_Store
 
 client/build
+/.idea/atlassian-ide-plugin.xml
