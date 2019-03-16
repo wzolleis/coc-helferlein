@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { doFetchPlayers } from '../../actions/teamActions';
 import { AppState } from '../../app/applicationTypes';
 import { PlayerModel } from '../../app/teamTypes';
+import PlayerList from './PlayerList';
 
 interface TeamManagementContainerProps {
   players: PlayerModel[]
@@ -25,6 +26,7 @@ class TeamManagementContainer extends Component<CombinedProps> {
     return (
       <div>
           <h1>Teams!</h1>
+        <PlayerList players={this.props.players}/>
       </div>
     );
   }

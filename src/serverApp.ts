@@ -26,7 +26,6 @@ export const init = () => {
 
   authRoutes(serverApp);
   clanRoutes(serverApp);
-  teamRoutes(serverApp);
 
   initializePassport();
 
