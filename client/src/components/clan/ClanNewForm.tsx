@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { AppForms } from '../../app/AppForms';
-import { FormConfig } from '../../app/applicationTypes';
+import { FormValidationConfig } from '../../app/applicationTypes';
 import '../../css/clanNewForm.css';
 import { Messages } from '../../common/messages';
 import ClanFormField from './ClanFormField';
@@ -32,7 +32,7 @@ const validate = (values: FormData): FormValidation => {
   return errors;
 };
 
-const FORM_CONFIG: FormConfig<FormData, FormValidation> = {
+const FORM_CONFIG: FormValidationConfig<FormData, FormValidation> = {
   form: AppForms.CLAN_NEW_FORM,
   validate
 };

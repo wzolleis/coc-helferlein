@@ -1,0 +1,8 @@
+.player.buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.player-button {
+    margin-right: 10px;
+}

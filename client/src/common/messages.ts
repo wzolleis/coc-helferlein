@@ -1,4 +1,5 @@
 export enum Messages {
+  playerAnwensend = 'anwesend',
   cancel = 'Cancel',
   delete = 'Löschen',
   details = 'Details',

@@ -30,8 +30,11 @@ export interface AuthState {
 interface FormState {
 }
 
-export interface FormConfig<T, E> {
+export interface FormConfig<T> {
   form: string,
+}
+
+export interface FormValidationConfig<T, E> extends FormConfig<T> {
   validate: (T) => E
 }
 
