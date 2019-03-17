@@ -1,64 +1,65 @@
 import React, { Component } from 'react';
 import { PlayerModel } from '../../app/teamTypes';
 // import Player from './Player';
-import {  Field, FieldProps, Form, Formik, FormikActions, FormikProps } from 'formik';
+import { Field, FieldProps, Form, FormikActions, FormikProps, withFormik } from 'formik';
 
 interface PlayerListProps {
   players: PlayerModel[]
 }
 
 interface MyFormValues {
-  firstName: string;
+  players: PlayerModel[],
+  name: string
 }
 
-class PlayerList extends Component<PlayerListProps> {
+class PlayerList extends Component<PlayerListProps & FormikProps<MyFormValues>> {
   constructor(props) {
     super(props);
     this.renderField = this.renderField.bind(this);
-    this.renderForm = this.renderForm.bind(this);
   }
 
-  handleSubmit(values: MyFormValues, actions: FormikActions<MyFormValues>) {
-    console.log({ values, actions });
-    alert(JSON.stringify(values, null, 2));
-    actions.setSubmitting(false);
-  }
 
   renderField(fieldProps: FieldProps<MyFormValues>) {
     const { field, form } = fieldProps;
     return (
       <div>
-        <input type='text' {...field} placeholder='First Name'/>
-        {form.touched.firstName && form.errors.firstName && form.errors.firstName}
+        <input {...field} type='text' placeholder='Name'/>
+        {form.touched.players && form.errors.players && form.errors.players}
       </div>
-    );
-  }
-
-  renderForm( _: FormikProps<MyFormValues>) {
-
-
-    return (
-      <Form>
-        <Field
-          name='firstName'
-          render={this.renderField}
-        />
-      </Form>
     );
   }
 
   render(): React.ReactNode {
     return (
       <div>
-        <h1>My Example</h1>
-        <Formik
-          initialValues={{ firstName: '' }}
-          onSubmit={this.handleSubmit}
-          render={this.renderForm}
-        />
+        <Form>
+          <Field name='name' type={'text'}/>
+        </Form>
       </div>
     );
   }
 }
 
-export default PlayerList;
+const onSubmit = (values: MyFormValues, actions: FormikActions<MyFormValues>) => {
+  console.log('values', values);
+  console.log('actions', actions);
+  alert(JSON.stringify(values, null, 2));
+  actions.setSubmitting(false);
+}
+
+const FormlikConfig = {
+  displayName: 'PlayerList',
+  handleSubmit: onSubmit,
+  initialValues: {
+    players: [],
+    name: 'Roland'
+  },
+  mapPropsToValues: (props: PlayerListProps): MyFormValues => {
+    return {
+      players: [],
+      name: props.players.length > 0 ? props.players[0].name : ''
+    }
+  }
+};
+
+export default withFormik<PlayerListProps, MyFormValues>(FormlikConfig)(PlayerList);
