@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { PlayerModel } from '../../app/teamTypes';
 // import Player from './Player';
-import { Field, FieldProps, Form, FormikActions, FormikProps, withFormik } from 'formik';
+import { Field, FieldArray, Form, FormikActions, FormikProps, withFormik } from 'formik';
+import { Debug } from '../../common/Debug';
+import { createPlayers } from '../../data/players';
 
 interface PlayerListProps {
   players: PlayerModel[]
@@ -15,25 +17,31 @@ interface MyFormValues {
 class PlayerList extends Component<PlayerListProps & FormikProps<MyFormValues>> {
   constructor(props) {
     super(props);
-    this.renderField = this.renderField.bind(this);
   }
 
-
-  renderField(fieldProps: FieldProps<MyFormValues>) {
-    const { field, form } = fieldProps;
+  mapPlayer = (player, index) => {
     return (
-      <div>
-        <input {...field} type='text' placeholder='Name'/>
-        {form.touched.players && form.errors.players && form.errors.players}
+      <div key={index}>
+        <Field name={`players.${index}.name`}/>
       </div>
     );
-  }
+  };
 
   render(): React.ReactNode {
     return (
       <div>
         <Form>
-          <Field name='name' type={'text'}/>
+          {
+            //@ts-ignore
+            <FieldArray name='players'
+                        render={({ form }) => (
+                          <div>
+                            {form.values.players.map(this.mapPlayer)}
+                          </div>
+                        )}
+            />
+          }
+          <Debug/>
         </Form>
       </div>
     );
@@ -45,20 +53,16 @@ const onSubmit = (values: MyFormValues, actions: FormikActions<MyFormValues>) =>
   console.log('actions', actions);
   alert(JSON.stringify(values, null, 2));
   actions.setSubmitting(false);
-}
+};
 
 const FormlikConfig = {
   displayName: 'PlayerList',
   handleSubmit: onSubmit,
-  initialValues: {
-    players: [],
-    name: 'Roland'
-  },
   mapPropsToValues: (props: PlayerListProps): MyFormValues => {
     return {
-      players: [],
-      name: props.players.length > 0 ? props.players[0].name : ''
-    }
+      players: createPlayers(),
+      name: 'Crazy Tobi'
+    };
   }
 };
 

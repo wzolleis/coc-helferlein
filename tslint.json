@@ -8,6 +8,8 @@
   "rules": {
     "no-constant-condition": true,
     "jsx-alignment": false,
+    "jsx-no-multiline-js": false,
+    "jsx-no-lambda": false,
     "quotemark": [
       true,
       "single"
