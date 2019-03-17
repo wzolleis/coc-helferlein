@@ -10,8 +10,7 @@ interface PlayerListProps {
 }
 
 interface MyFormValues {
-  players: PlayerModel[],
-  name: string
+  players: PlayerModel[]
 }
 
 class PlayerList extends Component<PlayerListProps & FormikProps<MyFormValues>> {
@@ -38,9 +37,13 @@ class PlayerList extends Component<PlayerListProps & FormikProps<MyFormValues>> 
                           <div>
                             {form.values.players.map(this.mapPlayer)}
                           </div>
+
                         )}
             />
           }
+          <div>
+            <button type={'submit'}>Submit</button>
+          </div>
           <Debug/>
         </Form>
       </div>
@@ -60,8 +63,7 @@ const FormlikConfig = {
   handleSubmit: onSubmit,
   mapPropsToValues: (props: PlayerListProps): MyFormValues => {
     return {
-      players: createPlayers(),
-      name: 'Crazy Tobi'
+      players: createPlayers()
     };
   }
 };

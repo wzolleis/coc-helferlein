@@ -78,21 +78,6 @@ export const stammspieler: PlayerModel[] = [
 ];
 
 export const createPlayers = () => {
-  const gaeste: PlayerModel[] = [];
-  // Gastspieler hinzufuegen
-  for (let i = 1; i < 5; i++) {
-    gaeste.push(
-      {
-        ...DEFAULT_PLAYER,
-        name: `Gast ${i}`,
-        id: `${i}`,
-        speed: PlayerSpeed.MEDIUM,
-        condition: PlayerCondition.MEDIUM,
-        techicalSkill: PlayerTechnicalSkill.MEDIUM
-      }
-    );
-  }
-
-  return stammspieler.concat(gaeste);
+  return stammspieler;
 };
 
