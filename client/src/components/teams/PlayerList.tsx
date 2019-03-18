@@ -60,13 +60,10 @@ const onSubmit = (values: MyFormValues, actions: FormikActions<MyFormValues>) =>
 };
 
 const FormlikConfig = {
+  enableReinitialize: true,
   displayName: 'PlayerList',
   handleSubmit: onSubmit,
-  mapPropsToValues: (props: PlayerListProps): MyFormValues => {
-    return {
-      players: createPlayers()
-    };
-  }
+  mapPropsToValues: (props: PlayerListProps): MyFormValues => ({ players: props.players })
 };
 
 export default withFormik<PlayerListProps, MyFormValues>(FormlikConfig)(PlayerList);
