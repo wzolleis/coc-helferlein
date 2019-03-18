@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { PlayerModel } from '../../app/teamTypes';
 // import Player from './Player';
-import { Field, FieldArray, Form, FormikActions, FormikProps, withFormik } from 'formik';
+import { Field, FieldArray, FieldArrayRenderProps, Form, FormikActions, FormikProps, withFormik } from 'formik';
 import { Debug } from '../../common/Debug';
 import { createPlayers } from '../../data/players';
 
@@ -21,26 +21,27 @@ class PlayerList extends Component<PlayerListProps & FormikProps<MyFormValues>> 
   mapPlayer = (player, index) => {
     return (
       <div key={index}>
-        <Field name={`players.${index}.name`}/>
+        <Field readOnly={true} className={'form-control'} name={`players.${index}.name`}/>
       </div>
     );
+  };
+
+  renderArray = (arrayRenderProps: FieldArrayRenderProps) => {
+    const {form} = arrayRenderProps;
+    return (
+      <div>
+        {form.values.players.map(this.mapPlayer)}
+      </div>
+    )
   };
 
   render(): React.ReactNode {
     return (
       <div>
         <Form>
-          {
-            //@ts-ignore
-            <FieldArray name='players'
-                        render={({ form }) => (
-                          <div>
-                            {form.values.players.map(this.mapPlayer)}
-                          </div>
-
-                        )}
-            />
-          }
+          <FieldArray name='players'
+                      render={this.renderArray}
+          />
           <div>
             <button type={'submit'}>Submit</button>
           </div>
