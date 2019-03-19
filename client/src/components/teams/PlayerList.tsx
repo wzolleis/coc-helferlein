@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { PlayerModel } from '../../app/teamTypes';
 // import Player from './Player';
-import { Field, FieldArray, FieldArrayRenderProps, Form, FormikActions, FormikProps, withFormik } from 'formik';
+import { Field, FieldArray, FieldArrayRenderProps, FieldProps, Form, FormikActions, FormikProps, withFormik } from 'formik';
 import { Debug } from '../../common/Debug';
 import '../../css/playerComponent.css';
 import '../../css/checkbox.css';
@@ -19,18 +19,35 @@ class PlayerList extends Component<PlayerListProps & FormikProps<MyFormValues>> 
     super(props);
   }
 
+  AnimatedCheckbox = (props: FieldProps<MyFormValues>): React.ReactFragment => {
+    const { field } = props;
+    return (
+      <label className='checkbox'>
+        <input {...field} type='checkbox'/>
+        <span className='default'/>
+      </label>
+    );
+  };
+
+  MyField = (props) => {
+    return (
+      <div>
+        <Field className='form-control player attribute' name={`players.${props.index}.speed`}/>
+        <small id='emailHelp' className='form-text text-muted'>We'll never share your email with anyone else.</small>
+      </div>    );
+  };
+
   mapPlayer = (player, index) => {
     return (
       <div className='player-container' key={index}>
-        <Field name={`players.${index}.anwesend`}
-               render={({ field /* { name, value, onChange, onBlur } */ }) => (
-                 <label className='checkbox'>
-                   <input {...field}  type='checkbox'/>
-                   <span className='default'/>
-                 </label>
-               )}
-        />
+        <Field name={`players.${index}.anwesend`} component={this.AnimatedCheckbox}/>
         <Field readOnly={true} className='form-control player attribute' name={`players.${index}.name`}/>
+        <div>
+          <Field className='form-control player attribute' name={`players.${index}.speed`}/>
+          <small id='emailHelp' className='form-text text-muted'>We'll never share your email with anyone else.</small>
+        </div>
+        <Field className='form-control player attribute' name={`players.${index}.condition`}/>
+        <Field className='form-control player attribute' name={`players.${index}.techicalSkill`}/>
       </div>
     );
   };
@@ -56,7 +73,7 @@ class PlayerList extends Component<PlayerListProps & FormikProps<MyFormValues>> 
           </div>
           {
             /*
-            <Debug/>
+              <Debug/>
             */
           }
         </Form>
