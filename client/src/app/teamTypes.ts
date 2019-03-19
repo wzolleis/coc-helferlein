@@ -14,7 +14,7 @@ export interface PlayerModel {
   id: string,
   name: string
   speed: PlayerSpeed
-  techicalSkill: PlayerTechnicalSkill
+  technicalSkill: PlayerTechnicalSkill
   condition: PlayerCondition,
   anwesend: boolean
 }

@@ -7,7 +7,7 @@ const DEFAULT_PLAYER: PlayerModel = {
   anwesend: false,
   condition: PlayerCondition.MEDIUM,
   speed: PlayerSpeed.MEDIUM,
-  techicalSkill: PlayerTechnicalSkill.MEDIUM
+  technicalSkill: PlayerTechnicalSkill.MEDIUM
 };
 
 export const stammspieler: PlayerModel[] = [
@@ -17,7 +17,7 @@ export const stammspieler: PlayerModel[] = [
     name: 'Roland',
     condition: PlayerCondition.HIGH,
     speed: PlayerSpeed.HIGH,
-    techicalSkill: PlayerTechnicalSkill.MEDIUM
+    technicalSkill: PlayerTechnicalSkill.MEDIUM
   },
   {
     ...DEFAULT_PLAYER,
@@ -25,7 +25,7 @@ export const stammspieler: PlayerModel[] = [
     name: 'Wolfgang',
     condition: PlayerCondition.MEDIUM,
     speed: PlayerSpeed.MEDIUM,
-    techicalSkill: PlayerTechnicalSkill.MEDIUM
+    technicalSkill: PlayerTechnicalSkill.MEDIUM
   },
   {
     ...DEFAULT_PLAYER,
@@ -33,7 +33,7 @@ export const stammspieler: PlayerModel[] = [
     name: 'Heinz',
     condition: PlayerCondition.MEDIUM,
     speed: PlayerSpeed.MEDIUM,
-    techicalSkill: PlayerTechnicalSkill.HIGH
+    technicalSkill: PlayerTechnicalSkill.HIGH
   },
   {
     ...DEFAULT_PLAYER,
@@ -41,7 +41,7 @@ export const stammspieler: PlayerModel[] = [
     name: 'Rudi',
     condition: PlayerCondition.MEDIUM,
     speed: PlayerSpeed.MEDIUM,
-    techicalSkill: PlayerTechnicalSkill.MEDIUM
+    technicalSkill: PlayerTechnicalSkill.MEDIUM
   },
   {
     ...DEFAULT_PLAYER,
@@ -49,7 +49,7 @@ export const stammspieler: PlayerModel[] = [
     name: 'Armin',
     condition: PlayerCondition.LOW,
     speed: PlayerSpeed.LOW,
-    techicalSkill: PlayerTechnicalSkill.LOW
+    technicalSkill: PlayerTechnicalSkill.LOW
   },
   {
     ...DEFAULT_PLAYER,
@@ -57,7 +57,7 @@ export const stammspieler: PlayerModel[] = [
     name: 'Josef',
     condition: PlayerCondition.MEDIUM,
     speed: PlayerSpeed.HIGH,
-    techicalSkill: PlayerTechnicalSkill.HIGH
+    technicalSkill: PlayerTechnicalSkill.HIGH
   },
   {
     ...DEFAULT_PLAYER,
@@ -65,7 +65,7 @@ export const stammspieler: PlayerModel[] = [
     name: 'Uli',
     condition: PlayerCondition.HIGH,
     speed: PlayerSpeed.HIGH,
-    techicalSkill: PlayerTechnicalSkill.HIGH
+    technicalSkill: PlayerTechnicalSkill.HIGH
   },
   {
     ...DEFAULT_PLAYER,
@@ -73,7 +73,7 @@ export const stammspieler: PlayerModel[] = [
     name: 'Emil',
     condition: PlayerCondition.MEDIUM,
     speed: PlayerSpeed.LOW,
-    techicalSkill: PlayerTechnicalSkill.MEDIUM
+    technicalSkill: PlayerTechnicalSkill.MEDIUM
   }
 ];
 

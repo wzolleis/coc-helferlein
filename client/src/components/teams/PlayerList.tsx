@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { PlayerModel } from '../../app/teamTypes';
 // import Player from './Player';
 import { Field, FieldArray, FieldArrayRenderProps, FieldProps, Form, FormikActions, FormikProps, withFormik } from 'formik';
-import { Debug } from '../../common/Debug';
 import '../../css/playerComponent.css';
 import '../../css/checkbox.css';
 
@@ -32,9 +31,10 @@ class PlayerList extends Component<PlayerListProps & FormikProps<MyFormValues>> 
   MyField = (props) => {
     return (
       <div>
-        <Field className='form-control player attribute' name={`players.${props.index}.speed`}/>
-        <small id='emailHelp' className='form-text text-muted'>We'll never share your email with anyone else.</small>
-      </div>    );
+        <Field {...props} className='form-control player attribute' placeholder={props.description}
+               data-toggle='tooltip' data-placement='top' title={props.description}/>
+      </div>
+    );
   };
 
   mapPlayer = (player, index) => {
@@ -42,12 +42,9 @@ class PlayerList extends Component<PlayerListProps & FormikProps<MyFormValues>> 
       <div className='player-container' key={index}>
         <Field name={`players.${index}.anwesend`} component={this.AnimatedCheckbox}/>
         <Field readOnly={true} className='form-control player attribute' name={`players.${index}.name`}/>
-        <div>
-          <Field className='form-control player attribute' name={`players.${index}.speed`}/>
-          <small id='emailHelp' className='form-text text-muted'>We'll never share your email with anyone else.</small>
-        </div>
-        <Field className='form-control player attribute' name={`players.${index}.condition`}/>
-        <Field className='form-control player attribute' name={`players.${index}.techicalSkill`}/>
+        <this.MyField name={`players.${index}.speed`} description={'Geschwindigkeit'}/>
+        <this.MyField name={`players.${index}.condition`} description={'Kondition'}/>
+        <this.MyField name={`players.${index}.technicalSkill`} description={'Technik'}/>
       </div>
     );
   };
@@ -64,18 +61,9 @@ class PlayerList extends Component<PlayerListProps & FormikProps<MyFormValues>> 
   render(): React.ReactNode {
     return (
       <div>
-        <Form>
-          <FieldArray name='players'
-                      render={this.renderArray}
-          />
-          <div>
-            <button className='btn btn-primary' type={'submit'}>Submit</button>
-          </div>
-          {
-            /*
-              <Debug/>
-            */
-          }
+        <Form className='player-list-container'>
+          <FieldArray name='players' render={this.renderArray}/>
+          <button className='btn btn-primary' type={'submit'}>Submit</button>
         </Form>
       </div>
     );
