@@ -3,7 +3,8 @@ import { PlayerModel } from '../../app/teamTypes';
 // import Player from './Player';
 import { Field, FieldArray, FieldArrayRenderProps, Form, FormikActions, FormikProps, withFormik } from 'formik';
 import { Debug } from '../../common/Debug';
-import { createPlayers } from '../../data/players';
+import '../../css/playerComponent.css';
+import '../../css/checkbox.css';
 
 interface PlayerListProps {
   players: PlayerModel[]
@@ -20,19 +21,27 @@ class PlayerList extends Component<PlayerListProps & FormikProps<MyFormValues>> 
 
   mapPlayer = (player, index) => {
     return (
-      <div key={index}>
-        <Field readOnly={true} className={'form-control'} name={`players.${index}.name`}/>
+      <div className='player-container' key={index}>
+        <Field name={`players.${index}.anwesend`}
+               render={({ field /* { name, value, onChange, onBlur } */ }) => (
+                 <label className='checkbox'>
+                   <input {...field}  type='checkbox'/>
+                   <span className='default'/>
+                 </label>
+               )}
+        />
+        <Field readOnly={true} className='form-control player attribute' name={`players.${index}.name`}/>
       </div>
     );
   };
 
   renderArray = (arrayRenderProps: FieldArrayRenderProps) => {
-    const {form} = arrayRenderProps;
+    const { form } = arrayRenderProps;
     return (
       <div>
         {form.values.players.map(this.mapPlayer)}
       </div>
-    )
+    );
   };
 
   render(): React.ReactNode {
@@ -43,9 +52,13 @@ class PlayerList extends Component<PlayerListProps & FormikProps<MyFormValues>> 
                       render={this.renderArray}
           />
           <div>
-            <button type={'submit'}>Submit</button>
+            <button className='btn btn-primary' type={'submit'}>Submit</button>
           </div>
-          <Debug/>
+          {
+            /*
+            <Debug/>
+            */
+          }
         </Form>
       </div>
     );

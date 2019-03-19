@@ -25,7 +25,6 @@ class TeamManagementContainer extends Component<CombinedProps> {
   render() {
     return (
       <div>
-          <h1>Teams!</h1>
         <PlayerList players={this.props.players}/>
       </div>
     );

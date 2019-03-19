@@ -6,3 +6,14 @@
 .player-button {
     margin-right: 10px;
 }
+
+.player-container {
+    display: grid;
+    grid-gap: 16px;
+    grid-template-columns: auto 1fr;
+    margin-bottom: 10px;
+}
+
+.player.attribute {
+    margin-right: 10px;
+}
