@@ -18,6 +18,10 @@ class PlayerList extends Component<PlayerListProps & FormikProps<MyFormValues>> 
     super(props);
   }
 
+  /**
+   * Spezielle Checkbox, sieht einfach besser ;-)
+   * @param props Field-Props, onChange, onBlur,...
+   */
   AnimatedCheckbox = (props: FieldProps<MyFormValues>): React.ReactFragment => {
     const { field } = props;
     return (
@@ -28,16 +32,20 @@ class PlayerList extends Component<PlayerListProps & FormikProps<MyFormValues>> 
     );
   };
 
+  /**
+   * Ein Form-Field mit diversen Attributen
+   * @param props Field-props, onChange,onBlur,...
+   */
   MyField = (props) => {
     return (
       <div>
-        <Field {...props} className='form-control player attribute' placeholder={props.description}
+        <Field {...props} className='form-control player-attribute' placeholder={props.description}
                data-toggle='tooltip' data-placement='top' title={props.description}/>
       </div>
     );
   };
 
-  mapPlayer = (player, index) => {
+  renderPlayer = (player, index) => {
     return (
       <div className='player-container' key={index}>
         <Field name={`players.${index}.anwesend`} component={this.AnimatedCheckbox}/>
@@ -49,11 +57,11 @@ class PlayerList extends Component<PlayerListProps & FormikProps<MyFormValues>> 
     );
   };
 
-  renderArray = (arrayRenderProps: FieldArrayRenderProps) => {
+  renderPlayerList = (arrayRenderProps: FieldArrayRenderProps) => {
     const { form } = arrayRenderProps;
     return (
       <div>
-        {form.values.players.map(this.mapPlayer)}
+        {form.values.players.map(this.renderPlayer)}
       </div>
     );
   };
@@ -61,8 +69,8 @@ class PlayerList extends Component<PlayerListProps & FormikProps<MyFormValues>> 
   render(): React.ReactNode {
     return (
       <div>
-        <Form className='player-list-container'>
-          <FieldArray name='players' render={this.renderArray}/>
+        <Form>
+          <FieldArray name='players' render={this.renderPlayerList}/>
           <button className='btn btn-primary' type={'submit'}>Submit</button>
         </Form>
       </div>
@@ -71,8 +79,6 @@ class PlayerList extends Component<PlayerListProps & FormikProps<MyFormValues>> 
 }
 
 const onSubmit = (values: MyFormValues, actions: FormikActions<MyFormValues>) => {
-  console.log('values', values);
-  console.log('actions', actions);
   alert(JSON.stringify(values, null, 2));
   actions.setSubmitting(false);
 };

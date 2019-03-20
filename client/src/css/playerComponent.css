@@ -29,6 +29,10 @@
     grid-gap: 16px;
 }
 
-.player.attribute {
+.player-attribute {
     margin-right: 10px;
+}
+
+.player-form-container {
+
 }
