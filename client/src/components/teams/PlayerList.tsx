@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { PlayerModel } from '../../app/teamTypes';
 // import Player from './Player';
 import { Field, FieldArray, FieldArrayRenderProps, FieldProps, Form, FormikActions, FormikProps, withFormik } from 'formik';
-import '../../css/playerComponent.css';
+import '../../css/team/playerComponent.css';
 import '../../css/checkbox.css';
 
 interface PlayerListProps {

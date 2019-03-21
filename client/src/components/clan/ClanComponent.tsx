@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Card from 'react-bootstrap/Card';
-import '../../css/clanComponent.css';
+import '../../css/clan/clanComponent.css';
 import { Messages } from '../../common/messages';
 import { Link } from 'react-router-dom';
 import { AppLinks } from '../../app/AppLinks';

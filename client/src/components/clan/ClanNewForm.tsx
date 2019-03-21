@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { AppForms } from '../../app/AppForms';
 import { FormValidationConfig } from '../../app/applicationTypes';
-import '../../css/clanNewForm.css';
+import '../../css/clan/clanNewForm.css';
 import { Messages } from '../../common/messages';
 import ClanFormField from './ClanFormField';
 import { connect } from 'react-redux';

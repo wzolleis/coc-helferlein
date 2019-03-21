@@ -7,7 +7,7 @@ import Landing from '../components/Landing';
 import { AppLinks } from './AppLinks';
 import Dashboard from '../components/Dashboard';
 import ClanContainer from '../components/clan/ClanContainer';
-import '../css/form.css';
+import '../css/clan/form.css';
 import ClanNewForm from '../components/clan/ClanNewForm';
 import TeamManagementContainer from '../components/teams/TeamManagementContainer';
 
