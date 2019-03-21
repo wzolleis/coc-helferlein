@@ -25,7 +25,7 @@ class PlayerList extends Component<PlayerListProps & FormikProps<MyFormValues>> 
   AnimatedCheckbox = (props: FieldProps<MyFormValues>): React.ReactFragment => {
     const { field } = props;
     return (
-      <label className='checkbox'>
+      <label className='checkbox player-select'>
         <input {...field} type='checkbox'/>
         <span className='default'/>
       </label>
@@ -39,8 +39,8 @@ class PlayerList extends Component<PlayerListProps & FormikProps<MyFormValues>> 
   MyField = (props) => {
     return (
       <div>
-        <Field {...props} className='form-control player-attribute' placeholder={props.description}
-               data-toggle='tooltip' data-placement='top' title={props.description}/>
+        <Field {...props} placeholder={props.description} type='number'
+               data-toggle='tooltip' data-placement='center'/>
       </div>
     );
   };
@@ -49,7 +49,7 @@ class PlayerList extends Component<PlayerListProps & FormikProps<MyFormValues>> 
     return (
       <div className='player-container' key={index}>
         <Field name={`players.${index}.anwesend`} component={this.AnimatedCheckbox}/>
-        <Field readOnly={true} className='form-control player attribute' name={`players.${index}.name`}/>
+        <Field readOnly={true} name={`players.${index}.name`}/>
         <this.MyField name={`players.${index}.speed`} description={'Geschwindigkeit'}/>
         <this.MyField name={`players.${index}.condition`} description={'Kondition'}/>
         <this.MyField name={`players.${index}.technicalSkill`} description={'Technik'}/>
@@ -57,11 +57,12 @@ class PlayerList extends Component<PlayerListProps & FormikProps<MyFormValues>> 
     );
   };
 
-  renderPlayerList = (arrayRenderProps: FieldArrayRenderProps) => {
-    const { form } = arrayRenderProps;
+  renderPlayerList = ({ form }: FieldArrayRenderProps) => {
     return (
-      <div>
-        {form.values.players.map(this.renderPlayer)}
+      <div className='player-list-container'>
+        <div className='player-list-content'>
+          {form.values.players.map(this.renderPlayer)}
+        </div>
       </div>
     );
   };
