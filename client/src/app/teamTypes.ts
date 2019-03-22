@@ -13,9 +13,9 @@ export enum PlayerCondition {
 export interface PlayerModel {
   id: string,
   name: string
-  speed: PlayerSpeed
-  technicalSkill: PlayerTechnicalSkill
-  condition: PlayerCondition,
+  speed: number
+  technicalSkill: number
+  condition: number,
   anwesend: boolean
 }
 

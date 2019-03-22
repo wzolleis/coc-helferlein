@@ -74,6 +74,14 @@ export const stammspieler: PlayerModel[] = [
     condition: PlayerCondition.MEDIUM,
     speed: PlayerSpeed.LOW,
     technicalSkill: PlayerTechnicalSkill.MEDIUM
+  },
+  {
+    ...DEFAULT_PLAYER,
+    id: '9',
+    name: 'Tobi',
+    condition: PlayerCondition.HIGH,
+    speed: PlayerSpeed.HIGH,
+    technicalSkill: PlayerTechnicalSkill.HIGH
   }
 ];
 
