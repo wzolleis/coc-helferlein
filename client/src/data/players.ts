@@ -1,7 +1,7 @@
 import { PlayerCondition, PlayerModel, PlayerSpeed, PlayerTechnicalSkill } from '../app/teamTypes';
 
 
-const DEFAULT_PLAYER: PlayerModel = {
+export const DEFAULT_PLAYER: PlayerModel = {
   id: '0',
   name: '',
   anwesend: false,

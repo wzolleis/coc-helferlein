@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { PlayerModel } from '../../app/teamTypes';
 import Card from 'react-bootstrap/Card';
-import { calculateSkill } from './playerSkills';
+import { calculateSkill } from '../../common/playerSkills';
 
 interface PlayerProps {
   player: PlayerModel

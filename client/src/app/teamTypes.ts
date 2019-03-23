@@ -19,6 +19,14 @@ export interface PlayerModel {
   anwesend: boolean
 }
 
+export interface Team {
+  overallSkill: number,
+  technicalSkill: number,
+  speedSkill: number,
+
+  players: PlayerModel[]
+}
+
 export interface PlayerSkill {
   skill: number
 }
