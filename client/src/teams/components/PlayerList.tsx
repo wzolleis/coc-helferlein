@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { PlayerModel } from '../../app/teamTypes';
+import { PlayerModel } from '../models/teamTypes';
 // import Player from './Player';
 import { Field, FieldArray, FieldArrayRenderProps, FieldProps, Form, FormikActions, FormikProps, withFormik } from 'formik';
 import '../../css/team/playerComponent.css';

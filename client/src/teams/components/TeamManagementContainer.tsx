@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { doFetchPlayers } from '../../actions/teamActions';
+import { doFetchPlayers } from '../actions/teamActions';
 import { AppState } from '../../app/applicationTypes';
-import { PlayerModel } from '../../app/teamTypes';
+import { PlayerModel } from '../models/teamTypes';
 import PlayerList from './PlayerList';
 
 interface TeamManagementContainerProps {

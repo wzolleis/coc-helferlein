@@ -1,4 +1,4 @@
-import { TeamState } from './teamTypes';
+import { TeamState } from '../teams/models/teamTypes';
 import { ClanState } from './clanTypes';
 
 export interface UserModel {

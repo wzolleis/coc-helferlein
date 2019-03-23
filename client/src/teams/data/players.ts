@@ -1,4 +1,4 @@
-import { PlayerCondition, PlayerModel, PlayerSpeed, PlayerTechnicalSkill } from '../app/teamTypes';
+import { PlayerCondition, PlayerModel, PlayerSpeed, PlayerTechnicalSkill } from '../models/teamTypes';
 
 
 export const DEFAULT_PLAYER: PlayerModel = {

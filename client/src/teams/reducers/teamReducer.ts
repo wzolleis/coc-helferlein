@@ -1,4 +1,4 @@
-import { TeamState } from '../app/teamTypes';
+import { TeamState } from '../models/teamTypes';
 import { Reducer } from 'redux';
 import { AnyAction, isType } from 'typescript-fsa';
 import { FetchPlayerAction } from '../actions/teamActions';

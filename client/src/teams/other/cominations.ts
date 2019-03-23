@@ -3,7 +3,7 @@
  * @param {number} comboLength
  * @return {*[]}
  */
-import { PlayerModel } from '../app/teamTypes';
+import { PlayerModel } from '../models/teamTypes';
 
 export default function combineWithoutRepetitions(comboOptions: PlayerModel[], comboLength: number): PlayerModel[][] {
   // If the length of the combination is 1 then each element of the original array

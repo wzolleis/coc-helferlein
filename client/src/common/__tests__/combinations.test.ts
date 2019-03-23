@@ -1,6 +1,6 @@
-import combineWithoutRepetitions from '../cominations';
-import { PlayerModel } from '../../app/teamTypes';
-import { DEFAULT_PLAYER } from '../../data/players';
+import combineWithoutRepetitions from '../../teams/other/cominations';
+import { PlayerModel } from '../../teams/models/teamTypes';
+import { DEFAULT_PLAYER } from '../../teams/data/players';
 
 
 describe('combinations', () => {
