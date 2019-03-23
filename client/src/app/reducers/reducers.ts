@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { AppState } from '../app/applicationTypes';
+import { AppState } from '../applicationTypes';
 import { authReducer, INITIAL_AUTH_STATE } from './authReducer';
-import { clanReducer, INITIAL_CLAN_STATE } from './clanReducer';
-import { INITIAL_TEAM_STATE, teamReducer } from '../teams/reducers/teamReducer';
+import { clanReducer, INITIAL_CLAN_STATE } from '../../clans/reducers/clanReducer';
+import { INITIAL_TEAM_STATE, teamReducer } from '../../teams/reducers/teamReducer';
 import { reducer as formReducer } from 'redux-form';
 
 

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { AppState, LoginState, UserModel } from '../app/applicationTypes';
+import { AppState, LoginState, UserModel } from '../applicationTypes';
 import { Link } from 'react-router-dom';
-import logoImg from '../assets/toolbox.png';
-import { AppLinks } from '../app/AppLinks';
+import logoImg from '../../assets/toolbox.png';
+import { AppLinks } from '../AppLinks';
 
 export interface HeaderProps {
   loginState: LoginState;

@@ -1,7 +1,7 @@
 import { Reducer } from 'redux';
 import { AnyAction, isType } from 'typescript-fsa';
-import { fetchClanInfos } from '../actions';
-import { ClanState } from '../app/clanTypes';
+import { fetchClanInfos } from '../actions/clanActions';
+import { ClanState } from '../models/clanTypes';
 
 export const INITIAL_CLAN_STATE: ClanState = {
   clans: []

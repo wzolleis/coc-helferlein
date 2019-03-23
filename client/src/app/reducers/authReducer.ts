@@ -1,5 +1,5 @@
-import { AuthState, LoginState } from '../app/applicationTypes';
-import { fetchUser, FetchUserResult } from '../actions';
+import { AuthState, LoginState } from '../applicationTypes';
+import { fetchUser, FetchUserResult } from '../actions/appActions';
 import { Reducer } from 'redux';
 import { AnyAction, isType } from 'typescript-fsa';
 

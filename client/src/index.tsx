@@ -6,7 +6,7 @@ import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import reducers, { INITIAL_STATE } from './reducer/reducers';
+import reducers, { INITIAL_STATE } from './app/reducers/reducers';
 import 'bootstrap/dist/css/bootstrap.css';
 
 const composeEnhancers = composeWithDevTools({

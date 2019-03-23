@@ -1,4 +1,4 @@
-import { actionCreator } from '../../actions';
+import { actionCreator } from '../../app/actions/appActions';
 import { PlayerModel } from '../models/teamTypes';
 import { createPlayers } from '../data/players';
 import { Action } from 'typescript-fsa';

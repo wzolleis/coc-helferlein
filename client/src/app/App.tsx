@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import Header from '../components/Header';
+import Header from './components/Header';
 import { connect } from 'react-redux';
-import { dofetchUser } from '../actions';
-import Landing from '../components/Landing';
+import { dofetchUser } from './actions/appActions';
+import Landing from './components/Landing';
 import { AppLinks } from './AppLinks';
-import Dashboard from '../components/Dashboard';
-import ClanContainer from '../components/clan/ClanContainer';
+import Dashboard from './components/Dashboard';
+import ClanContainer from '../clans/components/ClanContainer';
 import '../css/clan/form.css';
-import ClanNewForm from '../components/clan/ClanNewForm';
+import ClanNewForm from '../clans/components/ClanNewForm';
 import TeamManagementContainer from '../teams/components/TeamManagementContainer';
 
 

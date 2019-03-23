@@ -1,5 +1,5 @@
 import { TeamState } from '../teams/models/teamTypes';
-import { ClanState } from './clanTypes';
+import { ClanState } from '../clans/models/clanTypes';
 
 export interface UserModel {
   googleId: string;

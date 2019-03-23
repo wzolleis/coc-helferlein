@@ -4,7 +4,7 @@ import '../../css/clan/clanComponent.css';
 import { Messages } from '../../common/messages';
 import { Link } from 'react-router-dom';
 import { AppLinks } from '../../app/AppLinks';
-import { ClanModel } from '../../app/clanTypes';
+import { ClanModel } from '../models/clanTypes';
 
 interface ClanComponentProps {
   clan: ClanModel

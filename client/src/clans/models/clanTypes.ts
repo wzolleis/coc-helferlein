@@ -1,4 +1,4 @@
-import { Location } from './applicationTypes';
+import { Location } from '../../app/applicationTypes';
 
 export interface ClanModel {
   tag: string,
