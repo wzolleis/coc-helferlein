@@ -1,6 +1,6 @@
-import combineWithoutRepetitions from '../../teams/other/cominations';
-import { PlayerModel } from '../../teams/models/teamTypes';
-import { DEFAULT_PLAYER } from '../../teams/data/players';
+import { combineWithoutRepetitions } from '../cominations';
+import { PlayerModel } from '../../models/teamTypes';
+import { DEFAULT_PLAYER } from '../../data/players';
 
 
 describe('combinations', () => {
@@ -23,7 +23,7 @@ describe('combinations', () => {
         id: '4'
       }
     ];
-    let combinations: PlayerModel[][] = combineWithoutRepetitions(players, 2);
+    const combinations: PlayerModel[][] = combineWithoutRepetitions(players, 2);
     expect(combinations).toHaveLength(6);
   });
 });

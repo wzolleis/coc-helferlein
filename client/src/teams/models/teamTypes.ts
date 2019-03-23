@@ -21,14 +21,12 @@ export interface PlayerModel {
 
 export interface Team {
   overallSkill: number,
-  technicalSkill: number,
-  speedSkill: number,
-
   players: PlayerModel[]
 }
 
-export interface PlayerSkill {
-  skill: number
+export interface Match {
+  teams: Team[]
+  diff: number
 }
 
 export interface TeamState {

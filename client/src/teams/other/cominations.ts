@@ -3,9 +3,7 @@
  * @param {number} comboLength
  * @return {*[]}
  */
-import { PlayerModel } from '../models/teamTypes';
-
-export default function combineWithoutRepetitions(comboOptions: PlayerModel[], comboLength: number): PlayerModel[][] {
+export const combineWithoutRepetitions = <T extends {}>(comboOptions: T[], comboLength: number): T[][] => {
   // If the length of the combination is 1 then each element of the original array
   // is a combination itself.
   if (comboLength === 1) {
@@ -13,13 +11,13 @@ export default function combineWithoutRepetitions(comboOptions: PlayerModel[], c
   }
 
   // Init combinations array.
-  const combos: PlayerModel[][] = [];
+  const combos: T[][] = [];
 
   // Extract characters one by one and concatenate them to combinations of smaller lengths.
   // We need to extract them because we don't want to have repetitions after concatenation.
   comboOptions.forEach((currentOption, optionIndex) => {
     // Generate combinations of smaller size.
-    const smallerCombos: PlayerModel[][] = combineWithoutRepetitions(
+    const smallerCombos: T[][] = combineWithoutRepetitions(
       comboOptions.slice(optionIndex + 1),
       comboLength - 1
     );
@@ -31,4 +29,5 @@ export default function combineWithoutRepetitions(comboOptions: PlayerModel[], c
   });
 
   return combos;
-}
+};
+
