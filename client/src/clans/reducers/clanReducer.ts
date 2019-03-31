@@ -1,5 +1,5 @@
 import { Reducer } from 'redux';
-import { AnyAction, isType } from 'typescript-fsa';
+import { Action, isType } from 'typescript-fsa';
 import { fetchClanInfos } from '../actions/clanActions';
 import { ClanState } from '../models/clanTypes';
 
@@ -7,9 +7,9 @@ export const INITIAL_CLAN_STATE: ClanState = {
   clans: []
 };
 
-export const clanReducer: Reducer<ClanState, AnyAction> = (
+export const clanReducer: Reducer<ClanState, Action<any>> = (
   state: ClanState = INITIAL_CLAN_STATE,
-  action: AnyAction
+  action: Action<any>
 ): ClanState => {
   if (isType(action, fetchClanInfos.started)) {
     return {
