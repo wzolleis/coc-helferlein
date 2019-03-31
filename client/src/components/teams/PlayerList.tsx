@@ -47,10 +47,9 @@ class PlayerList extends Component<PlayerListProps & FormikProps<MyFormValues>> 
     const { field } = props;
 
     return (
-      <div className='range range-success form-group'>
+      <div className='range range-success'>
+        <small className='text-muted form-text' id='rangeSuccess'>{props.description.charAt(0)}: {field.value}</small>
         <input type='range' name='range' min='1' max='200' className='form-control' {...field}/>
-        <small className='form-text text-muted'>{props.description}</small>
-        <output id='rangeSuccess'>{field.value}</output>
       </div>
     );
   };
