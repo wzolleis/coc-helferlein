@@ -1,6 +1,6 @@
-import { PlayerModel, Team } from '../../models/teamTypes';
-import { DEFAULT_PLAYER } from '../../data/players';
 import { calculatePossibleTeams, calculateTeamSkill } from '../teamCalculation';
+import { PlayerModel, TeamModel } from '../../models/teamTypes';
+import { DEFAULT_PLAYER } from '../../data/players';
 
 
 describe('team calculation', () => {
@@ -32,9 +32,13 @@ describe('team calculation', () => {
 
   describe('matches', () => {
     it('creates matches', () => {
-      const teams: Team[] = calculatePossibleTeams(players);
+      const teams: TeamModel[] = calculatePossibleTeams(players);
       teams.forEach(team => expect(team.players.length === 2));
       expect(teams).toHaveLength(3);
+    });
+
+    it('calculates combinations', () => {
+
     });
   });
 

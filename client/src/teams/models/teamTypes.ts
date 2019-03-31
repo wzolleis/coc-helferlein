@@ -12,12 +12,12 @@ export interface PlayerModel {
 }
 
 export interface MatchModel {
-  team1: TeamModel
-  team2: TeamModel
+  teams: TeamModel[]
+  diff: number
 }
 
 export interface TeamModel {
-  overall: number,
+  overallSkill: number,
   players: PlayerModel[]
 }
 

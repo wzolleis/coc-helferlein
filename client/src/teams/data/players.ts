@@ -1,7 +1,7 @@
-import { PlayerModel, SkillLevel } from '../app/teamTypes';
+import { PlayerModel, SkillLevel } from '../models/teamTypes';
 
 
-const DEFAULT_PLAYER: PlayerModel = {
+export const DEFAULT_PLAYER: PlayerModel = {
   id: '0',
   name: '',
   anwesend: false,
