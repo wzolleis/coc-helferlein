@@ -1,13 +1,13 @@
-import { PlayerCondition, PlayerModel, PlayerSpeed, PlayerTechnicalSkill } from '../app/teamTypes';
+import { PlayerModel, SkillLevel } from '../app/teamTypes';
 
 
 const DEFAULT_PLAYER: PlayerModel = {
   id: '0',
   name: '',
   anwesend: false,
-  condition: PlayerCondition.MEDIUM,
-  speed: PlayerSpeed.MEDIUM,
-  technicalSkill: PlayerTechnicalSkill.MEDIUM
+  condition: SkillLevel.MEDIUM,
+  speed: SkillLevel.MEDIUM,
+  technicalSkill: SkillLevel.MEDIUM
 };
 
 export const stammspieler: PlayerModel[] = [
@@ -15,73 +15,81 @@ export const stammspieler: PlayerModel[] = [
     ...DEFAULT_PLAYER,
     id: '1',
     name: 'Roland',
-    condition: PlayerCondition.HIGH,
-    speed: PlayerSpeed.HIGH,
-    technicalSkill: PlayerTechnicalSkill.MEDIUM
+    condition: SkillLevel.HIGH,
+    speed: SkillLevel.HIGH,
+    technicalSkill: SkillLevel.MEDIUM
   },
   {
     ...DEFAULT_PLAYER,
     id: '2',
     name: 'Wolfgang',
-    condition: PlayerCondition.MEDIUM,
-    speed: PlayerSpeed.MEDIUM,
-    technicalSkill: PlayerTechnicalSkill.MEDIUM
+    condition: SkillLevel.MEDIUM,
+    speed: SkillLevel.MEDIUM,
+    technicalSkill: SkillLevel.MEDIUM
   },
   {
     ...DEFAULT_PLAYER,
     id: '3',
     name: 'Heinz',
-    condition: PlayerCondition.MEDIUM,
-    speed: PlayerSpeed.MEDIUM,
-    technicalSkill: PlayerTechnicalSkill.HIGH
+    condition: SkillLevel.MEDIUM,
+    speed: SkillLevel.MEDIUM,
+    technicalSkill: SkillLevel.HIGH
   },
   {
     ...DEFAULT_PLAYER,
     id: '4',
     name: 'Rudi',
-    condition: PlayerCondition.MEDIUM,
-    speed: PlayerSpeed.MEDIUM,
-    technicalSkill: PlayerTechnicalSkill.MEDIUM
+    condition: SkillLevel.MEDIUM,
+    speed: SkillLevel.MEDIUM,
+    technicalSkill: SkillLevel.MEDIUM
   },
   {
     ...DEFAULT_PLAYER,
     id: '5',
     name: 'Armin',
-    condition: PlayerCondition.LOW,
-    speed: PlayerSpeed.LOW,
-    technicalSkill: PlayerTechnicalSkill.LOW
+    condition: SkillLevel.LOW,
+    speed: SkillLevel.LOW,
+    technicalSkill: SkillLevel.LOW
   },
   {
     ...DEFAULT_PLAYER,
     id: '6',
     name: 'Josef',
-    condition: PlayerCondition.MEDIUM,
-    speed: PlayerSpeed.HIGH,
-    technicalSkill: PlayerTechnicalSkill.HIGH
+    condition: SkillLevel.MEDIUM,
+    speed: SkillLevel.HIGH,
+    technicalSkill: SkillLevel.HIGH
   },
   {
     ...DEFAULT_PLAYER,
     id: '7',
     name: 'Uli',
-    condition: PlayerCondition.HIGH,
-    speed: PlayerSpeed.HIGH,
-    technicalSkill: PlayerTechnicalSkill.HIGH
+    condition: SkillLevel.HIGH,
+    speed: SkillLevel.HIGH,
+    technicalSkill: SkillLevel.HIGH
   },
   {
     ...DEFAULT_PLAYER,
     id: '8',
     name: 'Emil',
-    condition: PlayerCondition.MEDIUM,
-    speed: PlayerSpeed.LOW,
-    technicalSkill: PlayerTechnicalSkill.MEDIUM
+    condition: SkillLevel.MEDIUM,
+    speed: SkillLevel.LOW,
+    technicalSkill: SkillLevel.MEDIUM
   },
   {
     ...DEFAULT_PLAYER,
     id: '9',
     name: 'Tobi',
-    condition: PlayerCondition.HIGH,
-    speed: PlayerSpeed.HIGH,
-    technicalSkill: PlayerTechnicalSkill.HIGH
+    condition: SkillLevel.HIGH,
+    speed: SkillLevel.HIGH,
+    technicalSkill: SkillLevel.HIGH
+  },
+  {
+    ...DEFAULT_PLAYER,
+    id: '10',
+    name: 'Martin',
+    condition: SkillLevel.PROFI,
+    speed: SkillLevel.PROFI,
+    technicalSkill: SkillLevel.PROFI
   }
 ];
 

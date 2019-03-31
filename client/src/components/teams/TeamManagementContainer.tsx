@@ -2,22 +2,41 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { doFetchPlayers } from '../../actions/teamActions';
 import { AppState } from '../../app/applicationTypes';
-import { PlayerModel } from '../../app/teamTypes';
-import PlayerList from './PlayerList';
+import { MatchModel, PlayerModel } from '../../app/teamTypes';
+import PlayerList, { PlayerListFormValues } from './PlayerList';
 
 interface TeamManagementContainerProps {
-  players: PlayerModel[]
+  players: PlayerModel[],
+  matches: MatchModel[]
 }
 
 interface TeamManagementContainerDispatch {
   fetchPlayers: () => void
 }
 
-interface CombinedProps extends TeamManagementContainerDispatch, TeamManagementContainerProps{
+interface CombinedProps extends TeamManagementContainerDispatch, TeamManagementContainerProps {
 
 }
 
-class TeamManagementContainer extends Component<CombinedProps> {
+interface TeamManagementState {
+  showMatchForm: boolean
+}
+
+const MatchList = (props: any) => {
+  if (props.showMatchForm) {
+    return <h5>Teams</h5>;
+  }
+  return null;
+};
+
+class TeamManagementContainer extends Component<CombinedProps, TeamManagementState> {
+  state = { showMatchForm: false };
+
+
+  onHandlePlayerSubmit = (values: PlayerListFormValues) => {
+    this.setState({ showMatchForm: true });
+  };
+
   componentDidMount(): void {
     this.props.fetchPlayers();
   }
@@ -25,16 +44,18 @@ class TeamManagementContainer extends Component<CombinedProps> {
   render() {
     return (
       <div>
-        <PlayerList players={this.props.players}/>
+        <PlayerList players={this.props.players} onHandlePlayerSelected={this.onHandlePlayerSubmit}/>
+        < MatchList showMatchForm={this.state.showMatchForm} teams={this.props.matches}/>
       </div>
     );
   }
 }
 
-const mapStateToProps = ({teams}: AppState): TeamManagementContainerProps => {
+const mapStateToProps = ({ teams }: AppState): TeamManagementContainerProps => {
   return {
-    players: teams.players
+    players: teams.players,
+    matches: []
   };
 };
 
-export default connect(mapStateToProps, { fetchPlayers: doFetchPlayers})(TeamManagementContainer);
+export default connect(mapStateToProps, { fetchPlayers: doFetchPlayers })(TeamManagementContainer);

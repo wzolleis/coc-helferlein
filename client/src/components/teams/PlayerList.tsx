@@ -1,25 +1,26 @@
 import React, { Component } from 'react';
 import { PlayerModel } from '../../app/teamTypes';
 // import Player from './Player';
-import { Field, FieldArray, FieldArrayRenderProps, FieldProps, Form, FormikActions, FormikProps, withFormik } from 'formik';
+import { Field, FieldArray, FieldArrayRenderProps, FieldProps, Form, FormikBag, FormikProps, withFormik } from 'formik';
 import '../../css/team/playerComponent.css';
 import '../../css/checkbox.css';
 import '../../css/slider.css';
 
 interface PlayerListProps {
   players: PlayerModel[]
+  onHandlePlayerSelected: (values: PlayerListFormValues) => void
 }
 
-interface MyFormValues {
+export interface PlayerListFormValues {
   players: PlayerModel[]
 }
 
-interface MyFieldProps extends FieldProps<MyFormValues> {
+interface MyFieldProps extends FieldProps<PlayerListFormValues> {
   description: string
   name: string
 }
 
-class PlayerList extends Component<PlayerListProps & FormikProps<MyFormValues>> {
+class PlayerList extends Component<PlayerListProps & FormikProps<PlayerListFormValues>> {
   constructor(props) {
     super(props);
   }
@@ -28,7 +29,7 @@ class PlayerList extends Component<PlayerListProps & FormikProps<MyFormValues>> 
    * Spezielle Checkbox, sieht einfach besser ;-)
    * @param props Field-Props, onChange, onBlur,...
    */
-  AnimatedCheckbox = (props: FieldProps<MyFormValues>): React.ReactFragment => {
+  AnimatedCheckbox = (props: FieldProps<PlayerListFormValues>): React.ReactFragment => {
     const { field } = props;
     return (
       <label className='checkbox player-select'>
@@ -82,23 +83,24 @@ class PlayerList extends Component<PlayerListProps & FormikProps<MyFormValues>> 
       <div>
         <Form>
           <FieldArray name='players' render={this.renderPlayerList}/>
-          <button className='btn btn-primary' type={'submit'}>Submit</button>
+          <button className='btn btn-primary' type={'submit'}>Matches berechnen</button>
         </Form>
       </div>
     );
   }
 }
 
-const onSubmit = (values: MyFormValues, actions: FormikActions<MyFormValues>) => {
+const onSubmit = (values: PlayerListFormValues, formikBag: FormikBag<PlayerListProps, PlayerListFormValues>) => {
   alert(JSON.stringify(values, null, 2));
-  actions.setSubmitting(false);
+  formikBag.setSubmitting(false);
+  formikBag.props.onHandlePlayerSelected(values);
 };
 
 const FormlikConfig = {
   enableReinitialize: true,
   displayName: 'PlayerList',
   handleSubmit: onSubmit,
-  mapPropsToValues: (props: PlayerListProps): MyFormValues => ({ players: props.players })
+  mapPropsToValues: (props: PlayerListProps): PlayerListFormValues => ({ players: props.players })
 };
 
-export default withFormik<PlayerListProps, MyFormValues>(FormlikConfig)(PlayerList);
+export default withFormik<PlayerListProps, PlayerListFormValues>(FormlikConfig)(PlayerList);
