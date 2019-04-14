@@ -49,7 +49,7 @@ class PlayerList extends Component<PlayerListProps & FormikProps<PlayerListFormV
 
     return (
       <div className='range range-success'>
-        <small className='text-muted form-text' id='rangeSuccess'>{props.description.charAt(0)}: {field.value}</small>
+        <small className='text-muted form-text' id='rangeSuccess'>{props.description}: {field.value}</small>
         <input type='range' name='range' min='1' max='200' className='form-control' {...field}/>
       </div>
     );
@@ -58,12 +58,19 @@ class PlayerList extends Component<PlayerListProps & FormikProps<PlayerListFormV
 
   renderPlayer = (player, index) => {
     return (
-      <div className='player-container' key={index}>
-        <Field name={`players.${index}.anwesend`} component={this.AnimatedCheckbox}/>
-        <Field readOnly={true} name={`players.${index}.name`}/>
-        <Field name={`players.${index}.speed`} description={'Geschwindigkeit'} component={this.Slider}/>
-        <Field name={`players.${index}.condition`} description={'Kondition'} component={this.Slider}/>
-        <Field name={`players.${index}.technicalSkill`} description={'Technik'} component={this.Slider}/>
+      <div className='card'>
+        <div className='card-body'>
+          <h5 className='card-title'>
+            <Field readOnly={true} name={`players.${index}.name`}/>
+            <Field name={`players.${index}.anwesend`} component={this.AnimatedCheckbox}/>
+          </h5>
+          <p className='card-text player-container'>
+            <Field name={`players.${index}.speed`} description={'Geschwindigkeit'} component={this.Slider}/>
+            <Field name={`players.${index}.condition`} description={'Kondition'} component={this.Slider}/>
+            <Field name={`players.${index}.technicalSkill`} description={'Technik'} component={this.Slider}/>
+          </p>
+          <a href='#' className='btn btn-primary'>Go somewhere</a>
+        </div>
       </div>
     );
   };

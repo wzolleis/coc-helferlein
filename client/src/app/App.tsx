@@ -42,7 +42,8 @@ class App extends React.Component<AppComponentDispatch> {
                             path={AppLinks.CLANS_NEW}
                             exact={true}
                             component={ClanNewForm}
-                        /><Route
+                        />
+                        <Route
                             path={AppLinks.TEAM_MANAGEMENT}
                             exact={true}
                             component={TeamManagementContainer}
