@@ -39,9 +39,9 @@
     border-radius: 50%;
 }
 
-.player-attribute-container {
+.player-attributes-container {
     display: grid;
     grid-gap: 16px;
     grid-auto-rows: auto;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 8fr);
 }

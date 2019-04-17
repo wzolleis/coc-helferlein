@@ -70,8 +70,8 @@ class PlayerList extends Component<PlayerListProps & FormikProps<PlayerListFormV
           </h5>
           <div className='card-text'>
             <div className='jumbotron'>
-              <div className='row player-attribute-container w-100'>
-                <div className='col-md-3'>
+              <div className='player-attributes-container'>
+                <div>
                   <div className='card border-info mx-sm-1 p-3'>
                     <div className='card border-info shadow text-info p-3 my-card'>
                       <span className='fa fa-car' aria-hidden='true'/>
@@ -80,7 +80,7 @@ class PlayerList extends Component<PlayerListProps & FormikProps<PlayerListFormV
                     <div className='text-info text-center mt-2'><h1>234</h1></div>
                   </div>
                 </div>
-                <div className='col-md-3'>
+                <div>
                   <div className='card border-success mx-sm-1 p-3'>
                     <div className='card border-success shadow text-success p-3 my-card'>
                       <span className='fa fa-eye player-attribute-icon' aria-hidden='true'/>
@@ -89,7 +89,7 @@ class PlayerList extends Component<PlayerListProps & FormikProps<PlayerListFormV
                     <div className='text-success text-center mt-2'><h1>9332</h1></div>
                   </div>
                 </div>
-                <div className='col-md-3'>
+                <div>
                   <div className='card border-danger mx-sm-1 p-3'>
                     <div className='card border-danger shadow text-danger p-3 my-card'>
                       <div className='fa fa-heart' aria-hidden='true'/>
@@ -98,7 +98,7 @@ class PlayerList extends Component<PlayerListProps & FormikProps<PlayerListFormV
                     <div className='text-danger text-center mt-2'><h1>346</h1></div>
                   </div>
                 </div>
-                <div className='col-md-3'>
+                <div>
                   <div className='card border-warning mx-sm-1 p-3'>
                     <div className='card border-warning shadow text-warning p-3 my-card'>
                       <span className='fa fa-inbox' aria-hidden='true'/>
