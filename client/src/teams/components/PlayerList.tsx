@@ -56,6 +56,11 @@ class PlayerList extends Component<PlayerListProps & FormikProps<PlayerListFormV
 
 
   renderPlayer = (player, index) => {
+    /*
+    <Field name={`players.${index}.speed`} description={'Geschwindigkeit'} component={this.Slider}/>
+    <Field name={`players.${index}.condition`} description={'Kondition'} component={this.Slider}/>
+    <Field name={`players.${index}.technicalSkill`} description={'Technik'} component={this.Slider}/>
+    */
     return (
       <div className='card'>
         <div className='card-body'>
@@ -63,11 +68,48 @@ class PlayerList extends Component<PlayerListProps & FormikProps<PlayerListFormV
             <Field name={`players.${index}.anwesend`} component={this.AnimatedCheckbox}/>
             <Field readOnly={true} name={`players.${index}.name`}/>
           </h5>
-          <p className='card-text player-container'>
-            <Field name={`players.${index}.speed`} description={'Geschwindigkeit'} component={this.Slider}/>
-            <Field name={`players.${index}.condition`} description={'Kondition'} component={this.Slider}/>
-            <Field name={`players.${index}.technicalSkill`} description={'Technik'} component={this.Slider}/>
-          </p>
+          <div className='card-text'>
+            <div className='jumbotron'>
+              <div className='row player-attribute-container w-100'>
+                <div className='col-md-3'>
+                  <div className='card border-info mx-sm-1 p-3'>
+                    <div className='card border-info shadow text-info p-3 my-card'>
+                      <span className='fa fa-car' aria-hidden='true'/>
+                    </div>
+                    <div className='text-info text-center mt-3'><h4>Cars</h4></div>
+                    <div className='text-info text-center mt-2'><h1>234</h1></div>
+                  </div>
+                </div>
+                <div className='col-md-3'>
+                  <div className='card border-success mx-sm-1 p-3'>
+                    <div className='card border-success shadow text-success p-3 my-card'>
+                      <span className='fa fa-eye player-attribute-icon' aria-hidden='true'/>
+                    </div>
+                    <div className='text-success text-center mt-3'><h4>Eyes</h4></div>
+                    <div className='text-success text-center mt-2'><h1>9332</h1></div>
+                  </div>
+                </div>
+                <div className='col-md-3'>
+                  <div className='card border-danger mx-sm-1 p-3'>
+                    <div className='card border-danger shadow text-danger p-3 my-card'>
+                      <div className='fa fa-heart' aria-hidden='true'/>
+                    </div>
+                    <div className='text-danger text-center mt-3'><h4>Hearts</h4></div>
+                    <div className='text-danger text-center mt-2'><h1>346</h1></div>
+                  </div>
+                </div>
+                <div className='col-md-3'>
+                  <div className='card border-warning mx-sm-1 p-3'>
+                    <div className='card border-warning shadow text-warning p-3 my-card'>
+                      <span className='fa fa-inbox' aria-hidden='true'/>
+                    </div>
+                    <div className='text-warning text-center mt-3'><h4>Inbox</h4></div>
+                    <div className='text-warning text-center mt-2'><h1>346</h1></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <a href='#' className='btn btn-primary'>Go somewhere</a>
         </div>
       </div>
