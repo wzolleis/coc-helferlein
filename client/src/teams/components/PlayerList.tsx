@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { PlayerModel } from '../models/teamTypes';
-// import Player from './Player';
 import { Field, FieldArray, FieldArrayRenderProps, FieldProps, Form, FormikBag, FormikProps, withFormik } from 'formik';
 import '../../css/team/playerComponent.css';
 import '../../css/checkbox.css';
@@ -60,9 +59,9 @@ class PlayerList extends Component<PlayerListProps & FormikProps<PlayerListFormV
     return (
       <div className='card'>
         <div className='card-body'>
-          <h5 className='card-title'>
-            <Field readOnly={true} name={`players.${index}.name`}/>
+          <h5 className='card-title player-title'>
             <Field name={`players.${index}.anwesend`} component={this.AnimatedCheckbox}/>
+            <Field readOnly={true} name={`players.${index}.name`}/>
           </h5>
           <p className='card-text player-container'>
             <Field name={`players.${index}.speed`} description={'Geschwindigkeit'} component={this.Slider}/>
