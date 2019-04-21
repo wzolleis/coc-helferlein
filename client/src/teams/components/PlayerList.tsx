@@ -25,7 +25,8 @@ interface PlayerAttribute {
   name: string,
   value: number,
   attributeClass: string,
-  borderClass: string
+  borderClass: string,
+  icon: string
 }
 
 class PlayerList extends Component<PlayerListProps & FormikProps<PlayerListFormValues>> {
@@ -64,14 +65,54 @@ class PlayerList extends Component<PlayerListProps & FormikProps<PlayerListFormV
   };
 
   renderAttribute = (attribute: PlayerAttribute) => {
+    const cardClass = `card border-${attribute.attributeClass} shadow text-info p-3 my-card`;
+    const borderClass = `card border-${attribute.attributeClass} mx-sm-1 p-3`;
+    const textContainerClass = `text-${attribute.attributeClass} text-center mt-3`;
+    const textClass = `text-${attribute.attributeClass} text-center mt-2`;
+
     return (
-      <h1>test</h1>
+      <div>
+        <div className={borderClass}>
+          <div className={cardClass}>
+            <span className={attribute.icon} aria-hidden='true'/>
+          </div>
+          <div className={textContainerClass}><h4>{attribute.name}</h4></div>
+          <div className={textClass}>
+            <h1>
+              {attribute.value}
+            </h1>
+          </div>
+        </div>
+      </div>
     );
   };
 
 
   renderPlayer = (player, index) => {
     //           <Link style={{ marginTop: '10px' }} className={'btn btn-info ml-auto'} to={AppLinks.CLANS_NEW}>Add</Link>
+    const condition: PlayerAttribute = {
+      value: player.condition,
+      name: 'Kondition',
+      icon: 'fa fa-heart',
+      attributeClass: 'info',
+      borderClass: ''
+    };
+    const technicalSkill: PlayerAttribute = {
+      value: player.technicalSkill,
+      name: 'Technik',
+      icon: 'fa fa-random',
+      attributeClass: 'danger',
+      borderClass: ''
+    };
+    const speed: PlayerAttribute = {
+      value: player.speed,
+      name: 'Speed',
+      icon: 'fa fa-tachometer-alt',
+      attributeClass: 'warning',
+      borderClass: ''
+    };
+
+
     return (
       <div className='card'>
         <div className='card-body'>
@@ -82,45 +123,9 @@ class PlayerList extends Component<PlayerListProps & FormikProps<PlayerListFormV
           <div className='card-text'>
             <div className='jumbotron'>
               <div className='player-attributes-container'>
-                <div>
-                  <div className='card border-info mx-sm-1 p-3'>
-                    <div className='card border-info shadow text-info p-3 my-card'>
-                      <span className='fa fa-heart' aria-hidden='true'/>
-                    </div>
-                    <div className='text-info text-center mt-3'><h4>Kondition</h4></div>
-                    <div className='text-info text-center mt-2'>
-                      <h1>
-                        {player.condition}
-                      </h1>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <div className='card border-danger mx-sm-1 p-3'>
-                    <div className='card border-danger shadow text-danger p-3 my-card'>
-                      <div className='fa fa-heart' aria-hidden='true'/>
-                    </div>
-                    <div className='text-danger text-center mt-3'><h4>Technik</h4></div>
-                    <div className='text-danger text-center mt-2'>
-                      <h1>
-                        {player.technicalSkill}
-                      </h1>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <div className='card border-warning mx-sm-1 p-3'>
-                    <div className='card border-warning shadow text-warning p-3 my-card'>
-                      <span className='fa fa-tachometer-alt' aria-hidden='true'/>
-                    </div>
-                    <div className='text-warning text-center mt-3'><h4>Speed</h4></div>
-                    <div className='text-warning text-center mt-2'>
-                      <h1>
-                        {player.speed}
-                      </h1>
-                    </div>
-                  </div>
-                </div>
+                {this.renderAttribute(condition)}
+                {this.renderAttribute(technicalSkill)}
+                {this.renderAttribute(speed)}
               </div>
             </div>
           </div>
