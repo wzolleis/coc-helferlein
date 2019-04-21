@@ -4,6 +4,8 @@ import { Field, FieldArray, FieldArrayRenderProps, FieldProps, Form, FormikBag, 
 import '../../css/team/playerComponent.css';
 import '../../css/checkbox.css';
 import '../../css/slider.css';
+import { Link } from 'react-router-dom';
+import { AppLinks } from '../../app/AppLinks';
 
 interface PlayerListProps {
   players: PlayerModel[]
@@ -17,6 +19,13 @@ export interface PlayerListFormValues {
 interface MyFieldProps extends FieldProps<PlayerListFormValues> {
   description: string
   name: string
+}
+
+interface PlayerAttribute {
+  name: string,
+  value: number,
+  attributeClass: string,
+  borderClass: string
 }
 
 class PlayerList extends Component<PlayerListProps & FormikProps<PlayerListFormValues>> {
@@ -54,13 +63,15 @@ class PlayerList extends Component<PlayerListProps & FormikProps<PlayerListFormV
     );
   };
 
+  renderAttribute = (attribute: PlayerAttribute) => {
+    return (
+      <h1>test</h1>
+    );
+  };
+
 
   renderPlayer = (player, index) => {
-    /*
-    <Field name={`players.${index}.speed`} description={'Geschwindigkeit'} component={this.Slider}/>
-    <Field name={`players.${index}.condition`} description={'Kondition'} component={this.Slider}/>
-    <Field name={`players.${index}.technicalSkill`} description={'Technik'} component={this.Slider}/>
-    */
+    //           <Link style={{ marginTop: '10px' }} className={'btn btn-info ml-auto'} to={AppLinks.CLANS_NEW}>Add</Link>
     return (
       <div className='card'>
         <div className='card-body'>
@@ -74,19 +85,14 @@ class PlayerList extends Component<PlayerListProps & FormikProps<PlayerListFormV
                 <div>
                   <div className='card border-info mx-sm-1 p-3'>
                     <div className='card border-info shadow text-info p-3 my-card'>
-                      <span className='fa fa-car' aria-hidden='true'/>
+                      <span className='fa fa-heart' aria-hidden='true'/>
                     </div>
-                    <div className='text-info text-center mt-3'><h4>Cars</h4></div>
-                    <div className='text-info text-center mt-2'><h1>234</h1></div>
-                  </div>
-                </div>
-                <div>
-                  <div className='card border-success mx-sm-1 p-3'>
-                    <div className='card border-success shadow text-success p-3 my-card'>
-                      <span className='fa fa-eye player-attribute-icon' aria-hidden='true'/>
+                    <div className='text-info text-center mt-3'><h4>Kondition</h4></div>
+                    <div className='text-info text-center mt-2'>
+                      <h1>
+                        {player.condition}
+                      </h1>
                     </div>
-                    <div className='text-success text-center mt-3'><h4>Eyes</h4></div>
-                    <div className='text-success text-center mt-2'><h1>9332</h1></div>
                   </div>
                 </div>
                 <div>
@@ -94,23 +100,31 @@ class PlayerList extends Component<PlayerListProps & FormikProps<PlayerListFormV
                     <div className='card border-danger shadow text-danger p-3 my-card'>
                       <div className='fa fa-heart' aria-hidden='true'/>
                     </div>
-                    <div className='text-danger text-center mt-3'><h4>Hearts</h4></div>
-                    <div className='text-danger text-center mt-2'><h1>346</h1></div>
+                    <div className='text-danger text-center mt-3'><h4>Technik</h4></div>
+                    <div className='text-danger text-center mt-2'>
+                      <h1>
+                        {player.technicalSkill}
+                      </h1>
+                    </div>
                   </div>
                 </div>
                 <div>
                   <div className='card border-warning mx-sm-1 p-3'>
                     <div className='card border-warning shadow text-warning p-3 my-card'>
-                      <span className='fa fa-inbox' aria-hidden='true'/>
+                      <span className='fa fa-tachometer-alt' aria-hidden='true'/>
                     </div>
-                    <div className='text-warning text-center mt-3'><h4>Inbox</h4></div>
-                    <div className='text-warning text-center mt-2'><h1>346</h1></div>
+                    <div className='text-warning text-center mt-3'><h4>Speed</h4></div>
+                    <div className='text-warning text-center mt-2'>
+                      <h1>
+                        {player.speed}
+                      </h1>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <a href='#' className='btn btn-primary'>Go somewhere</a>
+          <Link className={'btn btn-primary ml-auto'} to={AppLinks.CLANS_NEW}>Edit</Link>
         </div>
       </div>
     );
