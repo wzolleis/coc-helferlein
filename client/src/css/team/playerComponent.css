@@ -45,3 +45,11 @@
     grid-auto-rows: auto;
     grid-template-columns: repeat(3, 1fr);
 }
+
+.card-header .fa {
+    transition: .3s transform ease-in-out;
+}
+
+.card-header .collapsed .fa {
+    transform: rotate(90deg);
+}

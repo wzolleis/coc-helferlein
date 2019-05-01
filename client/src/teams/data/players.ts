@@ -4,7 +4,7 @@ import { PlayerModel, SkillLevel } from '../models/teamTypes';
 export const DEFAULT_PLAYER: PlayerModel = {
   id: '0',
   name: '',
-  anwesend: false,
+  anwesend: true,
   condition: SkillLevel.MEDIUM,
   speed: SkillLevel.MEDIUM,
   technicalSkill: SkillLevel.MEDIUM
