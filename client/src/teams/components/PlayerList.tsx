@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { PlayerModel } from '../models/teamTypes';
 import { FieldArray, FieldArrayRenderProps, Form, FormikBag, FormikProps, withFormik } from 'formik';
 import '../../css/team/playerComponent.css';
-import '../../css/checkbox.css';
 import { renderPlayer } from './player';
 
 interface PlayerListProps {

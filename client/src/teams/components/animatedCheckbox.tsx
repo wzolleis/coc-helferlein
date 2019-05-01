@@ -1,6 +1,8 @@
 import { FieldProps } from 'formik';
 import React from 'react';
 import { PlayerListFormValues } from './PlayerList';
+import '../../css/checkbox.css';
+
 
 /**
  * Spezielle Checkbox, sieht einfach besser ;-)
@@ -8,9 +10,8 @@ import { PlayerListFormValues } from './PlayerList';
  */
 export const AnimatedCheckbox = (props: FieldProps<PlayerListFormValues>): React.ReactFragment => {
   const { field } = props;
-  console.log(field);
   return (
-    <label className='checkbox player-select'>
+    <label className='checkbox'>
       <input {...field} type='checkbox' checked={field.value}/>
       <span className='default'/>
     </label>

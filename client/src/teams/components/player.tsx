@@ -3,6 +3,7 @@ import { AnimatedCheckbox } from './animatedCheckbox';
 import { Link } from 'react-router-dom';
 import { AppLinks } from '../../app/AppLinks';
 import React from 'react';
+import '../../css/checkbox.css';
 
 interface PlayerAttribute {
   key: string,
@@ -70,12 +71,12 @@ export const renderPlayer = (player, index) => {
     <div className='card'>
       <h5 className='card-header'>
         <a data-toggle='collapse' href={'#player-' + index} aria-expanded='true'
-           id={`players.${index}.name` + '.collapse'} className='d-block collapsed'>
+           id={`players.${index}.collapse`} className='d-block collapsed'>
           <i className='fa fa-chevron-down pull-right'/>
           {player.name}
         </a>
       </h5>
-      <div id={'player-' + index} className='collapse' aria-labelledby={`players.${index}.name` + '.collapse'}>
+      <div id={'player-' + index} className='collapse' aria-labelledby={`players.${index}.collapse`}>
         <div className='card-body'>
           <h5 className='card-title player-title'>
             <Field name={`players.${index}.anwesend`} component={AnimatedCheckbox}/>
