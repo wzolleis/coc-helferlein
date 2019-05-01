@@ -68,7 +68,7 @@ export const renderPlayer = (player, index) => {
   const attributes: PlayerAttribute[] = [condition, technicalSkill, speed];
 
   return (
-    <div className='card'>
+    <div key={index} className='card'>
       <h5 className='card-header'>
         <a data-toggle='collapse' href={'#player-' + index} aria-expanded='true'
            id={`players.${index}.collapse`} className='d-block collapsed'>
