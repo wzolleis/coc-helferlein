@@ -1,7 +1,6 @@
 import { Field } from 'formik';
 import { AnimatedCheckbox } from './animatedCheckbox';
 import { Link } from 'react-router-dom';
-import { AppLinks } from '../../app/AppLinks';
 import React from 'react';
 import '../../css/checkbox.css';
 
@@ -89,7 +88,7 @@ export const renderPlayer = (player, index) => {
               </div>
             </div>
           </div>
-          <Link className={'btn btn-primary ml-auto'} to={AppLinks.TEAMS_CALCULATION}>Edit</Link>
+          <Link className={'btn btn-primary ml-auto'} to={`/players/${player.id}`}>Edit</Link>
         </div>
       </div>
     </div>
