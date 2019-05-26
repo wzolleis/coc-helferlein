@@ -4,6 +4,7 @@ import { doFetchPlayers } from '../actions/teamActions';
 import { AppState } from '../../app/applicationTypes';
 import { MatchModel, PlayerModel } from '../models/teamTypes';
 import PlayerList, { PlayerListFormValues } from './PlayerList';
+import { calculateMatches } from '../other/teamCalculation';
 
 interface TeamManagementContainerProps {
   players: PlayerModel[],
@@ -33,7 +34,8 @@ class TeamManagementContainer extends Component<CombinedProps, TeamManagementSta
   state = { showMatchForm: false };
 
 
-  onHandlePlayerSubmit = (values: PlayerListFormValues) => {
+  onHandlePlayerSubmit = ({ players }: PlayerListFormValues) => {
+    const matches = calculateMatches(players);
     this.setState({ showMatchForm: true });
   };
 

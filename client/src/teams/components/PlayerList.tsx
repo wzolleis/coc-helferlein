@@ -41,7 +41,6 @@ class PlayerList extends Component<PlayerListProps & FormikProps<PlayerListFormV
 }
 
 const onSubmit = (values: PlayerListFormValues, formikBag: FormikBag<PlayerListProps, PlayerListFormValues>) => {
-  alert(JSON.stringify(values, null, 2));
   formikBag.setSubmitting(false);
   formikBag.props.onHandlePlayerSelected(values);
 };
