@@ -1,6 +1,8 @@
-import { calculateMatches, calculatePossibleTeams, calculateTeamSkill, mapToTeams } from '../teamCalculation';
+import { calculateMatches, calculatePossibleTeams, mapToTeams } from '../teamCalculation';
 import { PlayerModel, TeamModel } from '../../models/teamTypes';
 import { DEFAULT_PLAYER } from '../../data/players';
+import { Team } from '../../models/Team';
+import { Match } from '../../models/Match';
 
 
 describe('team calculation', () => {
@@ -22,32 +24,13 @@ describe('team calculation', () => {
       id: '4'
     }
   ];
-  describe('skills', () => {
-    it('calculates team skill', () => {
 
-        expect(calculateTeamSkill(players)).toEqual(600);
+  describe('teams', () => {
+    it('calculates team skill', () => {
+      const team: Team = new Team(players);
+      expect(team.overallSkill).toEqual(600);
       }
     );
-  });
-
-  describe('matches', () => {
-    it('map to teams', () => {
-      const options: PlayerModel[][] = [
-        [players[0], players[1]],
-        [players[0], players[2]]
-      ];
-      const teams: TeamModel[] = mapToTeams(options);
-      const team_1: TeamModel = {
-        overallSkill: 300,
-        players: options[0]
-      };
-
-      const team_2: TeamModel = {
-        overallSkill: 300,
-        players: options[1]
-      };
-      expect(teams).toEqual([team_1, team_2]);
-    });
 
     it('ccalculate teams', () => {
       const teams: TeamModel[] = calculatePossibleTeams(players);
@@ -55,11 +38,50 @@ describe('team calculation', () => {
       expect(teams).toHaveLength(6);
     });
 
+    it('map to teams', () => {
+      const options: PlayerModel[][] = [
+        [players[0], players[1]],
+        [players[0], players[2]]
+      ];
+      const teams: TeamModel[] = mapToTeams(options);
+      const team_1: TeamModel = new Team(options[0]);
+      const team_2: TeamModel = new Team(options[1]);
+      expect(teams).toEqual([team_1, team_2]);
+    });
+  });
+
+  describe('matches', () => {
+    describe('compare matches', () => {
+      const home: TeamModel = new Team([players[0], players[1]]);
+      const away: TeamModel = new Team([players[2], players[3]]);
+
+      const match_1 = new Match(home, away);
+      const match_2 = new Match(away, home);
+
+      it('is same match, home, away vertauscht', () => {
+        expect(match_1.isSameMatch(match_2)).toBeTruthy();
+        expect(match_2.isSameMatch(match_1)).toBeTruthy();
+      });
+
+      it('is same match, when compared to self', () => {
+        expect(match_1.isSameMatch(match_1)).toBeTruthy();
+        expect(match_2.isSameMatch(match_2)).toBeTruthy();
+      });
+
+      it('is  not same match with different players', () => {
+        const differentTeam: TeamModel = new Team([players[0], players[2]]);
+        const match_3 = new Match(home, differentTeam);
+        expect(match_1.isSameMatch(match_3)).toBeFalsy();
+        expect(match_2.isSameMatch(match_3)).toBeFalsy();
+      });
+    });
 
     it('calculate matches', () => {
       const matches = calculateMatches(players);
       // expect(matches).toHaveLength(3); // todo - Test aktivieren
     });
+
+
   });
 
 });

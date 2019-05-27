@@ -1,5 +1,7 @@
 import { MatchModel, PlayerModel, TeamModel } from '../models/teamTypes';
 import { combineWithoutRepetitions } from './cominations';
+import { Match } from '../models/Match';
+import { Team } from '../models/Team';
 
 export const calculateMatches = (players: PlayerModel[]): MatchModel[] => {
   const anwesend = players.filter(player => player.anwesend);
@@ -25,26 +27,12 @@ export const mapToTeams = (options: PlayerModel[][]): TeamModel[] => {
   return options.map((players: PlayerModel[]): TeamModel => mapToTeam(players));
 };
 
-const mapToTeam = (players: PlayerModel[]) => {
-  const overallSkill = calculateTeamSkill(players);
-
-  return {
-    overallSkill,
-    players
-  };
-};
-
-export const calculateTeamSkill = (players: PlayerModel[]): number => {
-  return players
-    .map(player => player.speed + player.condition + player.technicalSkill)
-    .reduce((n1, n2) => n1 + n2);
+const mapToTeam = (players: PlayerModel[]): TeamModel => {
+  return new Team(players);
 };
 
 export const mapToMatch = (team: TeamModel, allPlayers: PlayerModel[]): MatchModel => {
   const otherTeam: TeamModel = mapToTeam(allPlayers.filter(player => !team.players.includes(player)));
 
-  return {
-    diff: Math.abs(team.overallSkill - otherTeam.overallSkill),
-    teams: [team, otherTeam]
-  };
+  return new Match(team, otherTeam);
 };
