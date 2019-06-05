@@ -13,8 +13,16 @@ export const calculateMatches = (players: PlayerModel[]): MatchModel[] => {
   // reduce matches, push only matches into array, if not present (according to previous compare function)
   // return reduced matches
 
-  return matches;
+  return removeDuplicates(matches);
+};
 
+export const removeDuplicates = (matches: MatchModel[]): MatchModel[] => {
+  return matches.reduce((acc: MatchModel[], item: MatchModel) => {
+    if (!acc.find(m => m.isSameMatch(item))) {
+      acc.push(item);
+    }
+    return acc;
+  }, []);
 };
 
 export const calculatePossibleTeams = (players: PlayerModel[]): TeamModel[] => {

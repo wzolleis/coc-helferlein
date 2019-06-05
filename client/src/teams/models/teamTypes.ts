@@ -15,7 +15,8 @@ export interface MatchModel {
   teams: TeamModel[]
   diff: number,
   home: () => TeamModel,
-  away: () => TeamModel
+  away: () => TeamModel,
+  isSameMatch: (other: MatchModel) => boolean
 }
 
 export interface TeamModel {

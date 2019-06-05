@@ -1,4 +1,4 @@
-import { calculateMatches, calculatePossibleTeams, mapToTeams } from '../teamCalculation';
+import { calculateMatches, calculatePossibleTeams, mapToTeams, removeDuplicates } from '../teamCalculation';
 import { PlayerModel, TeamModel } from '../../models/teamTypes';
 import { DEFAULT_PLAYER } from '../../data/players';
 import { Team } from '../../models/Team';
@@ -78,10 +78,21 @@ describe('team calculation', () => {
 
     it('calculate matches', () => {
       const matches = calculateMatches(players);
-      // expect(matches).toHaveLength(3); // todo - Test aktivieren
+      expect(matches).toHaveLength(3);
     });
 
+    it('removes duplicates from matches', () => {
+      const home: TeamModel = new Team([players[0], players[1]]);
+      const away: TeamModel = new Team([players[2], players[3]]);
 
+      const match_1 = new Match(home, away);
+      const match_2 = new Match(away, home);
+      const matches = [match_1, match_2];
+
+      const removed = removeDuplicates(matches);
+      expect(removed).toHaveLength(1);
+      expect(removed).toContain(match_1);
+    });
   });
 
 });
