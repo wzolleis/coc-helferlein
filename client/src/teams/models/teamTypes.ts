@@ -12,6 +12,7 @@ export interface PlayerModel {
 }
 
 export interface MatchModel {
+  id: number,
   teams: TeamModel[]
   diff: number,
   home: () => TeamModel,
@@ -25,5 +26,6 @@ export interface TeamModel {
 }
 
 export interface TeamState {
-  players: PlayerModel[] // alle Spieler
+  players: PlayerModel[], // alle Spieler,
+  matches: MatchModel[]
 }

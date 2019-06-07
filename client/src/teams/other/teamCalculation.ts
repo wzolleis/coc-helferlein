@@ -3,6 +3,8 @@ import { combineWithoutRepetitions } from './cominations';
 import { Match } from '../models/Match';
 import { Team } from '../models/Team';
 
+let matchCounter = 1;
+
 export const calculateMatches = (players: PlayerModel[]): MatchModel[] => {
   const anwesend = players.filter(player => player.anwesend);
   const teams: TeamModel[] = calculatePossibleTeams(anwesend);
@@ -12,7 +14,6 @@ export const calculateMatches = (players: PlayerModel[]): MatchModel[] => {
   // compare matches and check player ids,
   // reduce matches, push only matches into array, if not present (according to previous compare function)
   // return reduced matches
-
   return removeDuplicates(matches);
 };
 
@@ -42,5 +43,5 @@ const mapToTeam = (players: PlayerModel[]): TeamModel => {
 export const mapToMatch = (team: TeamModel, allPlayers: PlayerModel[]): MatchModel => {
   const otherTeam: TeamModel = mapToTeam(allPlayers.filter(player => !team.players.includes(player)));
 
-  return new Match(team, otherTeam);
+  return new Match(matchCounter++, team, otherTeam);
 };

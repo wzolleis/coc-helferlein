@@ -1,10 +1,12 @@
 import { MatchModel, TeamModel } from './teamTypes';
 
 export class Match implements MatchModel {
+  id: number;
   teams: TeamModel[];
   diff: number;
 
-  constructor(home: TeamModel, away: TeamModel) {
+  constructor(id: number, home: TeamModel, away: TeamModel) {
+    this.id = id;
     this.teams = [home, away];
     this.diff = Math.abs(home.overallSkill - away.overallSkill);
   }

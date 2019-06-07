@@ -1,10 +1,11 @@
 import { TeamState } from '../models/teamTypes';
 import { Reducer } from 'redux';
 import { AnyAction, isType } from 'typescript-fsa';
-import { FetchPlayerAction } from '../actions/teamActions';
+import { CalculateMatchesAction, FetchPlayerAction } from '../actions/teamActions';
 
 export const INITIAL_TEAM_STATE: TeamState = {
-  players: []
+  players: [],
+  matches: []
 };
 
 export const teamReducer: Reducer<TeamState, AnyAction> = (
@@ -15,6 +16,13 @@ export const teamReducer: Reducer<TeamState, AnyAction> = (
     return {
       ...state,
       players: action.payload.players
+    };
+  }
+
+  if (isType(action, CalculateMatchesAction)) {
+    return {
+      ...state,
+      matches: action.payload.matches
     };
   }
   return state;

@@ -14,10 +14,6 @@ export interface PlayerListFormValues {
 }
 
 class PlayerList extends Component<PlayerListProps & FormikProps<PlayerListFormValues>> {
-  constructor(props) {
-    super(props);
-  }
-
   renderPlayerList = ({ form }: FieldArrayRenderProps) => {
     return (
       <div className='player-list-container'>

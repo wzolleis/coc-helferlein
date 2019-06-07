@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { doFetchPlayers } from '../actions/teamActions';
+import { doCalculateMatches, doFetchPlayers } from '../actions/teamActions';
 import { AppState } from '../../app/applicationTypes';
 import { MatchModel, PlayerModel } from '../models/teamTypes';
 import PlayerList, { PlayerListFormValues } from './PlayerList';
-import { calculateMatches } from '../other/teamCalculation';
+import MatchList from './MatchList';
 
 interface TeamManagementContainerProps {
   players: PlayerModel[],
@@ -13,30 +13,19 @@ interface TeamManagementContainerProps {
 
 interface TeamManagementContainerDispatch {
   fetchPlayers: () => void
+  calculateMatches: (players: PlayerModel[]) => void
 }
 
 interface CombinedProps extends TeamManagementContainerDispatch, TeamManagementContainerProps {
 
 }
 
-interface TeamManagementState {
-  showMatchForm: boolean
-}
-
-const MatchList = (props: any) => {
-  if (props.showMatchForm) {
-    return <h5>Teams</h5>;
-  }
-  return null;
-};
-
-class TeamManagementContainer extends Component<CombinedProps, TeamManagementState> {
+class TeamManagementContainer extends Component<CombinedProps> {
   state = { showMatchForm: false };
 
 
   onHandlePlayerSubmit = ({ players }: PlayerListFormValues) => {
-    const matches = calculateMatches(players);
-    this.setState({ showMatchForm: true });
+    this.props.calculateMatches(players);
   };
 
   componentDidMount(): void {
@@ -45,10 +34,10 @@ class TeamManagementContainer extends Component<CombinedProps, TeamManagementSta
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <PlayerList players={this.props.players} onHandlePlayerSelected={this.onHandlePlayerSubmit}/>
-        < MatchList showMatchForm={this.state.showMatchForm} teams={this.props.matches}/>
-      </div>
+        < MatchList matches={this.props.matches}/>
+      </React.Fragment>
     );
   }
 }
@@ -56,8 +45,10 @@ class TeamManagementContainer extends Component<CombinedProps, TeamManagementSta
 const mapStateToProps = ({ teams }: AppState): TeamManagementContainerProps => {
   return {
     players: teams.players,
-    matches: []
+    matches: teams.matches
   };
 };
 
-export default connect(mapStateToProps, { fetchPlayers: doFetchPlayers })(TeamManagementContainer);
+export default connect(mapStateToProps, {
+  fetchPlayers: doFetchPlayers, calculateMatches: doCalculateMatches
+})(TeamManagementContainer);
