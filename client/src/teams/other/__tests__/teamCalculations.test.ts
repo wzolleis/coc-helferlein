@@ -55,8 +55,8 @@ describe('team calculation', () => {
       const home: TeamModel = new Team([players[0], players[1]]);
       const away: TeamModel = new Team([players[2], players[3]]);
 
-      const match_1 = new Match(home, away);
-      const match_2 = new Match(away, home);
+      const match_1 = new Match(1, home, away);
+      const match_2 = new Match(2, away, home);
 
       it('is same match, home, away vertauscht', () => {
         expect(match_1.isSameMatch(match_2)).toBeTruthy();
@@ -70,7 +70,7 @@ describe('team calculation', () => {
 
       it('is  not same match with different players', () => {
         const differentTeam: TeamModel = new Team([players[0], players[2]]);
-        const match_3 = new Match(home, differentTeam);
+        const match_3 = new Match(1, home, differentTeam);
         expect(match_1.isSameMatch(match_3)).toBeFalsy();
         expect(match_2.isSameMatch(match_3)).toBeFalsy();
       });
@@ -85,8 +85,8 @@ describe('team calculation', () => {
       const home: TeamModel = new Team([players[0], players[1]]);
       const away: TeamModel = new Team([players[2], players[3]]);
 
-      const match_1 = new Match(home, away);
-      const match_2 = new Match(away, home);
+      const match_1 = new Match(1, home, away);
+      const match_2 = new Match(2, away, home);
       const matches = [match_1, match_2];
 
       const removed = removeDuplicates(matches);
