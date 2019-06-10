@@ -13,10 +13,10 @@ export interface HeaderProps {
 export class Header extends React.Component<HeaderProps> {
 
   renderLoginState(): React.ReactFragment | null {
-    if (this.props.loginState == LoginState.UNDEFINED) {
+    if (this.props.loginState === LoginState.UNDEFINED) {
       return null;
     }
-    if (this.props.loginState == LoginState.LOGGED_OUT) {
+    if (this.props.loginState === LoginState.LOGGED_OUT) {
       return (
         <a className='nav-link' href={'/auth/google'}>
           Login with Google
@@ -32,7 +32,7 @@ export class Header extends React.Component<HeaderProps> {
   }
 
   renderLogo(): React.ReactFragment {
-    const target = this.props.loginState == LoginState.LOGGED_IN ? AppLinks.DASHBOARD : AppLinks.LANDING;
+    const target = this.props.loginState === LoginState.LOGGED_IN ? AppLinks.DASHBOARD : AppLinks.LANDING;
 
     return (
       <Link to={target} className='left brand-logo'>
@@ -42,7 +42,7 @@ export class Header extends React.Component<HeaderProps> {
   }
 
   renderLeftMenuItems(): React.ReactFragment | null {
-    if (this.props.loginState != LoginState.LOGGED_IN) {
+    if (this.props.loginState !== LoginState.LOGGED_IN) {
       return null;
     }
     return (

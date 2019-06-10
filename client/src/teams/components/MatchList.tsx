@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { MatchModel, PlayerModel } from '../models/teamTypes';
+import { MatchModel, TeamModel } from '../models/teamTypes';
 
 
 export interface MatchListProps {
@@ -9,16 +9,19 @@ export interface MatchListProps {
 
 class MatchList extends Component<MatchListProps> {
   renderMatch = (match: MatchModel) => {
+    const playersHome: string = this.playerNames(match.home());
+    const playersAway: string = this.playerNames(match.away());
+    const playersTxt: string = `${match.diff}: ${playersHome} -> ${playersAway}`;
     return (
       <div key={match.id}>
-        <h2>
-          {match.diff + ': ' + this.playerNames(match.home().players)} -> {this.playerNames(match.away().players)}
-        </h2>
+        <h4>
+          {playersTxt}
+        </h4>
       </div>
     );
   };
 
-  playerNames = (players: PlayerModel[]): string => {
+  playerNames = ({ players }: TeamModel): string => {
     return players.reduce((acc, p) => {
       return acc + p.name + ', ';
     }, '');
@@ -26,15 +29,17 @@ class MatchList extends Component<MatchListProps> {
 
   render() {
     const matchesSorted: MatchModel[] = this.props.matches.sort((a, b) => {
-      if (a.diff == b.diff) return 0;
+      if (a.diff === b.diff) return 0;
       if (a.diff > b.diff) return 1;
       return -1;
     });
 
+    const topThreeMatches = matchesSorted.slice(0, 3);
+
     return (
       <div className='player-list-container'>
         <div>
-          {matchesSorted.map(this.renderMatch)}
+          {topThreeMatches.map(this.renderMatch)}
         </div>
       </div>
     );
