@@ -1,19 +1,10 @@
 import { TeamState } from '../teams/models/teamTypes';
-import { ClanState } from '../clans/models/clanTypes';
 
 export interface UserModel {
   googleId: string;
   userId: string;
   authType: string;
 }
-
-export interface Location {
-  id: number,
-  name: string,
-  isCountry: boolean
-}
-
-
 
 export enum LoginState {
   UNDEFINED = 'UNDEFINED',
@@ -40,7 +31,6 @@ export interface FormValidationConfig<T, E> extends FormConfig<T> {
 
 export interface AppState {
   auth: AuthState
-  clan: ClanState
   form: FormState
   teams: TeamState
 }

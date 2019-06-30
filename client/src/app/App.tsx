@@ -6,9 +6,6 @@ import { dofetchUser } from './actions/appActions';
 import Landing from './components/Landing';
 import { AppLinks } from './AppLinks';
 import Dashboard from './components/Dashboard';
-import ClanContainer from '../clans/components/ClanContainer';
-import '../css/clan/form.css';
-import ClanNewForm from '../clans/components/ClanNewForm';
 import TeamManagementContainer from '../teams/components/TeamManagementContainer';
 
 
@@ -32,16 +29,6 @@ class App extends React.Component<AppComponentDispatch> {
                             path={AppLinks.DASHBOARD}
                             exact={true}
                             component={Dashboard}
-                        />
-                        <Route
-                            path={AppLinks.CLANS}
-                            exact={true}
-                            component={ClanContainer}
-                        />
-                        <Route
-                            path={AppLinks.CLANS_NEW}
-                            exact={true}
-                            component={ClanNewForm}
                         />
                         <Route
                             path={AppLinks.TEAM_MANAGEMENT}
