@@ -5,7 +5,6 @@ import { AppConfig } from '../config/config';
 import mongoose = require('mongoose');
 
 export const USERS: string = 'users';
-export const CLANS: string = 'clans';
 
 export interface UserModel extends User, Document {
 
@@ -13,14 +12,15 @@ export interface UserModel extends User, Document {
 
 export const USER_SCHEMA: Schema = new Schema({
   googleId: String,
+  localId: String,
   authType: String
 });
 
-export class Db {
+export class Database {
 
   public static init = () => {
-    Db.connect();
-    Db.registerSchemes();
+    Database.connect();
+    Database.registerSchemes();
   };
 
   static connect = () => {

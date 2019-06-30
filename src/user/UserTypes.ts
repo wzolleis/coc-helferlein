@@ -1,4 +1,9 @@
 export interface User {
-  googleId: string;
-  authType: string;
+  localId?: string;
+  googleId?: string;
+  authType: AuthType;
+}
+
+export enum AuthType {
+  'google', 'local'
 }

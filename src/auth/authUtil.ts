@@ -1,11 +1,15 @@
 import { model, Model } from 'mongoose';
 import { UserModel, USERS } from '../db/Database';
 import passport from 'passport';
-import { User } from '../user/UserTypes';
+import { AuthType, User } from '../user/UserTypes';
 import { getConfig } from '../config/keys';
 import { AppConfig } from '../config/config';
+import LocalStrategy from 'passport-local';
 
 const googleStrategy: any = require('passport-google-oauth20').Strategy;
+// const localStrategy = require('passport-local').Strategy;
+
+//const localStrategy = LocalStrategy;
 
 const appConfig: AppConfig = getConfig();
 
@@ -47,7 +51,7 @@ export const initializePassport: () => void = () => {
         }
         const user: User = {
           googleId: profile.id,
-          authType: 'google'
+          authType: AuthType.google
         };
 
         // Noch kein User mit dieser ID, es wird ein neuer User angelegt.
@@ -56,4 +60,24 @@ export const initializePassport: () => void = () => {
       }
     )
   );
+
+  // local strategy
+  passport.use(
+    new LocalStrategy(
+      async (username, password, done) => {
+        if (verifyUser(username, password)) {
+          const user: User = {
+            localId: username,
+            authType: AuthType.local
+          };
+          done(null, user);
+        } else {
+          done('Zugriff verweigert', null);
+        }
+      }
+    ));
+};
+
+const verifyUser = (username: string, password: string): boolean => {
+  return username === 'djk' && password === 'djk';
 };
