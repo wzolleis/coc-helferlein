@@ -5,7 +5,6 @@ import passport from 'passport';
 import { initializePassport } from './auth/authUtil';
 import cookieSession from 'cookie-session';
 import { getConfig } from './config/keys';
-import { clanRoutes } from './clan/clanRoutes';
 
 export const serverApp: Application = express();
 
@@ -24,8 +23,6 @@ export const init = () => {
   serverApp.use(passport.session());
 
   authRoutes(serverApp);
-  clanRoutes(serverApp);
-
   initializePassport();
 
   if (process.env.NODE_ENV === 'production') {
