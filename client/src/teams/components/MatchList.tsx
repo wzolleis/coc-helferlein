@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { MatchModel, TeamModel } from '../models/teamTypes';
+import { MatchModel } from '../models/teamTypes';
+import { renderMatch } from './match';
 
 
 export interface MatchListProps {
@@ -8,25 +9,6 @@ export interface MatchListProps {
 
 
 class MatchList extends Component<MatchListProps> {
-  renderMatch = (match: MatchModel) => {
-    const playersHome: string = this.playerNames(match.home());
-    const playersAway: string = this.playerNames(match.away());
-    const playersTxt: string = `${match.diff}: ${playersHome} -> ${playersAway}`;
-    return (
-      <div key={match.id}>
-        <h4>
-          {playersTxt}
-        </h4>
-      </div>
-    );
-  };
-
-  playerNames = ({ players }: TeamModel): string => {
-    return players.reduce((acc, p) => {
-      return acc + p.name + ', ';
-    }, '');
-  };
-
   render() {
     const matchesSorted: MatchModel[] = this.props.matches.sort((a, b) => {
       if (a.diff === b.diff) return 0;
@@ -39,7 +21,7 @@ class MatchList extends Component<MatchListProps> {
     return (
       <div className='player-list-container'>
         <div>
-          {topThreeMatches.map(this.renderMatch)}
+          {topThreeMatches.map(renderMatch)}
         </div>
       </div>
     );
