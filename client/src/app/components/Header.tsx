@@ -18,8 +18,8 @@ export class Header extends React.Component<HeaderProps> {
     }
     if (this.props.loginState === LoginState.LOGGED_OUT) {
       return (
-        <a className='nav-link' href={'/auth/google'}>
-          Login with Google
+        <a className='nav-link' href={'/login'}>
+          Login
         </a>
       );
     }

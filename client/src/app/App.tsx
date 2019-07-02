@@ -7,6 +7,7 @@ import Landing from './components/Landing';
 import { AppLinks } from './AppLinks';
 import Dashboard from './components/Dashboard';
 import TeamManagementContainer from '../teams/components/TeamManagementContainer';
+import { LoginForm } from '../login/components/LoginForm';
 
 
 interface AppComponentDispatch {
@@ -34,6 +35,11 @@ class App extends React.Component<AppComponentDispatch> {
                             path={AppLinks.TEAM_MANAGEMENT}
                             exact={true}
                             component={TeamManagementContainer}
+                        />
+                        <Route
+                          path={AppLinks.LOGIN}
+                          exact={true}
+                          component={LoginForm}
                         />
                     </div>
                 </BrowserRouter>

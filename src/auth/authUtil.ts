@@ -4,15 +4,12 @@ import passport from 'passport';
 import { AuthType, User } from '../user/UserTypes';
 import { getConfig } from '../config/keys';
 import { AppConfig } from '../config/config';
-import LocalStrategy from 'passport-local';
-
-const googleStrategy: any = require('passport-google-oauth20').Strategy;
-// const localStrategy = require('passport-local').Strategy;
-
-//const localStrategy = LocalStrategy;
+import passportLocal from 'passport-local';
 
 const appConfig: AppConfig = getConfig();
 
+const LocalStrategy = passportLocal.Strategy;
+const GoogleStrategy: any = require('passport-google-oauth20').Strategy;
 
 export type GoogleProfile = {
   id: string,
@@ -25,19 +22,17 @@ export const initializePassport: () => void = () => {
     done(null, user.id);
   });
 
-  passport.deserializeUser((id: string, done) => {
-    UserModel.findById(id)
-      .then((existingUser: UserModel | null) => {
-        if (existingUser) {
-          done(null, existingUser);
-        } else {
-          // user not found in database...
-        }
-      });
+  passport.deserializeUser(async (id: string, done) => {
+    const existingUser = await UserModel.findById(id);
+    if (existingUser) {
+      done(null, existingUser);
+    } else {
+      // user not found in database...
+    }
   });
 
   passport.use(
-    new googleStrategy(
+    new GoogleStrategy(
       {
         clientID: appConfig.googleClientID,
         clientSecret: appConfig.googleClientSecret,
@@ -72,7 +67,7 @@ export const initializePassport: () => void = () => {
           };
           done(null, user);
         } else {
-          done('Zugriff verweigert', null);
+          done(undefined, false, { message: 'Invalid user or password.' });
         }
       }
     ));

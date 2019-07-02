@@ -1,4 +1,5 @@
 export enum AppForms {
   CLAN_NEW_FORM = 'clanNewForm',
-  TEAM_PLAYER = 'teamPlayerList'
+  TEAM_PLAYER = 'teamPlayerList',
+  LOGIN = 'loginForm'
 }
