@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field, Formik, FormikActions } from 'formik';
-import { dofetchUser } from '../../app/actions/appActions';
+import { doLoginUser } from '../../app/actions/appActions';
 
 interface LoginFormProps {
 }
@@ -13,7 +13,7 @@ interface LoginFormData {
 const INITAL_VALUES: LoginFormData = { username: '', password: '' };
 
 const submitForm = (values: LoginFormData, actions: FormikActions<LoginFormData>) => {
-  dofetchUser();
+  doLoginUser(values.username, values.password);
 };
 
 const validateForm = (values: LoginFormData) => {
