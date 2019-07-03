@@ -1,8 +1,8 @@
 import React from 'react';
 import { Field, Formik, FormikActions } from 'formik';
-import { doLoginUser } from '../../app/actions/appActions';
 
 interface LoginFormProps {
+  loginUser: (username: string, password: string) => void
 }
 
 interface LoginFormData {
@@ -12,8 +12,8 @@ interface LoginFormData {
 
 const INITAL_VALUES: LoginFormData = { username: '', password: '' };
 
-const submitForm = (values: LoginFormData, actions: FormikActions<LoginFormData>) => {
-  doLoginUser(values.username, values.password);
+const submitForm = (props: LoginFormProps, values: LoginFormData, actions: FormikActions<LoginFormData>) => {
+  props.loginUser(values.username, values.password);
 };
 
 const validateForm = (values: LoginFormData) => {
@@ -29,13 +29,13 @@ const validateForm = (values: LoginFormData) => {
   return errors;
 };
 
-export const LoginForm = () => {
+export const LoginForm = (props: LoginFormProps) => {
   return (
     <Formik
       enableReinitialize={true}
       initialValues={INITAL_VALUES}
       validate={validateForm}
-      onSubmit={submitForm}
+      onSubmit={(values, actions) => submitForm(props, values, actions)}
     >
       {({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>

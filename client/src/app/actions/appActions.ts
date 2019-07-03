@@ -40,7 +40,8 @@ export const doLoginUser = (username: string, password: string): ((
   dispatch: Dispatch<Action<any>>
 ) => void) => async dispatch => {
   dispatch(loginUser.started({}));
-  const res = await axios.get('/api/current_user');
+  const loginData = { user: { username, password } };
+  const res = await axios.post('/api/login', loginData);
   const user = res.data.user;
   const loginState = !!user ? LoginState.LOGGED_IN : LoginState.LOGGED_OUT;
   const result: FetchUserResult = { loginState, user };

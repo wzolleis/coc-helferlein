@@ -25,4 +25,12 @@ export const authRoutes: (app: Application) => void = (app: Application) => {
     req.logout();
     res.redirect('/');
   });
+
+  app.post('/api/login', (req: Request, res: Response) => {
+    const user = req.body.user;
+    req.logIn(user, () => {
+    });
+    res.send({ user });
+  });
+
 };

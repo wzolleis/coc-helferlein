@@ -5,6 +5,7 @@ import passport from 'passport';
 import { initializePassport } from './auth/authUtil';
 import cookieSession from 'cookie-session';
 import { getConfig } from './config/keys';
+import bodyParser from 'body-parser';
 
 export const serverApp: Application = express();
 
@@ -21,6 +22,9 @@ export const init = () => {
   }));
   serverApp.use(passport.initialize());
   serverApp.use(passport.session());
+
+  serverApp.use(bodyParser.urlencoded({ extended: false }));
+  serverApp.use(bodyParser.json());
 
   authRoutes(serverApp);
   initializePassport();
