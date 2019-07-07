@@ -26,11 +26,11 @@ export const authRoutes: (app: Application) => void = (app: Application) => {
     res.redirect('/');
   });
 
-  app.post('/api/login', (req: Request, res: Response) => {
+  app.post('/api/login',
+    passport.authenticate('local'),
+    (req: Request, res: Response) => {
     const user = req.body.user;
-    req.logIn(user, () => {
-    });
-    res.send({ user });
+      res.send({ data: { user } });
   });
 
 };

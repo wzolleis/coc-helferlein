@@ -5,6 +5,7 @@ import { AuthType, User } from '../user/UserTypes';
 import { getConfig } from '../config/keys';
 import { AppConfig } from '../config/config';
 import passportLocal from 'passport-local';
+import uuid from 'uuid';
 
 const appConfig: AppConfig = getConfig();
 
@@ -19,10 +20,18 @@ export const initializePassport: () => void = () => {
   const UserModel: Model<UserModel> = model<UserModel>(USERS);
 
   passport.serializeUser((user: UserModel, done) => {
+    console.log('serialize user', user);
     done(null, user.id);
   });
 
   passport.deserializeUser(async (id: string, done) => {
+    if (id === 'djk') {
+      done({
+        username: 'djk',
+        password: 'djk',
+        id: 'djk'
+      });
+    }
     const existingUser = await UserModel.findById(id);
     if (existingUser) {
       done(null, existingUser);
@@ -60,17 +69,33 @@ export const initializePassport: () => void = () => {
   passport.use(
     new LocalStrategy(
       async (username, password, done) => {
+        const existingUser = await UserModel.findOne({ name: username, password: reverseString(password) });
+        if (existingUser) {
+          return done(null, existingUser);
+        }
+
+        // es wird ein neuer User angelegt.
         if (verifyUser(username, password)) {
+          var uuid = uuid.v4();
           const user: User = {
-            localId: username,
+            localId: uuid,
+            name: username,
+            password: reverseString(password),
             authType: AuthType.local
           };
-          done(null, user);
+          const newUser = await new UserModel(user).save();
+
+          done(null, newUser);
         } else {
-          done(undefined, false, { message: 'Invalid user or password.' });
+          // falsches Passwort oder Username
+          done(null, false);
         }
       }
     ));
+};
+
+const reverseString = (str) => {
+  return str.split('').reverse().join('');
 };
 
 const verifyUser = (username: string, password: string): boolean => {
