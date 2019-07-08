@@ -1,5 +1,5 @@
 import { AuthState, LoginState } from '../applicationTypes';
-import { fetchUser, FetchUserResult } from '../actions/appActions';
+import { fetchUser, FetchUserResult, loginUser } from '../actions/appActions';
 import { Reducer } from 'redux';
 import { Action, isType } from 'typescript-fsa';
 
@@ -21,6 +21,22 @@ export const authReducer: Reducer<AuthState, Action<any>> = (
   }
 
   if (isType(action, fetchUser.done)) {
+    const result: FetchUserResult = action.payload.result;
+    return {
+      ...state,
+      ...result
+    };
+  }
+
+  if (isType(action, loginUser.started)) {
+    return {
+      ...state,
+      loginState: LoginState.UNDEFINED,
+      user: undefined
+    };
+  }
+
+  if (isType(action, loginUser.done)) {
     const result: FetchUserResult = action.payload.result;
     return {
       ...state,

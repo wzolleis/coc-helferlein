@@ -20,18 +20,10 @@ export const initializePassport: () => void = () => {
   const UserModel: Model<UserModel> = model<UserModel>(USERS);
 
   passport.serializeUser((user: UserModel, done) => {
-    console.log('serialize user', user);
     done(null, user.id);
   });
 
   passport.deserializeUser(async (id: string, done) => {
-    if (id === 'djk') {
-      done({
-        username: 'djk',
-        password: 'djk',
-        id: 'djk'
-      });
-    }
     const existingUser = await UserModel.findById(id);
     if (existingUser) {
       done(null, existingUser);
@@ -69,7 +61,8 @@ export const initializePassport: () => void = () => {
   passport.use(
     new LocalStrategy(
       async (username, password, done) => {
-        const existingUser = await UserModel.findOne({ name: username, password: reverseString(password) });
+        const passwordReversed = reverseString(password);
+        const existingUser = await UserModel.findOne({ name: username, password: passwordReversed });
         if (existingUser) {
           return done(null, existingUser);
         }
@@ -80,7 +73,7 @@ export const initializePassport: () => void = () => {
           const user: User = {
             localId: uuid,
             name: username,
-            password: reverseString(password),
+            password: passwordReversed,
             authType: AuthType.local
           };
           const newUser = await new UserModel(user).save();

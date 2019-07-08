@@ -1,7 +1,7 @@
 import { LoginState, UserModel } from '../applicationTypes';
 import { Dispatch } from 'redux';
 import actionCreatorFactory, { Action } from 'typescript-fsa';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 export interface FetchUserResult {
   loginState: LoginState,
@@ -40,8 +40,8 @@ export const doLoginUser = (username: string, password: string): ((
   dispatch: Dispatch<Action<any>>
 ) => void) => async dispatch => {
   dispatch(loginUser.started({}));
-  const loginData = { user: { id: 666, username, password } };
-  const res = await axios.post('/api/login', loginData);
+  const loginData = { username, password };
+  const res: AxiosResponse = await axios.post('/api/login', loginData);
   const user = res.data.user;
   const loginState = !!user ? LoginState.LOGGED_IN : LoginState.LOGGED_OUT;
   const result: FetchUserResult = { loginState, user };

@@ -16,7 +16,7 @@ interface AppComponentDispatch {
 
 class App extends React.Component<AppComponentDispatch> {
     componentDidMount(): void {
-        this.props.fetchUser();
+        // this.props.fetchUser();
     }
 
     render() {
