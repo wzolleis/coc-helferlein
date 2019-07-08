@@ -5,5 +5,7 @@ export const PROD_CONFG: AppConfig = {
   googleClientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
   mongoURI: process.env.MONGO_URI || '',
   cookieKey: process.env.COOKIE_KEY || '',
-  cocApiToken: process.env.COC_API_TOKEN || ''
+  cocApiToken: process.env.COC_API_TOKEN || '',
+  localUser: process.env.LOCAL_USER || '',
+  localPassword: process.env.LOCAL_USER_PW || ''
 };

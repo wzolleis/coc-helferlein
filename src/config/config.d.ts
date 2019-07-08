@@ -3,5 +3,7 @@ export type  AppConfig = {
   googleClientSecret: string,
   mongoURI: string,
   cookieKey: string,
-  cocApiToken: string
+  cocApiToken: string,
+  localUser: string,
+  localPassword: string
 };

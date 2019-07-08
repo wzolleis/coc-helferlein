@@ -12,6 +12,7 @@ const appConfig: AppConfig = getConfig();
 const LocalStrategy = passportLocal.Strategy;
 const GoogleStrategy: any = require('passport-google-oauth20').Strategy;
 
+
 export type GoogleProfile = {
   id: string,
 };
@@ -92,5 +93,5 @@ const reverseString = (str) => {
 };
 
 const verifyUser = (username: string, password: string): boolean => {
-  return username === 'djk' && password === 'djk';
+  return username === appConfig.localUser && password === appConfig.localPassword;
 };
