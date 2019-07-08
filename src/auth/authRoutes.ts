@@ -29,7 +29,6 @@ export const authRoutes: (app: Application) => void = (app: Application) => {
   app.post('/api/login',
     passport.authenticate('local'),
     (req: Request, res: Response) => {
-      console.log('user in request after authenticate: ', req.user);
       res.send({ user: req.user });
   });
 
