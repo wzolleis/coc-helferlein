@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { doCalculateMatches, doFetchPlayers } from '../actions/teamActions';
-import { AppState } from '../../app/applicationTypes';
+import { AppState, LoginState } from '../../app/applicationTypes';
 import { MatchModel, PlayerModel } from '../models/teamTypes';
 import PlayerList, { PlayerListFormValues } from './PlayerList';
 import MatchList from './MatchList';
+import { RouteComponentProps, withRouter } from 'react-router';
+import { AppLinks } from '../../app/AppLinks';
 
 interface TeamManagementContainerProps {
   players: PlayerModel[],
-  matches: MatchModel[]
+  matches: MatchModel[],
+  loginState: LoginState
 }
 
 interface TeamManagementContainerDispatch {
@@ -16,7 +19,7 @@ interface TeamManagementContainerDispatch {
   calculateMatches: (players: PlayerModel[]) => void
 }
 
-interface CombinedProps extends TeamManagementContainerDispatch, TeamManagementContainerProps {
+interface CombinedProps extends TeamManagementContainerDispatch, TeamManagementContainerProps, RouteComponentProps<any> {
 
 }
 
@@ -33,6 +36,10 @@ class TeamManagementContainer extends Component<CombinedProps> {
   }
 
   render() {
+    if (this.props.loginState !== LoginState.LOGGED_IN) {
+      this.props.history.push(AppLinks.LOGIN);
+    }
+
     return (
       <React.Fragment>
         <PlayerList players={this.props.players} onHandlePlayerSelected={this.onHandlePlayerSubmit}/>
@@ -42,13 +49,15 @@ class TeamManagementContainer extends Component<CombinedProps> {
   }
 }
 
-const mapStateToProps = ({ teams }: AppState): TeamManagementContainerProps => {
+const mapStateToProps = ({ auth, teams }: AppState): TeamManagementContainerProps => {
   return {
+    loginState: auth.loginState,
     players: teams.players,
     matches: teams.matches
   };
 };
 
-export default connect(mapStateToProps, {
+export default withRouter(
+  connect(mapStateToProps, {
   fetchPlayers: doFetchPlayers, calculateMatches: doCalculateMatches
-})(TeamManagementContainer);
+  })(TeamManagementContainer));
