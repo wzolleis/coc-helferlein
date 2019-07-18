@@ -82,11 +82,19 @@ export const stammspieler: PlayerModel[] = [
     condition: SkillLevel.MEDIUM,
     speed: SkillLevel.MEDIUM,
     technicalSkill: SkillLevel.MEDIUM
+  },
+  {
+    ...DEFAULT_PLAYER,
+    id: '10',
+    name: 'Huan',
+    condition: SkillLevel.MEDIUM,
+    speed: SkillLevel.MEDIUM,
+    technicalSkill: SkillLevel.HIGH
   }
   /*
   {
     ...DEFAULT_PLAYER,
-    id: '10',
+    id: '11',
     name: 'Tobi',
     condition: SkillLevel.HIGH,
     speed: SkillLevel.HIGH,
@@ -94,7 +102,7 @@ export const stammspieler: PlayerModel[] = [
   },
   {
     ...DEFAULT_PLAYER,
-    id: '11',
+    id: '12',
     name: 'Martin',
     condition: SkillLevel.PROFI,
     speed: SkillLevel.PROFI,
