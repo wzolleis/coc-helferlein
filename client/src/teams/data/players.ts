@@ -75,6 +75,7 @@ export const stammspieler: PlayerModel[] = [
     speed: SkillLevel.LOW,
     technicalSkill: SkillLevel.MEDIUM
   },
+  /*
   {
     ...DEFAULT_PLAYER,
     id: '9',
@@ -91,6 +92,7 @@ export const stammspieler: PlayerModel[] = [
     speed: SkillLevel.PROFI,
     technicalSkill: SkillLevel.PROFI
   }
+   */
 ];
 
 export const createPlayers = () => {

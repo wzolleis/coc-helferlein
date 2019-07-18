@@ -3,6 +3,7 @@ import { AnimatedCheckbox } from './animatedCheckbox';
 import { Link } from 'react-router-dom';
 import React from 'react';
 import '../../css/checkbox.css';
+import { PlayerModel } from '../models/teamTypes';
 
 interface PlayerAttribute {
   key: string,
@@ -41,7 +42,7 @@ const renderAttribute = (attribute: PlayerAttribute) => {
   return <Attribute key={attribute.key} attribute={attribute}/>;
 };
 
-export const renderPlayer = (player, index) => {
+export const renderPlayer = (player: PlayerModel, index) => {
   const condition: PlayerAttribute = {
     key: `players.${index}.condition`,
     value: player.condition,
@@ -69,10 +70,11 @@ export const renderPlayer = (player, index) => {
   return (
     <div key={index} className='card'>
       <h5 className='card-header'>
+        <Field name={`players.${index}.anwesend`} component={AnimatedCheckbox}/>
         <a data-toggle='collapse' href={'#player-' + index} aria-expanded='true'
            id={`players.${index}.collapse`} className='d-block collapsed'>
           <i className='fa fa-chevron-down pull-right'/>
-          {player.name}
+          <label>{player.name}</label>
         </a>
       </h5>
       <div id={'player-' + index} className='collapse' aria-labelledby={`players.${index}.collapse`}>
