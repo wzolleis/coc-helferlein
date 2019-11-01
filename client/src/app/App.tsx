@@ -8,7 +8,7 @@ import { AppLinks } from './AppLinks';
 import Dashboard from './components/Dashboard';
 import TeamManagementContainer from '../teams/components/TeamManagementContainer';
 import LoginFormContainer from '../login/components/LoginFormContainer';
-import ClanWarLeague from '../coc/cwl/components/ClanWarLeague';
+import ClanWarLeagueContainer from '../coc/cwl/components/ClanWarLeagueContainer';
 
 
 interface AppComponentDispatch {
@@ -40,7 +40,7 @@ class App extends React.Component<AppComponentDispatch> {
                         <Route
                             path={AppLinks.COC_CWL}
                             exact={true}
-                            component={ClanWarLeague}
+                            component={ClanWarLeagueContainer}
                         />
                         <Route
                           path={AppLinks.LOGIN}
