@@ -43,16 +43,29 @@ export class Header extends React.Component<HeaderProps> {
 
   renderLeftMenuItems(): React.ReactFragment | null {
     if (this.props.loginState !== LoginState.LOGGED_IN) {
-      return null;
+      return this.renderCocMenuItems();
     }
     return (
       <ul className='navbar-nav mr-auto'>
         <li className={'nam-item nav-link'}>
           <Link className={'nav-link'} to={AppLinks.TEAM_MANAGEMENT}>Team Management</Link>
         </li>
+          <li className={'nam-item nav-link'}>
+              <Link className={'nav-link'} to={AppLinks.COC_CWL}>COC CWL</Link>
+          </li>
       </ul>
     );
   }
+
+  renderCocMenuItems = () => {
+      return (
+          <ul className='navbar-nav mr-auto'>
+              <li className={'nam-item nav-link'}>
+                  <Link className={'nav-link'} to={AppLinks.COC_CWL}>CWL</Link>
+              </li>
+          </ul>
+      );
+  };
 
   renderRightMenuItems(): React.ReactFragment {
     return (
