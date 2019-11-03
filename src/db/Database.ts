@@ -25,7 +25,7 @@ export class Database {
 
   static connect = () => {
     const appConfig: AppConfig = getConfig();
-    mongoose.connect(appConfig.mongoURI, { useNewUrlParser: true });
+    mongoose.connect(appConfig.mongoURI, { useUnifiedTopology: true, useNewUrlParser: true });
   };
 
   static registerSchemes = () => {
