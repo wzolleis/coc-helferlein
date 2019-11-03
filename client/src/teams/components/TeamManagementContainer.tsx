@@ -19,9 +19,7 @@ interface TeamManagementContainerDispatch {
   calculateMatches: (players: PlayerModel[]) => void
 }
 
-interface CombinedProps extends TeamManagementContainerDispatch, TeamManagementContainerProps, RouteComponentProps<any> {
-
-}
+type CombinedProps = TeamManagementContainerDispatch & TeamManagementContainerProps & RouteComponentProps<any>;
 
 class TeamManagementContainer extends Component<CombinedProps> {
   state = { showMatchForm: false };
