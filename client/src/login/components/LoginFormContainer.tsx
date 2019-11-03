@@ -15,9 +15,7 @@ interface LoginFormContainerProps {
   loginState: LoginState
 }
 
-interface LoginFormContainerCombinedProps extends LoginFormContainerProps, LoginFormContainerDispatch, RouteComponentProps<any> {
-
-}
+type LoginFormContainerCombinedProps = LoginFormContainerProps & LoginFormContainerDispatch & RouteComponentProps<any>;
 
 class LoginFormContainer extends Component<LoginFormContainerCombinedProps> {
   render() {
