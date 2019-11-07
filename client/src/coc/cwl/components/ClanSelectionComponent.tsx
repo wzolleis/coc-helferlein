@@ -8,6 +8,7 @@ interface FormValues {
 
 interface FormProps {
     clanTag?: string;
+    onFetchCwlInfo: (clanTag: string) => void;
 }
 
 type ValidationVisible = string | boolean;
@@ -64,14 +65,9 @@ const UserSearchForm = withFormik<FormProps, FormValues>({
                 .required('ohne Clan Tag geht hier nix')
         }
     ),
-    handleSubmit: (values, {setSubmitting}) => {
-        setTimeout(
-            () => {
-                alert(JSON.stringify(values, null, 2));
-                setSubmitting(false);
-            },
-            1000
-        );
+    handleSubmit: (values: FormValues, {props, setSubmitting}) => {
+        props.onFetchCwlInfo(values.clanTag);
+        setSubmitting(false);
     }
 })(InnerForm);
 
