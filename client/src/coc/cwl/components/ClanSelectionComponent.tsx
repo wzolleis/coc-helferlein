@@ -1,6 +1,7 @@
 import { InjectedFormikProps, withFormik } from 'formik';
 import React from 'react';
 import { object, string } from 'yup';
+import { TOMS_HUETTE_CLAN_TAG } from '../../../common/cocConstants';
 
 interface FormValues {
     clanTag: string;
@@ -59,7 +60,7 @@ const InnerForm: React.FC<InjectedFormikProps<FormProps, FormValues>> = (props) 
 
 
 const UserSearchForm = withFormik<FormProps, FormValues>({
-    mapPropsToValues: () => ({clanTag: 'QLGYVPQ9'}),
+    mapPropsToValues: () => ({clanTag: TOMS_HUETTE_CLAN_TAG}),
     validationSchema: object().shape({
             clanTag: string()
                 .required('ohne Clan Tag geht hier nix')

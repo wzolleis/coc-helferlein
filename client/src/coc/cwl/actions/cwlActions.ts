@@ -20,5 +20,6 @@ export const FetchCwlInfoAction = actionCreator.async<FetchCwlInfoParams, FetchC
 export const fetchCwlInfos = (clanTag: string) => {
     return (dispatch) => {
         dispatch(FetchCwlInfoAction.started({clanTag}));
+        dispatch(FetchCwlInfoAction.done({params: {clanTag}, result: {clanTag}}));
     }
 };
