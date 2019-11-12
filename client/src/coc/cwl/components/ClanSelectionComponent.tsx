@@ -7,7 +7,7 @@ interface FormValues {
     clanTag: string;
 }
 
-interface FormProps {
+export interface ClanSelectionFormProps {
     clanTag?: string;
     onFetchCwlInfo: (clanTag: string) => void;
 }
@@ -27,7 +27,7 @@ const FormValidation: React.FC<FormValidationProps> = (props) => {
     );
 };
 
-const InnerForm: React.FC<InjectedFormikProps<FormProps, FormValues>> = (props) => {
+const InnerForm: React.FC<InjectedFormikProps<ClanSelectionFormProps, FormValues>> = (props) => {
     const showValidationMessage = props.touched.clanTag && props.errors.clanTag;
     return (
         <form onSubmit={props.handleSubmit}>
@@ -47,7 +47,7 @@ const InnerForm: React.FC<InjectedFormikProps<FormProps, FormValues>> = (props) 
                     />
                     <div/>
                     <div className='input-group-append'>
-                        <button className={'btn btn-primary'} type='submit' disabled={props.isSubmitting}>
+                        <button id='clan-selection-btn' className={'btn btn-primary'} type='submit' disabled={props.isSubmitting}>
                             Clan War League Informationen
                         </button>
                     </div>
@@ -59,7 +59,7 @@ const InnerForm: React.FC<InjectedFormikProps<FormProps, FormValues>> = (props) 
 };
 
 
-const UserSearchForm = withFormik<FormProps, FormValues>({
+const ClanSelectionComponent = withFormik<ClanSelectionFormProps, FormValues>({
     mapPropsToValues: () => ({clanTag: TOMS_HUETTE_CLAN_TAG}),
     validationSchema: object().shape({
             clanTag: string()
@@ -72,4 +72,4 @@ const UserSearchForm = withFormik<FormProps, FormValues>({
     }
 })(InnerForm);
 
-export default UserSearchForm;
+export default ClanSelectionComponent;
