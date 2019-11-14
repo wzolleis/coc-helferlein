@@ -27,7 +27,9 @@ const FormValidation: React.FC<FormValidationProps> = (props) => {
     );
 };
 
-const InnerForm: React.FC<InjectedFormikProps<ClanSelectionFormProps, FormValues>> = (props) => {
+export type ClanSelectionExtendedProps = InjectedFormikProps<ClanSelectionFormProps, FormValues>;
+
+export const InnerForm: React.FC<ClanSelectionExtendedProps> = (props) => {
     const showValidationMessage = props.touched.clanTag && props.errors.clanTag;
     return (
         <form onSubmit={props.handleSubmit}>
