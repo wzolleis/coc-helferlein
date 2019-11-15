@@ -1,4 +1,5 @@
 import { TeamState } from '../teams/models/teamTypes';
+import { CwlState } from '../coc/cwl/models/cwlTypes';
 
 export interface UserModel {
   googleId: string;
@@ -30,7 +31,8 @@ export interface FormValidationConfig<T, E> extends FormConfig<T> {
 }
 
 export interface AppState {
-  auth: AuthState
-  form: FormState
-  teams: TeamState
+  auth: AuthState;
+  form: FormState;
+  teams: TeamState;
+  cwl: CwlState;
 }

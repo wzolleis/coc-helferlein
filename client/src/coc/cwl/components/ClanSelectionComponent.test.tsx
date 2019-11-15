@@ -4,7 +4,8 @@ import ClanSelectionComponent, { ClanSelectionFormProps } from './ClanSelectionC
 
 
 const INITAL_PROPS: ClanSelectionFormProps = {
-    onFetchCwlInfo: jest.fn()
+    onFetchCwlInfo: jest.fn(),
+    navigate: jest.fn()
 };
 
 interface WrapperData {

@@ -2,6 +2,7 @@ import { InjectedFormikProps, withFormik } from 'formik';
 import React from 'react';
 import { object, string } from 'yup';
 import { TOMS_HUETTE_CLAN_TAG } from '../../../common/cocConstants';
+import { AppLinks } from '../../../app/AppLinks';
 
 interface FormValues {
     clanTag: string;
@@ -10,6 +11,7 @@ interface FormValues {
 export interface ClanSelectionFormProps {
     clanTag?: string;
     onFetchCwlInfo: (clanTag: string) => void;
+    navigate: (path: string) => void;
 }
 
 type ValidationVisible = string | boolean;
@@ -69,8 +71,9 @@ const ClanSelectionComponent = withFormik<ClanSelectionFormProps, FormValues>({
         }
     ),
     handleSubmit: (values: FormValues, {props, setSubmitting}) => {
-        props.onFetchCwlInfo(values.clanTag);
         setSubmitting(false);
+        props.onFetchCwlInfo(values.clanTag);
+        props.navigate(AppLinks.COC_CWL_OVERVIEW);
     }
 })(InnerForm);
 
