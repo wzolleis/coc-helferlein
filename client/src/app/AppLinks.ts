@@ -4,7 +4,7 @@ export enum AppLinks {
     TEAMS_CALCULATION = '/teams/calculate',
     PLAYER_EDIT = '/players/:playerId',
     TEAM_MANAGEMENT = '/teammanagement',
-    COC_CWL= '/COC_CWL',
-    COC_CWL_OVERVIEW = '/COC_CWL_OVERVIEW',
+    COC_CWL= '/coc_cwl',
+    COC_CWL_OVERVIEW = '/coc_cwl/overview',
     LOGIN = '/login'
 }
