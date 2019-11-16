@@ -7,3 +7,7 @@ export const TOMS_HUETTE_CLAN_DATA: ClanData = {
     clanName: 'TOMS HUETTE',
     cwlFile: 'cwl_toms_huette.json'
 };
+
+export const ALL_CLAN_DATA: ClanData[] = [
+    TOMS_HUETTE_CLAN_DATA
+];

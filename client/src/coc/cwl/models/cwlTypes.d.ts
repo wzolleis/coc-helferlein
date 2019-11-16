@@ -1,3 +1,6 @@
+import { CwlSeason } from './cwl';
+
 export interface CwlState {
-    clanTag: string
+    clanTag: string;
+    cwlSeason?: CwlSeason;
 }

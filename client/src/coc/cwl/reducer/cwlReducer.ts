@@ -4,7 +4,8 @@ import { Reducer } from 'redux';
 import { FetchCwlInfoAction } from '../actions/cwlActions';
 
 export const INITIAL_CWL_STATE: CwlState = {
-    clanTag: ''
+    clanTag: '',
+    cwlSeason: undefined
 };
 
 export const cwlReducer: Reducer<CwlState, AnyAction> = (
