@@ -1,11 +1,12 @@
 import { model, Model } from 'mongoose';
-import { UserModel, USERS } from '../db/Database';
+import { USERS } from '../db/Database';
 import passport from 'passport';
 import { AuthType, User } from '../user/UserTypes';
 import { getConfig } from '../config/keys';
 import { AppConfig } from '../config/config';
 import passportLocal from 'passport-local';
 import uuid from 'uuid';
+import { UserModel } from '../db/databaseSchemes';
 
 const appConfig: AppConfig = getConfig();
 

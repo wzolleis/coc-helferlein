@@ -8,6 +8,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import reducers, { INITIAL_STATE } from './app/reducers/reducers';
 import 'bootstrap/dist/css/bootstrap.css';
+import promise from 'redux-promise-middleware'
 
 const composeEnhancers = composeWithDevTools({
   // Specify name here, actionsBlacklist, actionsCreators and other options if needed
@@ -16,7 +17,7 @@ const composeEnhancers = composeWithDevTools({
 const store = createStore(
   reducers,
   INITIAL_STATE,
-  composeEnhancers(applyMiddleware(thunk, logger))
+  composeEnhancers(applyMiddleware(thunk, promise, logger))
 );
 
 ReactDOM.render(

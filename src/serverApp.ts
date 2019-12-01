@@ -6,6 +6,7 @@ import { initializePassport } from './auth/authUtil';
 import cookieSession from 'cookie-session';
 import { getConfig } from './config/keys';
 import bodyParser from 'body-parser';
+import { cwlRoutes } from './cwl/cwlRoutes';
 
 export const serverApp: Application = express();
 
@@ -26,7 +27,9 @@ export const init = () => {
   serverApp.use(bodyParser.urlencoded({ extended: false }));
   serverApp.use(bodyParser.json());
 
+  cwlRoutes(serverApp);
   authRoutes(serverApp);
+
   initializePassport();
 
   if (process.env.NODE_ENV === 'production') {

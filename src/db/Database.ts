@@ -1,38 +1,35 @@
-import { Document, model, Schema } from 'mongoose';
-import { User } from '../user/UserTypes';
+import { Model, model } from 'mongoose';
 import { getConfig } from '../config/keys';
 import { AppConfig } from '../config/config';
+import { CWL_SEASON_SCHEMA, CwlSeasonModel, USER_SCHEMA, UserModel } from './databaseSchemes';
 import mongoose = require('mongoose');
 
 export const USERS: string = 'users';
+export const CWL: string = 'cwl-season';
 
-export interface UserModel extends User, Document {
-
-}
-
-export const USER_SCHEMA: Schema = new Schema({
-  googleId: String,
-  localId: String,
-  authType: String
-});
 
 export class Database {
 
-  public static init = () => {
-    Database.connect();
-    Database.registerSchemes();
-  };
+    public static cwlSeasonModel: Model<CwlSeasonModel>;
 
-  static connect = () => {
-    const appConfig: AppConfig = getConfig();
-    mongoose.connect(appConfig.mongoURI, { useUnifiedTopology: true, useNewUrlParser: true });
-  };
+    public static init = () => {
+        Database.connect();
+        Database.registerSchemes();
+        Database.debug('');
+    };
 
-  static registerSchemes = () => {
-    model<UserModel>(USERS, USER_SCHEMA);
-  };
+    static connect = () => {
+        const appConfig: AppConfig = getConfig();
+        mongoose.connect(appConfig.mongoURI, {useUnifiedTopology: true, useNewUrlParser: true});
+    };
 
-  public static debug(debug: any) {
-    mongoose.set('debug', debug);
-  }
+    static registerSchemes = () => {
+        model<UserModel>(USERS, USER_SCHEMA);
+        Database.cwlSeasonModel = model<CwlSeasonModel>(CWL, CWL_SEASON_SCHEMA);
+
+    };
+
+    public static debug(debug: any) {
+        mongoose.set('debug', debug);
+    }
 }

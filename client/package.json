@@ -19,6 +19,7 @@
     "redux-form": "^8.2.6",
     "redux-logger": "latest",
     "redux-thunk": "^2.3.0",
+    "redux-promise-middleware": "^6.1.2",
     "typescript-fsa": "^3.0.0",
     "yup": "^0.27.0"
   },
