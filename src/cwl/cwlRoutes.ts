@@ -1,22 +1,14 @@
 import { Application, Request, Response } from 'express';
-import { Database } from '../db/Database';
-import { CwlSeasonModel } from '../db/databaseSchemes';
-import { Clan, ClanMember } from './cwl';
+import { CWL } from '../db/Database';
+import { CWL_SEASON_SCHEMA, CwlSeasonModel } from '../db/databaseSchemes';
+import { model } from 'mongoose';
 
 
 export const cwlRoutes = (app: Application) => {
     app.get('/api/cwl-seasons', async (req: Request, res: Response) => {
 
-        const result: CwlSeasonModel[] = await Database.cwlSeasonModel.find({});
-
-        result.forEach((model: CwlSeasonModel) => {
-            model.clans.forEach((clan: Clan) => {
-                const townhall12Members: ClanMember[] = clan.members.filter((member: ClanMember) => {
-                    return member.townHallLevel >= 12
-                });
-                console.log(`clan ${clan.name}: ${townhall12Members.length}`)
-            })
-        });
+        const cwlSeasonModel = model<CwlSeasonModel>(CWL, CWL_SEASON_SCHEMA, CWL);
+        const result: CwlSeasonModel[]  = await cwlSeasonModel.find();
 
         res.send(result);
     });

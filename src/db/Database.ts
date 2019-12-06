@@ -10,8 +10,6 @@ export const CWL: string = 'cwl-season';
 
 export class Database {
 
-    public static cwlSeasonModel: Model<CwlSeasonModel>;
-
     public static init = () => {
         Database.connect();
         Database.registerSchemes();
@@ -25,7 +23,7 @@ export class Database {
 
     static registerSchemes = () => {
         model<UserModel>(USERS, USER_SCHEMA);
-        Database.cwlSeasonModel = model<CwlSeasonModel>(CWL, CWL_SEASON_SCHEMA);
+        model<CwlSeasonModel>(CWL, CWL_SEASON_SCHEMA);
 
     };
 
