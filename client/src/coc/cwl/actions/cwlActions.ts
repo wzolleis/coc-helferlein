@@ -35,12 +35,19 @@ export const fetchCwlInfos = (clanTag: string) => {
                 }
             }));
         } else {
-            const response =  await axios.get('/api/cwl-seasons');
-            const json: string = response.data;
-            console.log('json = ' + json);
-            const cwlSeason: CwlSeason = JSON.parse(json);
-            dispatch(FetchCwlInfoAction.done(
-                {params: {clanTag}, result: {clanTag, cwlSeason}}))
+            const response = await axios.get(`/api/cwl-seasons/2019-12/${clanTag}`);
+            const cwlSeason: CwlSeason = response.data;
+            if (cwlSeason) {
+                dispatch(FetchCwlInfoAction.done(
+                    {params: {clanTag}, result: {clanTag, cwlSeason}}));
+            } else {
+                dispatch(FetchCwlInfoAction.failed({
+                    params: {clanTag}, error: {
+                        statusTxt: 'Keine Daten',
+                        status: 404
+                    }
+                }));
+            }
         }
     };
 };

@@ -1,6 +1,9 @@
 export interface CwlSeason {
     state: string;
     season: string;
+    clan: {
+        tag: string;
+    };
     clans: Clan[];
     rounds: CwlRound[];
 }
