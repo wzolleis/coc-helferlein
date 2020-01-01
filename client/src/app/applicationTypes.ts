@@ -18,21 +18,8 @@ export interface AuthState {
   user?: UserModel;
 }
 
-
-interface FormState {
-}
-
-export interface FormConfig<T> {
-  form: string,
-}
-
-export interface FormValidationConfig<T, E> extends FormConfig<T> {
-  validate: (T) => E
-}
-
 export interface AppState {
   auth: AuthState;
-  form: FormState;
   teams: TeamState;
   cwl: CwlState;
 }

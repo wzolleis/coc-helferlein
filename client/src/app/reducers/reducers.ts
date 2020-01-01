@@ -6,11 +6,9 @@ import { reducer as formReducer } from 'redux-form';
 import { cwlReducer, INITIAL_CWL_STATE } from '../../coc/cwl/reducer/cwlReducer';
 
 
-const INITIAL_FORM_STATE = {};
 
 export const INITIAL_STATE: AppState = {
     auth: INITIAL_AUTH_STATE,
-    form: INITIAL_FORM_STATE,
     teams: INITIAL_TEAM_STATE,
     cwl: INITIAL_CWL_STATE
 };
