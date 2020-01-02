@@ -1,16 +1,18 @@
-import { InjectedFormikProps, withFormik } from 'formik';
+import {FormikProps, withFormik} from 'formik';
 import React from 'react';
-import { object, string } from 'yup';
-import { TOMS_HUETTE_CLAN_TAG } from '../../../common/cocConstants';
-import { AppLinks } from '../../../app/AppLinks';
+import {object, string} from 'yup';
+import {TOMS_HUETTE_CLAN_TAG} from '../../../common/cocConstants';
+import {AppLinks} from '../../../app/AppLinks';
 
 interface FormValues {
     clanTag: string;
+    season: string;
 }
 
 export interface ClanSelectionFormProps {
     clanTag?: string;
-    onFetchCwlInfo: (clanTag: string) => void;
+    season?: string;
+    onFetchCwlInfo: (clanTag: string, season: string) => void;
     navigate: (path: string) => void;
 }
 
@@ -29,7 +31,7 @@ const FormValidation: React.FC<FormValidationProps> = (props) => {
     );
 };
 
-export type ClanSelectionExtendedProps = InjectedFormikProps<ClanSelectionFormProps, FormValues>;
+export type ClanSelectionExtendedProps = ClanSelectionFormProps & FormikProps<FormValues>;
 
 export const InnerForm: React.FC<ClanSelectionExtendedProps> = (props) => {
     const showValidationMessage = props.touched.clanTag && props.errors.clanTag;
@@ -50,8 +52,26 @@ export const InnerForm: React.FC<ClanSelectionExtendedProps> = (props) => {
                         value={props.values.clanTag}
                     />
                     <div/>
+                </div>
+            </div>
+            <div className={'form-group'}>
+                <label htmlFor='season'>Season</label>
+                <div className='input-group mb-3'>
+                    <div className='input-group-prepend'>
+                        <span className='input-group-text' id='season-prepend'>#</span>
+                    </div>
+                    <input
+                        id='season'
+                        placeholder='2020-01'
+                        type='text'
+                        className={'form-control'}
+                        onChange={props.handleChange}
+                        value={props.values.season}
+                    />
+                    <div/>
                     <div className='input-group-append'>
-                        <button id='clan-selection-btn' className={'btn btn-primary'} type='submit' disabled={props.isSubmitting}>
+                        <button id='clan-selection-btn' className={'btn btn-primary'} type='submit'
+                                disabled={props.isSubmitting}>
                             Clan War League Informationen
                         </button>
                     </div>
@@ -64,7 +84,7 @@ export const InnerForm: React.FC<ClanSelectionExtendedProps> = (props) => {
 
 
 const ClanSelectionComponent = withFormik<ClanSelectionFormProps, FormValues>({
-    mapPropsToValues: () => ({clanTag: TOMS_HUETTE_CLAN_TAG}),
+    mapPropsToValues: (props) => ({clanTag: props.clanTag || TOMS_HUETTE_CLAN_TAG, season: props.season || '2020-01'}),
     validationSchema: object().shape({
             clanTag: string()
                 .required('ohne Clan Tag geht hier nix')
@@ -72,7 +92,7 @@ const ClanSelectionComponent = withFormik<ClanSelectionFormProps, FormValues>({
     ),
     handleSubmit: (values: FormValues, {props, setSubmitting}) => {
         setSubmitting(false);
-        props.onFetchCwlInfo(values.clanTag);
+        props.onFetchCwlInfo(values.clanTag, values.season);
         props.navigate(AppLinks.COC_CWL_OVERVIEW);
     }
 })(InnerForm);

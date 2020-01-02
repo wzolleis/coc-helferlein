@@ -6,7 +6,7 @@ import { useHistory } from 'react-router';
 
 const ClanWarLeagueContainer: React.FC = () => {
     const dispatch = useDispatch();
-    const onFetchCwlInfos = (clanTag: string) => dispatch(fetchCwlInfos(clanTag));
+    const onFetchCwlInfos = (clanTag: string, season: string) => dispatch(fetchCwlInfos(clanTag, season));
     const history = useHistory();
     const navigate = (path: string) => history.push(path);
 

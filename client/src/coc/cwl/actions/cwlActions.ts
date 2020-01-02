@@ -23,7 +23,7 @@ interface FetchCwlInfoParams {
 
 export const FetchCwlInfoAction = actionCreator.async<FetchCwlInfoParams, FetchCwlInformationPayload, FetchError>(CwlActions.FETCH_CWL_INFO);
 
-export const fetchCwlInfos = (clanTag: string) => {
+export const fetchCwlInfos = (clanTag: string, season: string) => {
     return async (dispatch: ThunkDispatch<AppState, {}, AnyAction>) => {
         dispatch(FetchCwlInfoAction.started({clanTag}));
         const clanData = ALL_CLAN_DATA.find(clan => clan.clanTag === clanTag);
@@ -35,7 +35,7 @@ export const fetchCwlInfos = (clanTag: string) => {
                 }
             }));
         } else {
-            const response = await axios.get(`/api/cwl-seasons/2019-12/${clanTag}`);
+            const response = await axios.get(`/api/cwl-seasons/${season}/${clanTag}`);
             const cwlSeason: CwlSeason = response.data;
             if (cwlSeason) {
                 dispatch(FetchCwlInfoAction.done(
