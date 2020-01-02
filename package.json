@@ -43,7 +43,8 @@
     "passport-local": "^1.0.0",
     "popper.js": "^1.16.0",
     "request": "^2.88.0",
-    "uuid": "^3.3.3"
+    "uuid": "^3.3.3",
+    "ramda": "^0.26.1"
   },
   "devDependencies": {
     "@types/body-parser": "^1.17.1",

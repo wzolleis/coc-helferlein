@@ -39,6 +39,7 @@ export interface TownHallStats {
 
 export interface ClanStats {
     tag: string;
+    name: string;
     townHallStats: TownHallStats[];
 }
 
