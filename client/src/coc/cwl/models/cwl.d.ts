@@ -32,3 +32,23 @@ export interface Clan {
     badgeUrls: ClanBadges;
     members: ClanMember[];
 }
+
+export interface TownHallStats {
+    level: number;
+    numberOfTownHalls: number;
+}
+
+export interface ClanStats {
+    tag: string;
+    name: string;
+    townHallStats: TownHallStats[];
+}
+
+export interface CwlSeasonStats {
+    clanStats: ClanStats[];
+}
+
+export interface CwlSeasonGetResponse {
+    season: CwlSeason;
+    stats: CwlSeasonStats;
+}

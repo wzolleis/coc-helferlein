@@ -7,7 +7,7 @@ export const calculateStats = (data: CwlSeasonModel): CwlSeasonStats => {
 
 
    const clanStats: ClanStats[] = data.clans.map((clan) => {
-       let townHallStats: TownHallStats[] = initTownhallStats();
+       const townHallStats: TownHallStats[] = initTownhallStats();
        clan.members.forEach((member) => {
             const clanTownHallStats = townHallStats.find((stats => stats.level === member.townHallLevel));
             if (clanTownHallStats) {
@@ -22,16 +22,24 @@ export const calculateStats = (data: CwlSeasonModel): CwlSeasonStats => {
             }
        });
 
+       const sorted = townHallStats
+           .sort((a, b) => compareTownhallLevels(a, b))
+           .filter(s => s.numberOfTownHalls > 0);
+
         return {
             tag: clan.tag,
             name: clan.name,
-            townHallStats
+            townHallStats: sorted
         }
     });
 
    return {
         clanStats
     };
+};
+
+const compareTownhallLevels = (l1: TownHallStats, l2: TownHallStats) => {
+    return l2.level - l1.level;
 };
 
 const initTownhallStats = (): TownHallStats[] => {
