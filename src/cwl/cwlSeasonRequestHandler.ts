@@ -2,6 +2,7 @@ import { model } from 'mongoose';
 import { CWL_SEASON_SCHEMA, CwlSeasonModel } from '../db/databaseSchemes';
 import { CWL } from '../db/Database';
 import { CwlSeasonGetResponse, CwlSeasonStats } from './cwl';
+import {calculateStats} from './clanStats';
 
 
 const findBySeasonAndClan = (season: string, clanTag: string): Promise<CwlSeasonModel>  => {
@@ -20,9 +21,7 @@ const findBySeasonAndClan = (season: string, clanTag: string): Promise<CwlSeason
 export const readSeasonData = async (season: string, clanTag: string): Promise<CwlSeasonGetResponse> => {
     try {
         const seasonData: CwlSeasonModel = await findBySeasonAndClan(season, clanTag);
-            const stats: CwlSeasonStats = {
-                clanStats: []
-            };
+            const stats: CwlSeasonStats = calculateStats(seasonData);
 
             return {
                 season: seasonData,
