@@ -16,7 +16,8 @@ export const cwlReducer: Reducer<CwlState, AnyAction> = (
         return {
             ...state,
             clanTag: action.payload.result.clanTag,
-            cwlSeason: action.payload.result.cwlSeason
+            cwlSeason: action.payload.result.cwlSeason,
+            stats: action.payload.result.cwlStats
         }
     }
     if (isType(action, FetchCwlInfoAction.failed)) {

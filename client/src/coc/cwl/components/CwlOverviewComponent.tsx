@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../../app/applicationTypes';
 import { CwlState } from '../models/cwlTypes';
+import {ClanStatsComponent} from './ClanStatsComponent';
 
 export const CwlOverviewComponent = () => {
 
@@ -11,6 +12,7 @@ export const CwlOverviewComponent = () => {
         <div>
             <h1>Clan War League</h1>
             <div>details {cwlState.clanTag} </div>
+            <ClanStatsComponent/>
         </div>
     )
 };
